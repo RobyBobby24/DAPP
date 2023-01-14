@@ -22,8 +22,7 @@ import java.util.ArrayList;
 @org.hibernate.annotations.Proxy(lazy=false)
 @Table(name="Card")
 public class Card implements Serializable {
-	public Card() {
-	}
+
 	
 	@Column(name="ID", nullable=false, length=10)	
 	@Id	
@@ -44,56 +43,98 @@ public class Card implements Serializable {
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK, org.hibernate.annotations.CascadeType.DELETE})
 	@JoinColumns(value = { @JoinColumn(name="EffectID",referencedColumnName="ID", nullable=false) }, foreignKey=@ForeignKey(name="FKEffect1"))
 	private Effect effect;
-	
+
+
+
+
+	public Card() {
+	}
+
+
+	/**
+	 * set new ID (identifier of object used also in DB)
+	 * @param value new ID
+	 */
 	private void setID(int value) {
 		this.ID = value;
 	}
-	
+
+	/**
+	 * @return ID (identifier of object used also in DB)
+	 */
 	public int getID() {
 		return ID;
 	}
-	
+
+	/**
+	 * set new energyCost (cost for the Adventurer to activate the effects of the card)
+	 * @param value new energyCost
+	 */
 	public void setEnergyCost(int value) {
 		this.energyCost = value;
 	}
 
+
+	/**
+	 * @return energyCost (cost for the Adventurer to activate the effects of the card)
+	 */
+	public int getEnergyCost() {
+		return energyCost;
+	}
+
+	/**
+	 * set new effect (the behavior of the card when activated)
+	 * @param effect new effect
+	 */
 	public void setEffect(Effect effect){
 		this.effect=effect;
 	}
 
+	/**
+	 * @return effect (the behavior of the card when activated)
+	 */
 	public Effect getEffect(){
 		return this.effect;
 	}
-	
-	public int getEnergyCost() {
-		return energyCost;
-	}
-	
+
+	/**
+	 * set new description (explanation of the card effects behavior)
+	 * @param value new description
+	 */
 	public void setDescription(String value) {
 		this.description = value;
 	}
-	
+
+	/**
+	 * @return description (explanation of the card effects behavior)
+	 */
 	public String getDescription() {
 		return description;
 	}
 
-	
 
-	
-
+	/**
+	 * @return true if the Adventure has enough energy point to play the card
+	 */
 	public boolean canBePlayed() {
 		//TODO: Implement Method
 		throw new UnsupportedOperationException();
 	}
-	
-	public int getTarget() {
-		//TODO: Implement Method
-		throw new UnsupportedOperationException();
+
+	/**
+	 * @return numberOfTarget (number of effects card that need a target to be performed)
+	 */
+	public int getNumberOfTarget() {
+		return this.effect.numberOfTarget(0);
 	}
-	
+
+	/**
+	 * execute the effect of the card
+	 * @param battleField field that could be change by the effects
+	 * @param target id of the target to change
+	 */
 	public void activeEffect(BattleRoom battleField, int[] target) {
-		//TODO: Implement Method
-		throw new UnsupportedOperationException();
+		this.effect.activeEffect(battleField,target);
 	}
 	
 	public String toString() {

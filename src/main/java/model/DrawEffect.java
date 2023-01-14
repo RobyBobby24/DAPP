@@ -22,32 +22,47 @@ import java.io.Serializable;
 @org.hibernate.annotations.Proxy(lazy=false)
 @DiscriminatorValue("DrawEffect")
 public class DrawEffect extends Effect implements Serializable {
-	public DrawEffect() {
-	}
 	
 	@Column(name="NumberCards", nullable=true, length=10)
 	private int numberCards;
-	
+
+
+
+	public DrawEffect() {
+	}
+
+
+	/**
+	 * set new numberCards (number of card that the effect allows to draw at the Adventurer)
+	 * @param value new numberCards
+	 */
 	public void setNumberCards(int value) {
 		this.numberCards = value;
 	}
-	
+
+	/**
+	 * @return numberCards (number of card that the effect allows to draw at the Adventurer)
+	 */
 	public int getNumberCards() {
 		return numberCards;
 	}
-	
+
+	/**
+	 * add to Adventurer Deck "numberCards" cards
+	 * @param battleField field that contain all the variable that an effect could change
+	 * @param target id of the target who will be changed in this effect or in the next
+	 */
 	public void activeEffect(BattleRoom battleField, int[] target) {
-		//TODO: Implement Method
-		throw new UnsupportedOperationException();
-	}
-	
-	public int numberOfTarget(int actualNumber) {
 		//TODO: Implement Method
 		throw new UnsupportedOperationException();
 	}
 	
 	public String toString() {
 		return super.toString();
+	}
+
+	public String var_dump(){
+		return super.var_dump()+" numberCards:"+this.numberCards;
 	}
 	
 }

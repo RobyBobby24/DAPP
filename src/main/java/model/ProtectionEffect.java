@@ -22,32 +22,47 @@ import java.io.Serializable;
 @org.hibernate.annotations.Proxy(lazy=false)
 @DiscriminatorValue("ProtectionEffect")
 public class ProtectionEffect extends Effect implements Serializable {
-	public ProtectionEffect() {
-	}
+
 	
 	@Column(name="Protection", nullable=true, length=10)	
 	private int protection;
-	
+
+
+
+	public ProtectionEffect() {
+	}
+
+	/**
+	 * set protection (number of damage that the adventurer will be taken without lose hp)
+	 * @param value new protection
+	 */
 	public void setProtection(int value) {
 		this.protection = value;
 	}
-	
+
+	/**
+	 * @return protection (number of damage that the adventurer will be taken without lose hp)
+	 */
 	public int getProtection() {
 		return protection;
 	}
-	
+
+	/**
+	 * after that the Adventurer can take "protection" damage without lose hp
+	 * @param battleField field that contain all the variable that an effect could change
+	 * @param target id of the target who will be changed in this effect or in the next
+	 */
 	public void activeEffect(BattleRoom battleField, int[] target) {
-		//TODO: Implement Method
-		throw new UnsupportedOperationException();
-	}
-	
-	public int numberOfTarget(int actualNumber) {
 		//TODO: Implement Method
 		throw new UnsupportedOperationException();
 	}
 	
 	public String toString() {
 		return super.toString();
+	}
+
+	public String var_dump(){
+		return super.var_dump()+" protection:"+this.protection;
 	}
 	
 }

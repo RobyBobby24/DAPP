@@ -21,32 +21,46 @@ import java.io.Serializable;
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 @DiscriminatorValue("DamageEffect")
 public class DamageEffect extends Effect implements Serializable {
-	public DamageEffect() {
-	}
+
 	
 	@Column(name="Damage", nullable=true, length=10)	
 	private int damage;
-	
+
+
+	public DamageEffect() {
+	}
+
+	/**
+	 * set new damage (hp that the effect take away by the monster)
+	 * @param value new damage
+	 */
 	public void setDamage(int value) {
 		this.damage = value;
 	}
-	
+
+	/**
+	 * @return damage (hp that the effect take away by the monster)
+	 */
 	public int getDamage() {
 		return damage;
 	}
-	
+
+	/**
+	 * take away the hp to the target monster
+	 * @param battleField field that contain all the variable that an effect could change
+	 * @param target id of the target who will be changed in this effect or in the next
+	 */
 	public void activeEffect(BattleRoom battleField, int[] target) {
-		//TODO: Implement Method
-		throw new UnsupportedOperationException();
-	}
-	
-	public int numberOfTarget(int actualNumber) {
 		//TODO: Implement Method
 		throw new UnsupportedOperationException();
 	}
 	
 	public String toString() {
 		return super.toString();
+	}
+
+	public String var_dump(){
+		return super.var_dump()+" protection:"+this.damage;
 	}
 	
 }

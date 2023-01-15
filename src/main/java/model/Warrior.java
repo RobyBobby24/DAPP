@@ -13,10 +13,7 @@
  */
 package model;
 
-import jakarta.persistence.DiscriminatorValue;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Inheritance;
-import jakarta.persistence.InheritanceType;
+import jakarta.persistence.*;
 
 import java.io.Serializable;
 @Entity
@@ -24,31 +21,32 @@ import java.io.Serializable;
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 @DiscriminatorValue("Warrior")
 public class Warrior extends Adventurer implements Serializable {
+
+
+
+
+
 	public Warrior() {
+		this.currentState=new NormalState();
 	}
 
-	@Override
-	public int getId() {
-		return 0;
-	}
 
-	@Override
-	public void setId(int id) {
-
-	}
-
-	@Override
-	public AdventurerState getCurrentState() {
-		return null;
+	public static Adventurer getInstance(){
+		if(Warrior.instance==null){
+			Warrior.instance=new Warrior();
+		}
+		return instance;
 	}
 
 	@Override
 	public void setBattleState() {
-
+		this.currentState=new BattleState();
 	}
 
-	public String toString() {
-		return super.toString();
+	@Override
+	public void setNormalState() {
+		this.currentState=new NormalState();
 	}
-	
+
+
 }

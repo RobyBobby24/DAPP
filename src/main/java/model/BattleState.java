@@ -1,66 +1,117 @@
 package model;
 
+import java.util.ArrayList;
+
 public class BattleState implements AdventurerState {
 
-	private Hand[] hand;
+	private Hand hand;
 	private DiscardPile discardPile;
 	private Deck deck;
 	private int protection;
 	private int energyPoint;
 
+
+
+
+
+	public BattleState() {
+
+	}
+
+	/**
+	 * @return protection (number of damage that adventurer could take without lose hp)
+	 */
 	public int getProtection() {
 		return this.protection;
 	}
 
 	/**
-	 * 
-	 * @param protection
+	 * set new protection (number of damage that adventurer could take without lose hp)
+	 * @param protection new protection
 	 */
 	public void setProtection(int protection) {
 		this.protection = protection;
 	}
 
+	/**
+	 * add "protection" point to the protection
+	 * @param protection number of protection point to add
+	 */
+	@Override
+	public void addProtection(int protection) {
+		this.protection=this.protection+protection;
+	}
+
+
+	/**
+	 * @return energyPoint ( a sort of money useful for play a card)
+	 */
 	public int getEnergyPoint() {
 		return this.energyPoint;
 	}
 
 	/**
-	 * 
-	 * @param energyPoint
+	 * set new energyPoint ( a sort of money useful for play a card)
+	 * @param energyPoint new energyPoint
 	 */
 	public void setEnergyPoint(int energyPoint) {
 		this.energyPoint = energyPoint;
 	}
 
-	public BattleState BattleState() {
-		// TODO - implement BattleState.BattleState
-		throw new UnsupportedOperationException();
-	}
-
 	/**
-	 * 
-	 * @param numberOfCards
+	 * take card from deck and put they to the hand
+	 * @param numberOfCards number of cards to draw
 	 */
 	public void drawCards(int numberOfCards) {
-		// TODO - implement BattleState.drawCards
-		throw new UnsupportedOperationException();
+		int nCards=this.deck.getNumberOfCards();
+		if(nCards>numberOfCards) {
+			ArrayList<Card> cards=this.deck.getAndRemoveCards(numberOfCards);
+			this.hand.addCard(cards);
+		}
+		else{
+			ArrayList<Card> cards=this.deck.getAndRemoveCards(nCards);
+			this.hand.addCard(cards);
+			ArrayList<Card> discardPileCards=this.discardPile.getCards();
+			this.deck.addCard(discardPileCards);
+			this.deck.shuffle();
+		}
 	}
 
 	/**
-	 * 
-	 * @param copyDeck
+	 * set new Deck (list of card available for the adventurer)
+	 * @param copiedDeck new Deck
 	 */
-	public void setDeck(Deck copyDeck) {
-		this.deck = copyDeck;
+	public void setDeck(Deck copiedDeck) {
+		this.deck = copiedDeck;
 	}
 
 	/**
-	 * 
-	 * @param cardID
+	 * @param cardIndex index of the card to get
+	 * @return the card chosen
 	 */
-	public Card getCardFromHand(int cardID) {
-		// TODO - implement BattleState.getCardFromHand
-		throw new UnsupportedOperationException();
+	public Card getCardFromHand(int cardIndex) {
+		return this.hand.getCard(cardIndex);
+	}
+
+
+	/**
+	 * do all the action that deck,discardPile and hand need at the end of the Adventurer turn
+	 */
+	@Override
+	public void passTurn() {
+		ArrayList<Card> cards=this.hand.getAndRemoveCards();
+		this.discardPile.addCard(cards);
+	}
+
+	/**
+	 * decrease currentHp and/or protection in case there is
+	 * @param damage number of point to decrease
+	 * @param adventurer adventurer who take damage
+	 */
+	@Override
+	public void takeDamage(int damage, Adventurer adventurer) {
+		if (this.protection-damage<0) adventurer.getHp().addCurrentHp(this.protection-damage);
+		else this.protection=this.protection-damage;
 	}
 
 }

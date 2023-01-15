@@ -43,6 +43,11 @@ public class Hp implements Serializable {
 	public int getID() {
 		return ID;
 	}
+
+	public void addCurrentHp(int numberOfHp)
+	{
+		this.currentHp=this.currentHp+numberOfHp;
+	}
 	
 	public void setCurrentHp(int value) {
 		this.currentHp = value;

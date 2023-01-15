@@ -1,49 +1,61 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class DiscardPile {
 
-	private Card[] cards;
+	private ArrayList<Card> cards;
 
 	public DiscardPile() {
-		// TODO - implement DiscardPile.DiscardPile
-		throw new UnsupportedOperationException();
+		this.cards=new ArrayList<Card>();
 	}
 
 	/**
-	 * 
-	 * @param cards
+	 * set new cards (ArrayList of the card contained by the discardPile)
+	 * @param cards new cards
 	 */
 	public void setCards(ArrayList<Card> cards) {
-		// TODO - implement DiscardPile.setCards
-		throw new UnsupportedOperationException();
+		this.cards=cards;
 	}
 
 	/**
-	 * 
-	 * @param card
+	 * add a new card to the discardPile
+	 * @param card card to add
 	 */
 	public void addCard(Card card) {
-		// TODO - implement DiscardPile.addCard
-		throw new UnsupportedOperationException();
+		this.cards.add(card);
 	}
 
 	/**
-	 * 
-	 * @param number
+	 *  add new cards to the discardPile
+	 * @param cards cards to add
 	 */
-	public Card[] getCards(int number) {
+	public void addCard(List<Card> cards) {
+		this.cards.addAll(cards);
+	}
+
+	/**
+	 * @param number number of cards to get
+	 * @return  "number" cards from the discardPile
+	 */
+	public ArrayList<Card> getCards(int number) {
+		ArrayList<Card> result= new ArrayList<Card>();
+		for (int i = 0; i < number; i++) {
+			result.add(this.cards.get(0));
+		}
+		return result;
+	}
+
+	/**
+	 * @return all the cards of the discardPile
+	 */
+	public ArrayList<Card> getCards(){
 		return this.cards;
 	}
 
-	/**
-	 * 
-	 * @param cards
-	 */
-	public void addCard(Card[] cards) {
-		// TODO - implement DiscardPile.addCard
-		throw new UnsupportedOperationException();
+	public String var_dump(){
+		return "cards:"+this.getCards();
 	}
 
 }

@@ -1,6 +1,7 @@
 package services;
 
 import jakarta.persistence.*;
+import model.Adventurer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -112,6 +113,28 @@ public class PersistenceInterface {
             transaction.begin();
             Query query = entityManager.createQuery("SELECT "+select+" FROM "+from+" WHERE "+where);
             result = query.getResultList();
+            transaction.commit();
+        }
+        finally {
+            if(transaction.isActive()){
+                transaction.rollback();
+            }
+            entityManager.close();
+            entityManagerFactory.close();
+        }
+        return result;
+    }
+
+    public Adventurer loadAdventurer(Class adventurerClass){
+        EntityManagerFactory entityManagerFactory= Persistence.createEntityManagerFactory("default");
+        EntityManager entityManager=entityManagerFactory.createEntityManager();
+        EntityTransaction transaction= entityManager.getTransaction();
+        Adventurer result;
+
+        try{
+            transaction.begin();
+            Query query = entityManager.createQuery("SELECT Adventurer FROM Adventurer WHERE Adventurer.class="+adventurerClass.getName());
+            result =(Adventurer) query.getSingleResult();
             transaction.commit();
         }
         finally {

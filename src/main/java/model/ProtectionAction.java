@@ -31,27 +31,41 @@ public class ProtectionAction extends Action implements Serializable {
 	
 	@Column(name="Protection", nullable=false, length=10)	
 	private int protection;
-	
+
+	/**
+	 * set new ID (identifier of the instance also in DB)
+	 * @param value new ID
+	 */
 	private void setID(int value) {
 		this.ID = value;
 	}
-	
+
+	/**
+	 * @return ID (identifier of the instance also in DB)
+	 */
 	public int getID() {
 		return ID;
 	}
-	
-	public int getORMID() {
-		return getID();
-	}
-	
+
+	/**
+	 * set new protection (number of damage that the adventurer will be taken without lose hp)
+	 * @param value new protection
+	 */
 	public void setProtection(int value) {
 		this.protection = value;
 	}
-	
+
+	/**
+	 * @return protection (number of damage that the adventurer will be taken without lose hp)
+	 */
 	public int getProtection() {
 		return protection;
 	}
-	
+
+	/**
+	 * after that the Adventurer can take "protection" damage without lose hp
+	 * @param monster monster who activated the action and take the protection
+	 */
 	public void activeAction(Monster monster) {
 		//TODO: Implement Method
 		throw new UnsupportedOperationException();
@@ -59,6 +73,10 @@ public class ProtectionAction extends Action implements Serializable {
 	
 	public String toString() {
 		return String.valueOf(getID());
+	}
+
+	public String var_dump(){
+		return "ID:"+this.getID()+" damage:"+this.protection+" nextAction:"+this.nextAction;
 	}
 	
 }

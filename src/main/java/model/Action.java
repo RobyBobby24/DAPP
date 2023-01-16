@@ -32,7 +32,7 @@ public abstract class Action implements Serializable {
 	@ManyToOne(targetEntity= Action.class, fetch=FetchType.LAZY)
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
 	@JoinColumns(value={ @JoinColumn(name="ActionID", referencedColumnName="ID") }, foreignKey=@ForeignKey(name="FKAction727678"))	
-	private Action nextAction;
+	protected Action nextAction;
 	
 	private void setID(int value) {
 		this.ID = value;
@@ -40,10 +40,6 @@ public abstract class Action implements Serializable {
 	
 	public int getID() {
 		return ID;
-	}
-	
-	public int getORMID() {
-		return getID();
 	}
 	
 	public void setNextAction(Action value) {

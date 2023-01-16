@@ -60,6 +60,9 @@ public interface AdventurerState {
 	 */
 	void takeDamage(int damage,Adventurer adventurer);
 
+	@Override
+	public String toString();
+
 
 
 }

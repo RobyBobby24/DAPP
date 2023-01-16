@@ -125,7 +125,29 @@ public class PersistenceInterface {
         return result;
     }
 
-    public Adventurer loadAdventurer(Class adventurerClass){
+    public boolean exist(String from,String select,String where){
+        EntityManagerFactory entityManagerFactory= Persistence.createEntityManagerFactory("default");
+        EntityManager entityManager=entityManagerFactory.createEntityManager();
+        EntityTransaction transaction= entityManager.getTransaction();
+        boolean result;
+
+        try{
+            transaction.begin();
+            Query query = entityManager.createQuery("SELECT "+select+" FROM "+from+" WHERE "+where);
+            result = (boolean)query.getSingleResult();
+            transaction.commit();
+        }
+        finally {
+            if(transaction.isActive()){
+                transaction.rollback();
+            }
+            entityManager.close();
+            entityManagerFactory.close();
+        }
+        return result;
+    }
+
+    public Adventurer loadAdventurerByClass(Class adventurerClass){
         EntityManagerFactory entityManagerFactory= Persistence.createEntityManagerFactory("default");
         EntityManager entityManager=entityManagerFactory.createEntityManager();
         EntityTransaction transaction= entityManager.getTransaction();
@@ -133,8 +155,31 @@ public class PersistenceInterface {
 
         try{
             transaction.begin();
-            Query query = entityManager.createQuery("SELECT Adventurer FROM Adventurer WHERE Adventurer.class="+adventurerClass.getName());
+            Query query = entityManager.createQuery("SELECT a FROM "+adventurerClass.getSimpleName()+" a");
             result =(Adventurer) query.getSingleResult();
+            transaction.commit();
+        }
+        finally {
+            if(transaction.isActive()){
+                transaction.rollback();
+            }
+            entityManager.close();
+            entityManagerFactory.close();
+        }
+        return result;
+    }
+
+    public boolean existAdventurerByClass(Class adventurerClass){
+        EntityManagerFactory entityManagerFactory= Persistence.createEntityManagerFactory("default");
+        EntityManager entityManager=entityManagerFactory.createEntityManager();
+        EntityTransaction transaction= entityManager.getTransaction();
+        boolean result;
+
+        try{
+            transaction.begin();
+            Query query = entityManager.createQuery("SELECT count(a) FROM "+adventurerClass.getSimpleName()+" a");
+            if((Long)query.getSingleResult()>0) result=true;
+            else result=false;
             transaction.commit();
         }
         finally {

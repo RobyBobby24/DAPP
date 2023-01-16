@@ -35,11 +35,13 @@ public class Main {
         deck.addCard(card);
         persistence.update(deck);
         */
-        AdventurerFactory.getInstance().setAdventurerClass(AdventurerFactory.AdventurerClass.Warrior);
-        Deck deck=(Deck) PersistenceInterface.getIstance().loadOne(6,Deck.class);
-        Adventurer.getInstance().setDeck(deck);
-        PersistenceInterface.getIstance().store(Adventurer.getInstance());
-
+        //System.out.println(persistence.loadAdventurer(Warrior.class));
+        try {
+            AdventurerFactory.getInstance().setAdventurerClass(Warrior.class);
+            System.out.println(Adventurer.getInstance().getHp().var_dump());
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
 
 
     }

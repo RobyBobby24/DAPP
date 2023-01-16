@@ -90,4 +90,8 @@ public class NormalState implements AdventurerState {
 		adventurer.getHp().addCurrentHp(-damage);
 	}
 
+	public String toString(){
+		return this.getClass().getName();
+	}
+
 }

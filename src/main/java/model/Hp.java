@@ -35,43 +35,78 @@ public class Hp implements Serializable {
 	
 	@Column(name="MaxHp", nullable=false, length=10)	
 	private int maxHp;
-	
+
+	/**
+	 * set new ID (identifier of the instance also in DB)
+	 * @param value new ID
+	 */
 	private void setID(int value) {
 		this.ID = value;
 	}
-	
+
+	/**
+	 * @return ID (identifier of the instance also in DB)
+	 */
 	public int getID() {
 		return ID;
 	}
 
-	public void addCurrentHp(int numberOfHp)
-	{
-		this.currentHp=this.currentHp+numberOfHp;
+	/**
+	 * increase or decrease of "numberOfHp" the currentHp
+	 * @param numberOfHp number of Hp to add
+	 */
+	public void addCurrentHp(int numberOfHp) {
+		if(this.currentHp+numberOfHp>this.maxHp) this.currentHp=this.maxHp;
+		else if (this.currentHp+numberOfHp<0) this.currentHp=0;
+		else this.currentHp=this.currentHp+numberOfHp;
 	}
-	
-	public void setCurrentHp(int value) {
+
+	/**
+	 * set new currentHp (number of damage that could be lost without die)
+	 * @param value new currentHp
+	 */
+	public void setCurrentHp(int value) throws Exception {
+		if(value>this.maxHp || value<0) throw new Exception("currentHp must be minors than maxHp and greater of 0");
 		this.currentHp = value;
 	}
-	
+
+	/**
+	 * set currentHp=maxHp
+	 */
+	public void resetCurrentHp(){
+		this.currentHp=this.maxHp;
+	}
+
+	/**
+	 * @return currentHp (number of damage that could be lost without die)
+	 */
 	public int getCurrentHp() {
 		return currentHp;
 	}
-	
-	public void setMaxHp(int value) {
+
+	/**
+	 * set new maxHp (max value of currentHp)
+	 * @param value new maxHp
+	 */
+	public void setMaxHp(int value) throws Exception {
+		if(value<this.currentHp) throw new Exception("maxHp must be greater than maxHp");
+		this.currentHp = value;
 		this.maxHp = value;
 	}
-	
+
+	/**
+	 * @return maxHp (max value of currentHp)
+	 */
 	public int getMaxHp() {
 		return maxHp;
 	}
 	
-	public void loseHp(int hit) {
-		//TODO: Implement Method
-		throw new UnsupportedOperationException();
-	}
-	
 	public String toString() {
 		return String.valueOf(getID());
+	}
+
+	public String var_dump(){
+		return "ID:"+this.ID+" currentHp:"+this.currentHp+" maxHp:"+this.maxHp;
 	}
 	
 }

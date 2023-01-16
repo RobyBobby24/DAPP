@@ -114,4 +114,8 @@ public class BattleState implements AdventurerState {
 		else this.protection=this.protection-damage;
 	}
 
+	public String toString(){
+		return this.getClass().getName();
+	}
+
 }

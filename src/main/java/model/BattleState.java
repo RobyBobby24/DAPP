@@ -103,6 +103,12 @@ public class BattleState implements AdventurerState {
 		this.discardPile.addCard(cards);
 	}
 
+	@Override
+	public void startTurn() {
+		this.setEnergyPoint(3);
+		this.drawCards(5);
+	}
+
 	/**
 	 * decrease currentHp and/or protection in case there is
 	 * @param damage number of point to decrease

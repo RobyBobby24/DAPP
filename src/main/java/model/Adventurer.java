@@ -135,7 +135,7 @@ public abstract class Adventurer implements Serializable {
 	/**
 	 * @return the unique instance of the Adventurer
 	 */
-	public static Adventurer getInstance() throws Exception {
+	public static Adventurer getInstance() {
 		if(Adventurer.instance==null) {
 			Adventurer.instance=AdventurerFactory.getInstance().getAdventurerInstance();
 		}
@@ -198,10 +198,17 @@ public abstract class Adventurer implements Serializable {
 	}
 
 	/**
-	 * do all the action that deck,discardPile and hand need at the end of the Adventurer turn
+	 * do all the action that deck,discardPile ,hand and energyPoint need at the end of the Adventurer turn
 	 */
 	public void passTurn() {
 		this.currentState.passTurn();
+	}
+
+	/**
+	 * do all the action that deck,discardPile ,hand and energyPoint need at the start of the Adventurer turn
+	 */
+	public void startTurn(){
+		this.currentState.startTurn();
 	}
 
 	/**

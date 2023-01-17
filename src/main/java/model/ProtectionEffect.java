@@ -18,6 +18,8 @@ import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+
 @Entity
 @org.hibernate.annotations.Proxy(lazy=false)
 @DiscriminatorValue("ProtectionEffect")
@@ -52,7 +54,7 @@ public class ProtectionEffect extends Effect implements Serializable {
 	 * @param battleField field that contain all the variable that an effect could change
 	 * @param target id of the target who will be changed in this effect or in the next
 	 */
-	public void activeEffect(BattleRoom battleField, int[] target) {
+	public void activeEffect(BattleRoom battleField, ArrayList<Integer> target) {
 		//TODO: Implement Method
 		throw new UnsupportedOperationException();
 	}

@@ -43,7 +43,7 @@ public class AdventurerFactory {
     /**
      * @return the Adventurer Instance
      */
-    public Adventurer getAdventurerInstance() throws Exception {
+    public Adventurer getAdventurerInstance() {
         try{
             if(PersistenceInterface.getIstance().existAdventurerByClass(Class.forName(this.adventurerClass))){
                 return PersistenceInterface.getIstance().loadAdventurerByClass(Class.forName(this.adventurerClass));
@@ -54,7 +54,7 @@ public class AdventurerFactory {
             }
         }
         catch (Exception e){
-           throw new Exception(e.getMessage());
+           return null;
         }
 
     }

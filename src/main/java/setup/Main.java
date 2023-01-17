@@ -36,13 +36,37 @@ public class Main {
         persistence.update(deck);
         */
         //System.out.println(persistence.loadAdventurer(Warrior.class));
+        /*
+        /create action
+        ProtectionAction protectionAction=new ProtectionAction();
+        protectionAction.setProtection(5);
+       DamageAction damageAction=new DamageAction();
+       damageAction.setDamage(10);
+       damageAction.setNextAction(protectionAction);
+       PersistenceInterface.getIstance().store(protectionAction);
+       PersistenceInterface.getIstance().store(damageAction);
+         */
+        /*
+        create monster
+        Hp hp = new Hp();
+            hp.setMaxHp(100);
+            hp.resetCurrentHp();
+            PersistenceInterface.getIstance().store(hp);
+            Monster m = new Monster();
+            m.setType("normal");
+            m.setName("Browser");
+            m.setHp(hp);
+            m.setChallengeRating(3);
+            PersistenceInterface.getIstance().store(m);
+         */
         try {
-            AdventurerFactory.getInstance().setAdventurerClass(Warrior.class);
-            System.out.println(Adventurer.getInstance().getHp().var_dump());
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+            Monster monster=(Monster)PersistenceInterface.getIstance().loadOne(1,Monster.class);
+            Action action=(Action) PersistenceInterface.getIstance().loadOne(2,Action.class);
+            monster.addActionToAvailable(action);
+            PersistenceInterface.getIstance().update(monster);
         }
-
-
+        catch (Exception e){
+            throw new UnsupportedOperationException(e);
+        }
     }
 }

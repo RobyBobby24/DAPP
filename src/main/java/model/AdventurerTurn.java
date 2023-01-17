@@ -1,58 +1,78 @@
 package model;
 
+import java.util.ArrayList;
+
 public class AdventurerTurn implements TurnState {
 
-	private boolean endAdventurerTurn;
+	private boolean endAdventurerTurn=false;
 
-	public AdventurerTurn AdventurerTurn() {
-		// TODO - implement AdventurerTurn.AdventurerTurn
-		throw new UnsupportedOperationException();
+	public  AdventurerTurn() {
+
 	}
 
 	/**
-	 * 
+	 * execute all the operation that will be at the start of an Adventurer turn
 	 * @param battleRoom
 	 */
 	public void startTurn(BattleRoom battleRoom) {
-		// TODO - implement AdventurerTurn.startTurn
-		throw new UnsupportedOperationException();
+		this.endAdventurerTurn=false;
+		Adventurer.getInstance().startTurn();
+		battleRoom.setNextMonstersAction();
 	}
 
 	/**
-	 * 
+	 * notify the death of a monster to the battleRoom
 	 * @param battle
-	 * @param monsterID
+	 * @param monsterID id of monster who has died
 	 */
 	public void notifyDeath(BattleRoom battle, int monsterID) {
-		// TODO - implement AdventurerTurn.notifyDeath
-		throw new UnsupportedOperationException();
+		battle.removeMonster(monsterID);
+		if(battle.getEnded()==0)this.setEndAdventurerTurn(true);
 	}
 
 	/**
-	 * 
+	 * play a card of the adventurer
 	 * @param battleRoom
-	 * @param effectId
+	 * @param effectId identifier of the card to play
 	 */
 	public void performEffect(BattleRoom battleRoom, int effectId) {
-		// TODO - implement AdventurerTurn.performEffect
-		throw new UnsupportedOperationException();
+		Card cardToPlay=Adventurer.getInstance().getCardFromHand(effectId);
+		if(cardToPlay.canBePlayed()){
+			int numberOfTarget=cardToPlay.getNumberOfTarget();
+			ArrayList<Integer> target=new ArrayList<Integer>();
+			for (int i = 0; i < numberOfTarget; i++) {
+				target.add(PlayTheGame.getInstance().chooseTarget());
+			}
+			cardToPlay.activeEffect(battleRoom,target);
+		}
 	}
 
 	/**
-	 * 
-	 * @param end
+	 * set new endAdventurerTurn (if true the turn is end)
+	 * @param end new endAdventurerTurn
 	 */
 	public void setEndAdventurerTurn(boolean end) {
 		this.endAdventurerTurn = end;
 	}
 
 	/**
-	 * 
+	 * start all the operation of an Adventurer turn
+	 * @param battleRoom
+	 */
+	public void playTurn(BattleRoom battleRoom){
+		while (!this.endAdventurerTurn){
+			PlayTheGame.getInstance().nextBattleOp();
+		}
+	}
+
+	/**
+	 * pass turn to the monsters
 	 * @param battleRoom
 	 */
 	public void passTurn(BattleRoom battleRoom) {
-		// TODO - implement AdventurerTurn.passTurn
-		throw new UnsupportedOperationException();
+		Adventurer.getInstance().passTurn();
+		this.setEndAdventurerTurn(true);
+		battleRoom.setCurrentTurn(new MonsterTurn());
 	}
 
 }

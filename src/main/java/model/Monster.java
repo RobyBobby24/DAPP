@@ -14,6 +14,7 @@
 package model;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -49,12 +50,12 @@ public class Monster implements Serializable {
 	
 	@Column(name="Protection", nullable=false, length=10)	
 	private int protection;
-	
-	@OneToMany(targetEntity= Action.class)
-	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
-	@JoinColumns({ @JoinColumn(name="MonsterID", nullable=false) })	
-	@org.hibernate.annotations.IndexColumn(name="MonsterIndex")	
-	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
+
+	@ManyToMany(targetEntity=model.Action.class)
+	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})
+	@JoinTable(name="Monster_Action", joinColumns={ @JoinColumn(name="MonsterID", referencedColumnName="ID", nullable=false) }, inverseJoinColumns={ @JoinColumn(name="ActionID",referencedColumnName="ID", nullable=false) })
+	@org.hibernate.annotations.IndexColumn(name="ActionIndex")
+	@org.hibernate.annotations.LazyCollection(LazyCollectionOption.FALSE)
 	private List<Action> availableActions = new ArrayList<Action>();
 
 
@@ -111,7 +112,7 @@ public class Monster implements Serializable {
 	 * @param value new challengeRating
 	 */
 	public void setChallengeRating(double value) {
-		setChallengeRating(Double.valueOf(value));
+		this.challengeRating=Double.valueOf(value);
 	}
 
 	/**
@@ -140,7 +141,7 @@ public class Monster implements Serializable {
 	 * set new availableAction (action that monster can play)
 	 * @param value new availableAction
 	 */
-	private void setAvailableActions(ArrayList<Action> value) {
+	public void setAvailableActions(ArrayList<Action> value) {
 		this.availableActions = value;
 	}
 

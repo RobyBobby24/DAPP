@@ -49,9 +49,14 @@ public interface AdventurerState {
 	Card getCardFromHand(int cardIndex);
 
 	/**
-	 * do all the action that deck,discardPile and hand need at the end of the Adventurer turn
+	 * do all the action that deck,discardPile, hand and energyPoint need at the end of the Adventurer turn
 	 */
 	void passTurn();
+
+	/**
+	 * do all the action that deck,discardPile, hand and energyPoint need at the start of the Adventurer turn
+	 */
+	void startTurn();
 
 	/**
 	 * decrease currentHp

@@ -80,6 +80,11 @@ public class NormalState implements AdventurerState {
 
 	}
 
+	@Override
+	public void startTurn() {
+
+	}
+
 	/**
 	 * decrease currentHp
 	 * @param damage number of point to decrease

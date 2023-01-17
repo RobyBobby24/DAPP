@@ -133,7 +133,7 @@ public class Card implements Serializable {
 	 * @param battleField field that could be change by the effects
 	 * @param target id of the target to change
 	 */
-	public void activeEffect(BattleRoom battleField, int[] target) {
+	public void activeEffect(BattleRoom battleField, ArrayList<Integer> target) {
 		this.effect.activeEffect(battleField,target);
 	}
 	

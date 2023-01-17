@@ -55,4 +55,9 @@ public class PlayTheGame {
 		throw new UnsupportedOperationException();
 	}
 
+	public void nextBattleOp() {
+		// TODO - implement PlayTheGame.makeNewGame
+		throw new UnsupportedOperationException();
+	}
+
 }

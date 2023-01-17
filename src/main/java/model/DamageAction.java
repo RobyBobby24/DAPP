@@ -70,8 +70,7 @@ public class DamageAction extends Action implements Serializable {
 	 * @param monster monster who activated the effect
 	 */
 	public void activeAction(Monster monster) {
-		//TODO: Implement Method
-		throw new UnsupportedOperationException();
+		Adventurer.getInstance().takeDamage(this.damage);
 	}
 	
 	public String toString() {

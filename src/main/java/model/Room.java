@@ -29,7 +29,7 @@ public abstract class Room implements Serializable {
 	@Id	
 	@GeneratedValue(generator="MODEL_ROOM_ID_GENERATOR")	
 	@org.hibernate.annotations.GenericGenerator(name="MODEL_ROOM_ID_GENERATOR", strategy="native")	
-	private int ID;
+	protected int ID;
 	
 	private void setID(int value) {
 		this.ID = value;

@@ -67,8 +67,7 @@ public class ProtectionAction extends Action implements Serializable {
 	 * @param monster monster who activated the action and take the protection
 	 */
 	public void activeAction(Monster monster) {
-		//TODO: Implement Method
-		throw new UnsupportedOperationException();
+		monster.addProtection(this.protection);
 	}
 	
 	public String toString() {

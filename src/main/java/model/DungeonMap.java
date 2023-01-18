@@ -14,17 +14,18 @@
 package model;
 
 import jakarta.persistence.*;
+import services.PersistenceInterface;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.TreeMap;
 
 @Entity
 @org.hibernate.annotations.Proxy(lazy=false)
 @Table(name="DungeonMap")
 public class DungeonMap implements Serializable {
-	public DungeonMap() {
-	}
+
 
 
 	@Transient
@@ -47,6 +48,10 @@ public class DungeonMap implements Serializable {
 	private List<Room> rooms = new ArrayList<Room>();
 
 
+	protected DungeonMap() {
+		buildMap();
+	}
+
 	/**
 	 * set new ID (identifier of the instance also in DB)
 	 * @param value new ID
@@ -64,10 +69,10 @@ public class DungeonMap implements Serializable {
 	
 	public static DungeonMap getInstance() {
 		if(DungeonMap.instance==null){
-			DungeonMap.instance=DungeonMapFactory.getInstance().loadDungeonMap();
-			if(DungeonMap.instance==null){
-				DungeonMap.instance=new DungeonMap();
+			if(PersistenceInterface.getIstance().exist(new TreeMap<>(),DungeonMap.class)){
+				DungeonMap.instance=(DungeonMap)PersistenceInterface.getIstance().search(new TreeMap<>(),DungeonMap.class).get(0);
 			}
+			else DungeonMap.instance=new DungeonMap();
 		}
 		return DungeonMap.instance;
 	}
@@ -75,7 +80,7 @@ public class DungeonMap implements Serializable {
 	/**
 	 * build the map with all its room
 	 */
-	public void buildMap() {
+	private void buildMap() {
 		BattleRoomFactory battleRoomFactory=new BattleRoomFactory();
 		this.rooms.add(battleRoomFactory.createRoom());
 	}
@@ -84,8 +89,7 @@ public class DungeonMap implements Serializable {
 	 * @return the list of the room reachable where the Adventurer is
 	 */
 	public ArrayList<Room> giveMeAvailableRooms() {
-		//TODO: Implement Method
-		throw new UnsupportedOperationException();
+		return new ArrayList<Room>(this.rooms);
 	}
 
 	/**
@@ -93,16 +97,17 @@ public class DungeonMap implements Serializable {
 	 * @return the room that has "roomId" as ID
 	 */
 	public Room getRoom(int roomId) {
-		//TODO: Implement Method
-		throw new UnsupportedOperationException();
+		for (Room room : this.rooms) {
+			if (room.getID() == roomId) return room;
+		}
+		return null;
 	}
 
 	/**
 	 * @return the room where there is the Adventurer
 	 */
 	public Room getCurrentRoom() {
-		//TODO: Implement Method
-		throw new UnsupportedOperationException();
+		return this.currentRoom;
 	}
 
 	/**
@@ -110,8 +115,7 @@ public class DungeonMap implements Serializable {
 	 * @param currentRoom new actualRoom
 	 */
 	public void setCurrentRoom(Room currentRoom) {
-		//TODO: Implement Method
-		throw new UnsupportedOperationException();
+		this.currentRoom=currentRoom;
 	}
 
 	/**

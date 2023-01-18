@@ -5,6 +5,7 @@ import model.Adventurer;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.TreeMap;
 
 public class PersistenceInterface {
 
@@ -125,16 +126,27 @@ public class PersistenceInterface {
         return result;
     }
 
-    public boolean exist(String from,String select,String where){
+    public boolean exist(TreeMap<String,String> attribute_value,Class objClass){
         EntityManagerFactory entityManagerFactory= Persistence.createEntityManagerFactory("default");
         EntityManager entityManager=entityManagerFactory.createEntityManager();
         EntityTransaction transaction= entityManager.getTransaction();
-        boolean result;
+        boolean result=false;
+        String where="";
+        for (String key : attribute_value.keySet()) {
+            if(!where.equals(""))where=where+" and ";
+            where=where+" table."+key+" :param"+key;
+        }
 
         try{
             transaction.begin();
-            Query query = entityManager.createQuery("SELECT "+select+" FROM "+from+" WHERE "+where);
-            result = (boolean)query.getSingleResult();
+
+            Query query;
+            if(!where.equals(""))query = entityManager.createQuery("SELECT count(table) FROM "+objClass.getSimpleName()+" table "+" where "+where);
+            else query = entityManager.createQuery("SELECT count(table) FROM "+objClass.getSimpleName()+" table ");
+            for (String key : attribute_value.keySet()) {
+                query.setParameter("param"+key,attribute_value.get(key));
+            }
+            if((Long)query.getSingleResult()>0)result = true;
             transaction.commit();
         }
         finally {
@@ -180,6 +192,38 @@ public class PersistenceInterface {
             Query query = entityManager.createQuery("SELECT count(a) FROM "+adventurerClass.getSimpleName()+" a");
             if((Long)query.getSingleResult()>0) result=true;
             else result=false;
+            transaction.commit();
+        }
+        finally {
+            if(transaction.isActive()){
+                transaction.rollback();
+            }
+            entityManager.close();
+            entityManagerFactory.close();
+        }
+        return result;
+    }
+
+    public List search(TreeMap<String,String> attribute_value,Class objClass){
+        EntityManagerFactory entityManagerFactory= Persistence.createEntityManagerFactory("default");
+        EntityManager entityManager=entityManagerFactory.createEntityManager();
+        EntityTransaction transaction= entityManager.getTransaction();
+        List result;
+        String where="";
+        for (String key : attribute_value.keySet()) {
+            if(!where.equals(""))where=where+" and ";
+            where=where+" table."+key+" :param"+key;
+        }
+
+        try{
+            transaction.begin();
+            Query query;
+            if(!where.equals(""))query = entityManager.createQuery("SELECT table FROM "+objClass.getSimpleName()+" table "+" where "+where);
+            else query = entityManager.createQuery("SELECT table FROM "+objClass.getSimpleName()+" table ");
+            for (String key : attribute_value.keySet()) {
+                query.setParameter("param"+key,attribute_value.get(key));
+            }
+            result = query.getResultList();
             transaction.commit();
         }
         finally {

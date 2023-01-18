@@ -59,6 +59,7 @@ public class Main {
             m.setChallengeRating(3);
             PersistenceInterface.getIstance().store(m);
          */
+        /*
         try {
             Monster monster=(Monster)PersistenceInterface.getIstance().loadOne(1,Monster.class);
             Action action=(Action) PersistenceInterface.getIstance().loadOne(2,Action.class);
@@ -68,5 +69,6 @@ public class Main {
         catch (Exception e){
             throw new UnsupportedOperationException(e);
         }
+         */
     }
 }

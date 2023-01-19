@@ -1,5 +1,7 @@
 package model;
 
+import java.util.List;
+
 public class NormalState implements AdventurerState {
 
 	/**
@@ -69,6 +71,11 @@ public class NormalState implements AdventurerState {
 	 */
 	@Override
 	public Card getCardFromHand(int cardIndex) {
+		throw new UnsupportedOperationException();
+	}
+
+	@Override
+	public List<Card> getCardsFromHand() {
 		throw new UnsupportedOperationException();
 	}
 

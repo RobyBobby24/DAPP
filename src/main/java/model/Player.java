@@ -78,8 +78,8 @@ public class Player implements Serializable {
 	 */
 	public static Player getInstance() {
 		if(Player.instance==null){
-			if(PersistenceInterface.getIstance().exist(new TreeMap<>(),Player.class)){
-				Player.instance= (Player) PersistenceInterface.getIstance().search(new TreeMap<>(),Player.class).get(0);
+			if(PersistenceInterface.getInstance().exist(new TreeMap<>(),Player.class)){
+				Player.instance= (Player) PersistenceInterface.getInstance().search(new TreeMap<>(),Player.class).get(0);
 			}
 			else Player.instance= new Player();
 		}

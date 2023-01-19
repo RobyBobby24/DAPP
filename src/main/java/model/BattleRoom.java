@@ -55,7 +55,7 @@ public class BattleRoom extends Room implements Serializable {
 	 * set new monsters (list of monsters in the room)
 	 * @param value new monsters
 	 */
-	public void setMonsters(ArrayList value) {
+	public void setMonsters(List value) {
 		this.monsters = value;
 	}
 

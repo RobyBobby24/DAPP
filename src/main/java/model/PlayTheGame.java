@@ -36,6 +36,7 @@ public class PlayTheGame {
 			}
 		}
 		catch(Exception e){
+			System.out.println(e.getMessage());
 
 		}
 
@@ -47,6 +48,7 @@ public class PlayTheGame {
 			String nickname=FrontView.getInstance().inputSetNickname(); //input
 			Player.getInstance().setNickname(nickname);
 			FrontView.getInstance().setPlayer(Player.getInstance().getNickname());
+			this.chooseOperation();
 		}
 		catch (Exception e){
 
@@ -55,7 +57,7 @@ public class PlayTheGame {
 
 	public void makeNewGame() {
 		try{
-			List<Adventurer> adventurerList=(List<Adventurer>) PersistenceInterface.getIstance().search(new TreeMap<>(),Adventurer.class);
+			List<Adventurer> adventurerList=(List<Adventurer>) PersistenceInterface.getInstance().search(new TreeMap<>(),Adventurer.class);
 			FrontView.getInstance().outputMakeNewGame(adventurerList);
 			chooseAdventurer();
 		}
@@ -94,28 +96,53 @@ public class PlayTheGame {
 	}
 
 	public void nextBattleOp() {
-		int operation=-1;//input
-		if(operation==-1)this.passTurn();
-		else this.playCard(operation);
+		try{
+			FrontView.getInstance().outputChooseBattleOp();
+			String operation=FrontView.getInstance().inputChooseBattleOp();//input
+			if(operation.equals("pass-turn"))this.passTurn();
+			else playCard();
+		}
+		catch (Exception e){
+
+		}
+
 	}
 
 	/**
-	 * 
-	 * @param cardID
+	 *
 	 */
-	public void playCard(int cardID) {
-		BattleRoom battleRoom= (BattleRoom) DungeonMap.getInstance().getCurrentRoom();
-		battleRoom.performEffect(cardID);
+	public void playCard() {
+		try{
+			List<Card> cards=Adventurer.getInstance().getCardsFromHand();
+			FrontView.getInstance().outputPlayCard();
+			BattleRoom battleRoom= (BattleRoom) DungeonMap.getInstance().getCurrentRoom();
+			battleRoom.performEffect(FrontView.getInstance().inputPlayCard());
+		}
+		catch (Exception e){
+
+		}
 	}
 
 	public int chooseTarget() {
-		int target=0; //input
-		return target;
+		try{
+			BattleRoom room=(BattleRoom) DungeonMap.getInstance().getCurrentRoom();
+			List<Monster> monsters=room.getMonsters();
+			FrontView.getInstance().outputChooseTarget(monsters);
+			return FrontView.getInstance().inputChooseTarget();
+		}
+		catch (Exception e){
+			return chooseTarget();
+		}
 	}
 
 	public void passTurn() {
-		BattleRoom battleRoom= (BattleRoom) DungeonMap.getInstance().getCurrentRoom();
-		battleRoom.passTurn();
+		try{
+			BattleRoom battleRoom= (BattleRoom) DungeonMap.getInstance().getCurrentRoom();
+			battleRoom.passTurn();
+		}
+		catch(Exception e){
+
+		}
 	}
 
 }

@@ -17,6 +17,7 @@ import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.lang.reflect.InvocationTargetException;
+import java.util.List;
 
 @Entity
 @org.hibernate.annotations.Proxy(lazy=true)
@@ -180,6 +181,10 @@ public abstract class Adventurer implements Serializable {
 	 */
 	public Card getCardFromHand(int cardIndex) {
 		return this.currentState.getCardFromHand(cardIndex);
+	}
+
+	public List<Card> getCardsFromHand(){
+		return this.currentState.getCardsFromHand();
 	}
 
 	/**

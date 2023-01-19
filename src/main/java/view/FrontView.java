@@ -1,6 +1,7 @@
 package view;
 
 import model.Adventurer;
+import model.Monster;
 import model.Player;
 import model.Room;
 
@@ -55,5 +56,29 @@ public class FrontView {
 
     public Room inputChooseRoom(){
         return ChooseRoomView.getInstance().input();
+    }
+
+    public void outputChooseBattleOp(){
+        NextBattleOp.getInstance().outputChooseBattleOp(this.nickname);
+    }
+
+    public String inputChooseBattleOp(){
+        return NextBattleOp.getInstance().inputChooseBattleOp();
+    }
+
+    public void outputPlayCard(){
+        PlayCardView.getInstance().outputPlayCard(this.nickname);
+    }
+
+    public int inputPlayCard(){
+        return PlayCardView.getInstance().inputPlayCard();
+    }
+
+    public void outputChooseTarget(List<Monster> monsters){
+        ChooseTargetView.getInstance().output(this.nickname,monsters);
+    }
+
+    public int inputChooseTarget(){
+        return ChooseTargetView.getInstance().input();
     }
 }

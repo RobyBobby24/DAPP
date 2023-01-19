@@ -2,7 +2,6 @@ package model;
 
 import services.PersistenceInterface;
 
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 public class AdventurerFactory {
@@ -45,8 +44,8 @@ public class AdventurerFactory {
      */
     public Adventurer getAdventurerInstance() {
         try{
-            if(PersistenceInterface.getIstance().existAdventurerByClass(Class.forName(this.adventurerClass))){
-                return PersistenceInterface.getIstance().loadAdventurerByClass(Class.forName(this.adventurerClass));
+            if(PersistenceInterface.getInstance().existAdventurerByClass(Class.forName(this.adventurerClass))){
+                return PersistenceInterface.getInstance().loadAdventurerByClass(Class.forName(this.adventurerClass));
             }
             else{
                 Method getInstance=Class.forName(this.adventurerClass).getDeclaredMethod("getInstance");

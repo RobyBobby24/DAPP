@@ -1,5 +1,7 @@
 package model;
 
+import java.util.List;
+
 public interface AdventurerState {
 
 	/**
@@ -47,6 +49,11 @@ public interface AdventurerState {
 	 * @return the card chosen
 	 */
 	Card getCardFromHand(int cardIndex);
+
+	/**
+	 * @return list of hand cards
+	 */
+	List<Card> getCardsFromHand();
 
 	/**
 	 * do all the action that deck,discardPile, hand and energyPoint need at the end of the Adventurer turn

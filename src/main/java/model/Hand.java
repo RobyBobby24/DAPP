@@ -55,6 +55,19 @@ public class Hand {
 	}
 
 	/**
+	 * @return ArrayList composed by the cards got from the Hand's attribute cards
+	 */
+	public ArrayList<Card> getCards() {
+		try{
+			return  (ArrayList<Card>)cards;
+		}
+		catch (Exception e){
+			this.cards= new ArrayList<Card>(this.cards);
+			return (ArrayList<Card>) this.cards;
+		}
+	}
+
+	/**
 	 * get and remove all the cards from the hand
 	 */
 	public ArrayList<Card> getAndRemoveCards() {

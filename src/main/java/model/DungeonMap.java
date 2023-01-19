@@ -49,7 +49,6 @@ public class DungeonMap implements Serializable {
 
 
 	protected DungeonMap() {
-		buildMap();
 	}
 
 	/**
@@ -69,10 +68,13 @@ public class DungeonMap implements Serializable {
 	
 	public static DungeonMap getInstance() {
 		if(DungeonMap.instance==null){
-			if(PersistenceInterface.getIstance().exist(new TreeMap<>(),DungeonMap.class)){
-				DungeonMap.instance=(DungeonMap)PersistenceInterface.getIstance().search(new TreeMap<>(),DungeonMap.class).get(0);
+			if(PersistenceInterface.getInstance().exist(new TreeMap<>(),DungeonMap.class)){
+				DungeonMap.instance=(DungeonMap)PersistenceInterface.getInstance().search(new TreeMap<>(),DungeonMap.class).get(0);
 			}
-			else DungeonMap.instance=new DungeonMap();
+			else{
+				DungeonMap.instance=new DungeonMap();
+				DungeonMap.instance.buildMap();
+			}
 		}
 		return DungeonMap.instance;
 	}

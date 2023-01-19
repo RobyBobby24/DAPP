@@ -1,10 +1,7 @@
 package setup;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.EntityTransaction;
-import jakarta.persistence.Persistence;
-import model.*;
+import model.Adventurer;
+import model.PlayTheGame;
 import services.PersistenceInterface;
 
 import java.lang.reflect.InvocationTargetException;
@@ -12,7 +9,8 @@ import java.lang.reflect.InvocationTargetException;
 
 public class Main {
     public static void main(String[] args) throws ClassNotFoundException, InvocationTargetException, NoSuchMethodException, IllegalAccessException {
-        PersistenceInterface persistence=PersistenceInterface.getIstance();
+        //PersistenceInterface persistence=PersistenceInterface.getInstance();
+        //persistence.loadOne(2, Adventurer.class);
         /*
         DamageEffect effect=new DamageEffect();
         effect.setDamage(10);
@@ -70,5 +68,6 @@ public class Main {
             throw new UnsupportedOperationException(e);
         }
          */
+        PlayTheGame.getInstance().chooseOperation();
     }
 }

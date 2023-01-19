@@ -1,8 +1,9 @@
 package view;
 
 import java.io.Console;
+import java.util.Scanner;
 
- class SetNicknameView {
+class SetNicknameView {
 
     private String inputValue;
 
@@ -20,9 +21,11 @@ import java.io.Console;
     }
 
     public void output(String nickname){
-        Console prompt=System.console();
-        System.out.println(nickname+" inseisci il tuo nuovo nickname:\n");
-        this.inputValue=prompt.readLine("DAPP\\setNickname>");
+        Scanner prompt= new Scanner(System.in);
+        if(nickname!=null)System.out.println(nickname+" inseisci il tuo nuovo nickname:");
+        else System.out.println(" inseisci il tuo nuovo nickname:");
+        System.out.print("DAPP\\setNickname>");
+        this.inputValue=prompt.next();
     }
 
     public String input(){

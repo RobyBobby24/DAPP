@@ -3,23 +3,22 @@ package services;
 import jakarta.persistence.*;
 import model.Adventurer;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeMap;
 
 public class PersistenceInterface {
 
-    private static PersistenceInterface istance;
+    private static PersistenceInterface instance;
     private PersistenceInterface() {
     }
 
-    public static PersistenceInterface getIstance() {
-        if(PersistenceInterface.istance!=null){
-            return istance;
+    public static PersistenceInterface getInstance() {
+        if(PersistenceInterface.instance !=null){
+            return instance;
         }
         else{
-            PersistenceInterface.istance= new PersistenceInterface();
-            return istance;
+            PersistenceInterface.instance = new PersistenceInterface();
+            return instance;
         }
     }
 
@@ -127,7 +126,9 @@ public class PersistenceInterface {
     }
 
     public boolean exist(TreeMap<String,String> attribute_value,Class objClass){
+        System.out.println("daje");
         EntityManagerFactory entityManagerFactory= Persistence.createEntityManagerFactory("default");
+        System.out.println("daje");
         EntityManager entityManager=entityManagerFactory.createEntityManager();
         EntityTransaction transaction= entityManager.getTransaction();
         boolean result=false;

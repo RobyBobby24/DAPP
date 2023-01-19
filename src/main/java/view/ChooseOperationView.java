@@ -1,6 +1,7 @@
 package view;
 
 import java.io.Console;
+import java.util.Scanner;
 
 class ChooseOperationView {
 
@@ -20,9 +21,10 @@ class ChooseOperationView {
     }
 
     public void output(String nickname){
-        Console prompt=System.console();
-        System.out.println(nickname+" quale operazione vuoi eseguire ? (set-nickname,make-new-game)\n");
-        this.inputValue=prompt.readLine("DAPP\\chooseOperation>");
+        Scanner prompt= new Scanner(System.in);
+        System.out.println(nickname+" quale operazione vuoi eseguire ? (set-nickname,make-new-game)");
+        System.out.print("DAPP\\chooseOperation>");
+        this.inputValue=prompt.next();
     }
 
     public String input(){

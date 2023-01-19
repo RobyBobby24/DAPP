@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class BattleState implements AdventurerState {
 
@@ -91,6 +92,11 @@ public class BattleState implements AdventurerState {
 	 */
 	public Card getCardFromHand(int cardIndex) {
 		return this.hand.getCard(cardIndex);
+	}
+
+	@Override
+	public ArrayList<Card> getCardsFromHand() {
+		return this.hand.getCards();
 	}
 
 

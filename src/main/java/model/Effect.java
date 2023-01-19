@@ -35,10 +35,10 @@ public abstract class Effect implements Serializable {
 	@ManyToOne(targetEntity= Effect.class, fetch=FetchType.LAZY)
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
 	@JoinColumns(value={ @JoinColumn(name="EffectID", referencedColumnName="ID") }, foreignKey=@ForeignKey(name="FKEffect31173"))	
-	private Effect nextEffect;
+	protected Effect nextEffect;
 	
 	@Column(name="Target", nullable=false, length=1)	
-	private boolean target;
+	protected boolean target;
 
 
 
@@ -106,6 +106,8 @@ public abstract class Effect implements Serializable {
 		if(this.target){
 			actualNumber=actualNumber+1;
 		}
+		System.out.println(this.target+" numberTarget:"+actualNumber);
+		if(this.nextEffect!=null)actualNumber=actualNumber+this.nextEffect.numberOfTarget(actualNumber);
 		return actualNumber;
 	}
 

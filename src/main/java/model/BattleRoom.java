@@ -57,12 +57,13 @@ public class BattleRoom extends Room implements Serializable {
 	 */
 	public void setMonsters(List value) {
 		this.monsters = value;
+		this.ended=this.monsters.size();
 	}
 
 	/**
 	 * @return monsters (list of monsters in the room)
 	 */
-	public ArrayList getMonsters() {
+	public ArrayList<Monster> getMonsters() {
 		try{
 			return  (ArrayList<Monster>)monsters;
 		}
@@ -107,7 +108,6 @@ public class BattleRoom extends Room implements Serializable {
 			this.currentTurn.startTurn(this);
 			this.currentTurn.playTurn(this);
 		}
-		PlayTheGame.getInstance().makeNewGame();
 	}
 
 	/**

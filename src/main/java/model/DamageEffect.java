@@ -30,6 +30,7 @@ public class DamageEffect extends Effect implements Serializable {
 
 
 	public DamageEffect() {
+		this.target=true;
 	}
 
 	/**
@@ -53,8 +54,10 @@ public class DamageEffect extends Effect implements Serializable {
 	 * @param target id of the target who will be changed in this effect or in the next
 	 */
 	public void activeEffect(BattleRoom battleField, ArrayList<Integer> target) {
-		//TODO: Implement Method
-		throw new UnsupportedOperationException();
+		int monsterId=target.remove(0);
+		Monster monster=battleField.getMonster(monsterId);
+		monster.takeDamage(this.damage);
+		if(this.nextEffect!=null)this.nextEffect.activeEffect(battleField,target);
 	}
 	
 	public String toString() {

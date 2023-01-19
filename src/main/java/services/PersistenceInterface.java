@@ -126,9 +126,7 @@ public class PersistenceInterface {
     }
 
     public boolean exist(TreeMap<String,String> attribute_value,Class objClass){
-        System.out.println("daje");
         EntityManagerFactory entityManagerFactory= Persistence.createEntityManagerFactory("default");
-        System.out.println("daje");
         EntityManager entityManager=entityManagerFactory.createEntityManager();
         EntityTransaction transaction= entityManager.getTransaction();
         boolean result=false;
@@ -147,7 +145,7 @@ public class PersistenceInterface {
             for (String key : attribute_value.keySet()) {
                 query.setParameter("param"+key,attribute_value.get(key));
             }
-            if((Long)query.getSingleResult()>0)result = true;
+            if(query.getResultList().size()>0 && (Long)query.getSingleResult()>0)result = true;
             transaction.commit();
         }
         finally {
@@ -213,7 +211,7 @@ public class PersistenceInterface {
         String where="";
         for (String key : attribute_value.keySet()) {
             if(!where.equals(""))where=where+" and ";
-            where=where+" table."+key+" :param"+key;
+            where=where+" table."+key+"= :param"+key;
         }
 
         try{

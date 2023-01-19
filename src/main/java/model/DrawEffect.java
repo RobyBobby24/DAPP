@@ -55,8 +55,8 @@ public class DrawEffect extends Effect implements Serializable {
 	 * @param target id of the target who will be changed in this effect or in the next
 	 */
 	public void activeEffect(BattleRoom battleField, ArrayList<Integer> target) {
-		//TODO: Implement Method
-		throw new UnsupportedOperationException();
+		Adventurer.getInstance().drawCards(this.numberCards);
+		if(this.nextEffect!=null)this.nextEffect.activeEffect(battleField,target);
 	}
 	
 	public String toString() {

@@ -1,6 +1,12 @@
 package view;
 
+import model.Adventurer;
+import model.BattleRoom;
+import model.Card;
+import model.Monster;
+
 import java.io.Console;
+import java.util.List;
 import java.util.Scanner;
 
 public class PlayCardView {
@@ -22,10 +28,17 @@ public class PlayCardView {
 
 
 
-    public void outputPlayCard(String nickname){
+    public void outputPlayCard(String nickname, List<Card> handCards, Adventurer adventurer, BattleRoom room){
         Scanner prompt= new Scanner(System.in);
-        System.out.println(nickname+" quale operazione di battaglia vuoi eseguire ? (play-card,pass-turn)\n");
-        System.out.print("DAPP\\chooseBattleOp>");
+        System.out.println("Adventurer: hp="+adventurer.getHp().getCurrentHp()+"/"+adventurer.getHp().getMaxHp()+" energyPoint:"+adventurer.getEnergyPoint());
+        for(Monster monster: room.getMonsters()){
+            System.out.println(monster.getName()+": hp="+monster.getHp().getCurrentHp()+"/"+monster.getHp().getMaxHp());
+        }
+        System.out.println(nickname+" quale carta vuoi giocare :");
+        for(Card card: handCards){
+            System.out.println(card.var_dump()+" ("+card.getID()+")");
+        }
+        System.out.print("DAPP\\PlayCard>");
         this.inputValue=Integer.parseInt(prompt.next());
     }
 

@@ -41,6 +41,7 @@ public class Warrior extends Adventurer implements Serializable {
 	@Override
 	public void setBattleState() {
 		this.currentState=new BattleState();
+		this.currentState.setDeck(this.deck.clone());
 	}
 
 	@Override

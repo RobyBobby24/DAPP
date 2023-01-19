@@ -82,7 +82,8 @@ public class Deck implements Serializable {
 	 */
 	public ArrayList<Card> getAndRemoveCards(int numberOfCards){
 		ArrayList<Card> result= new ArrayList<Card>();
-		for (int i = 0; i < numberOfCards; i++) {
+		int i=0;
+		while(i<numberOfCards && this.cards.size()>0){
 			result.add(this.cards.remove(0));
 		}
 		return result;
@@ -149,7 +150,7 @@ public class Deck implements Serializable {
 	 */
 	public Deck clone(){
 		Deck result=new Deck();
-		result.setCards(result.cards);
+		result.setCards(new ArrayList<>(this.cards));
 		return result;
 	}
 	

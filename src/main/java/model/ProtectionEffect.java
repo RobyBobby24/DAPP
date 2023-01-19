@@ -32,6 +32,7 @@ public class ProtectionEffect extends Effect implements Serializable {
 
 
 	public ProtectionEffect() {
+		this.target=false;
 	}
 
 	/**
@@ -55,8 +56,8 @@ public class ProtectionEffect extends Effect implements Serializable {
 	 * @param target id of the target who will be changed in this effect or in the next
 	 */
 	public void activeEffect(BattleRoom battleField, ArrayList<Integer> target) {
-		//TODO: Implement Method
-		throw new UnsupportedOperationException();
+		Adventurer.getInstance().addProtection(this.protection);
+		if(this.nextEffect!=null)this.nextEffect.activeEffect(battleField,target);
 	}
 	
 	public String toString() {

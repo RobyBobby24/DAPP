@@ -117,8 +117,8 @@ public class Card implements Serializable {
 	 * @return true if the Adventure has enough energy point to play the card
 	 */
 	public boolean canBePlayed() {
-		//TODO: Implement Method
-		throw new UnsupportedOperationException();
+		if(Adventurer.getInstance().getEnergyPoint()>=this.energyCost)return true;
+		else return false;
 	}
 
 	/**
@@ -135,6 +135,8 @@ public class Card implements Serializable {
 	 */
 	public void activeEffect(BattleRoom battleField, ArrayList<Integer> target) {
 		this.effect.activeEffect(battleField,target);
+		int newEnergyPoint=Adventurer.getInstance().getEnergyPoint()-this.energyCost;
+		Adventurer.getInstance().setEnergyPoint(newEnergyPoint);
 	}
 	
 	public String toString() {

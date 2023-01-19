@@ -37,7 +37,10 @@ public class AdventurerTurn implements TurnState {
 	 */
 	public void performEffect(BattleRoom battleRoom, int effectId) {
 		Card cardToPlay=Adventurer.getInstance().getCardFromHand(effectId);
+		System.out.println(cardToPlay.var_dump());
+		System.out.println(cardToPlay.canBePlayed());
 		if(cardToPlay.canBePlayed()){
+			System.out.println("qui si");
 			int numberOfTarget=cardToPlay.getNumberOfTarget();
 			ArrayList<Integer> target=new ArrayList<Integer>();
 			for (int i = 0; i < numberOfTarget; i++) {

@@ -29,7 +29,7 @@ public class ChooseRoomView {
         for (int i = 0; i < rooms.size(); i++) {
             System.out.println(rooms.get(i).getClass().getSimpleName()+"("+i+")");
         }
-        System.out.print("DAPP\\chooseOperation>");
+        System.out.print("DAPP\\chooseRoom>");
         this.inputValue=rooms.get(Integer.parseInt(prompt.next()));
     }
 

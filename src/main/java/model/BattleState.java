@@ -16,7 +16,11 @@ public class BattleState implements AdventurerState {
 
 
 	public BattleState() {
-
+		this.hand=new Hand();
+		this.discardPile=new DiscardPile();
+		this.deck=new Deck();
+		this.energyPoint=0;
+		this.protection=0;
 	}
 
 	/**
@@ -72,9 +76,11 @@ public class BattleState implements AdventurerState {
 		else{
 			ArrayList<Card> cards=this.deck.getAndRemoveCards(nCards);
 			this.hand.addCard(cards);
-			ArrayList<Card> discardPileCards=this.discardPile.getCards();
+			ArrayList<Card> discardPileCards=this.discardPile.getAndRemoveCards();
 			this.deck.addCard(discardPileCards);
 			this.deck.shuffle();
+			ArrayList<Card> otherCards=this.deck.getAndRemoveCards(numberOfCards-nCards);
+			this.hand.addCard(otherCards);
 		}
 	}
 
@@ -124,6 +130,10 @@ public class BattleState implements AdventurerState {
 	public void takeDamage(int damage, Adventurer adventurer) {
 		if (this.protection-damage<0) adventurer.getHp().addCurrentHp(this.protection-damage);
 		else this.protection=this.protection-damage;
+		if(adventurer.getHp().getCurrentHp()==0){
+			BattleRoom battleRoom=(BattleRoom)DungeonMap.getInstance().getCurrentRoom();
+			battleRoom.notifyDeath(adventurer.getID());
+		}
 	}
 
 	public String toString(){

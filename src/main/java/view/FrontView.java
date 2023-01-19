@@ -1,9 +1,6 @@
 package view;
 
-import model.Adventurer;
-import model.Monster;
-import model.Player;
-import model.Room;
+import model.*;
 
 import java.util.List;
 
@@ -66,8 +63,8 @@ public class FrontView {
         return NextBattleOp.getInstance().inputChooseBattleOp();
     }
 
-    public void outputPlayCard(){
-        PlayCardView.getInstance().outputPlayCard(this.nickname);
+    public void outputPlayCard(List<Card> cards,Adventurer adventurer,BattleRoom room){
+        PlayCardView.getInstance().outputPlayCard(this.nickname,cards,adventurer,room);
     }
 
     public int inputPlayCard(){

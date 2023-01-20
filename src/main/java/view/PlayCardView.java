@@ -28,18 +28,15 @@ public class PlayCardView {
 
 
 
-    public void outputPlayCard(String nickname, List<Card> handCards, Adventurer adventurer, BattleRoom room){
+    public void outputPlayCard(String nickname, List<Card> handCards){
         Scanner prompt= new Scanner(System.in);
-        System.out.println("Adventurer: hp="+adventurer.getHp().getCurrentHp()+"/"+adventurer.getHp().getMaxHp()+" energyPoint:"+adventurer.getEnergyPoint());
-        for(Monster monster: room.getMonsters()){
-            System.out.println(monster.getName()+": hp="+monster.getHp().getCurrentHp()+"/"+monster.getHp().getMaxHp());
-        }
         System.out.println(nickname+" quale carta vuoi giocare :");
         for(Card card: handCards){
-            System.out.println(card.var_dump()+" ("+card.getID()+")");
+            System.out.println("Card: ("+card+") \u001B[32m ("+card.getID()+")\u001B[0m");
         }
         System.out.print("DAPP\\PlayCard>");
         this.inputValue=Integer.parseInt(prompt.next());
+        System.out.println("...\n...\n...\n");
     }
 
     public int inputPlayCard(){

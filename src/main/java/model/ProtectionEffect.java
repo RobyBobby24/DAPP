@@ -61,7 +61,8 @@ public class ProtectionEffect extends Effect implements Serializable {
 	}
 	
 	public String toString() {
-		return super.toString();
+		if(this.nextEffect!=null)return "protection:"+this.protection+", "+this.nextEffect;
+		else return "protection:"+this.protection;
 	}
 
 	public String var_dump(){

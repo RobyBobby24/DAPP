@@ -55,7 +55,8 @@ public class FrontView {
         return ChooseRoomView.getInstance().input();
     }
 
-    public void outputChooseBattleOp(){
+    public void outputChooseBattleOp(Adventurer adventurer,BattleRoom room){
+        this.outputBattle(adventurer, room);
         NextBattleOp.getInstance().outputChooseBattleOp(this.nickname);
     }
 
@@ -64,7 +65,8 @@ public class FrontView {
     }
 
     public void outputPlayCard(List<Card> cards,Adventurer adventurer,BattleRoom room){
-        PlayCardView.getInstance().outputPlayCard(this.nickname,cards,adventurer,room);
+        this.outputBattle(adventurer, room);
+        PlayCardView.getInstance().outputPlayCard(this.nickname,cards);
     }
 
     public int inputPlayCard(){
@@ -77,5 +79,16 @@ public class FrontView {
 
     public int inputChooseTarget(){
         return ChooseTargetView.getInstance().input();
+    }
+
+    public void outputError(String error){ErrorView.getInstance().output(error);}
+
+    public void outputBattle(Adventurer adventurer,BattleRoom room){
+        System.out.println("\n \u001B[34m");
+        System.out.println(adventurer);
+        for(Monster monster: room.getMonsters()){
+            System.out.println(monster);
+        }
+        System.out.println("\u001B[0m \n");
     }
 }

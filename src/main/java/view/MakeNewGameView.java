@@ -27,10 +27,11 @@ class MakeNewGameView {
         Scanner prompt= new Scanner(System.in);
         System.out.println(nickname+" scegli un avventuriero tra i seguenti : \n");
         for(Adventurer adv: adventurers){
-            System.out.println(adv.var_dump()+" ("+adv.getClass().getSimpleName()+")\n");
+            System.out.println(adv+" \u001B[32m("+adv.getClass().getSimpleName()+")\u001B[0m \n");
         }
         System.out.print("DAPP\\chooseAdventurer>");
-        this.inputValue=Class.forName(prompt.next());
+        this.inputValue=Class.forName(Adventurer.class.getPackageName()+"."+prompt.next());
+        System.out.println("...\n...\n...\n");
     }
 
     public Class input(){

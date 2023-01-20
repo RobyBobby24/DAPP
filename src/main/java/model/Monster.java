@@ -244,7 +244,7 @@ public class Monster implements Serializable {
 	}
 	
 	public String toString() {
-		return String.valueOf(getID());
+		return this.name+" ("+"HP="+this.hp+", Protection="+this.protection+", NextAction="+this.nextAction+", Type="+this.type+", ChallengeRating="+this.challengeRating+")";
 	}
 
 	public String var_dump(){

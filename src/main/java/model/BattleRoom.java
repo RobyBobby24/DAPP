@@ -248,6 +248,10 @@ public class BattleRoom extends Room implements Serializable {
 		return this.monsters.get(0);
 	}
 
+	public String toString(){
+		return this.getClass().getSimpleName();
+	}
+
 	public String var_dump(){
 		return "ID:"+this.ID+" ended:"+this.ended+" monsters"+this.monsters+" currentTurn"+this.currentTurn;
 	}

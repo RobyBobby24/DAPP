@@ -5,6 +5,8 @@ import model.PlayTheGame;
 import services.PersistenceInterface;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public class Main {
@@ -68,6 +70,9 @@ public class Main {
             throw new UnsupportedOperationException(e);
         }
          */
+        Logger logger = Logger.getLogger("org.hibernate");
+        logger.setLevel(Level.SEVERE);
         PlayTheGame.getInstance().chooseOperation();
+
     }
 }

@@ -49,5 +49,9 @@ public class Warrior extends Adventurer implements Serializable {
 		this.currentState=new NormalState();
 	}
 
+	public String toString(){
+		return this.getClass().getSimpleName()+" ( HP="+this.hp+", "+this.currentState+")";
+	}
+
 
 }

@@ -102,7 +102,7 @@ public class Hp implements Serializable {
 	}
 	
 	public String toString() {
-		return String.valueOf(getID());
+		return this.currentHp+"/"+this.maxHp;
 	}
 
 	public String var_dump(){

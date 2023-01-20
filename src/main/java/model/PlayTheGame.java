@@ -67,7 +67,8 @@ public class PlayTheGame {
 			chooseAdventurer();
 		}
 		catch(Exception e){
-			System.out.println(e.getMessage());
+			FrontView.getInstance().outputError("l'avventuriero inserito non è valido!!!");
+			this.makeNewGame();
 
 		}
 	}
@@ -83,8 +84,8 @@ public class PlayTheGame {
 			chooseRoom();
 		}
 		catch(Exception e){
-			System.out.println(e.getMessage());
-
+			FrontView.getInstance().outputError("la stanza scelta non è valida!!!");
+			this.chooseAdventurer();
 		}
 	}
 
@@ -98,22 +99,23 @@ public class PlayTheGame {
 			room.enterRoom();
 		}
 		catch(Exception e){
-			System.out.println(e.getMessage());
-
+			FrontView.getInstance().outputError("l'avvio della battaglia non è andato a buon fine!!!");
+			this.chooseRoom();
 		}
 	}
 
 	public void nextBattleOp() {
 		try{
-			FrontView.getInstance().outputChooseBattleOp();
+			BattleRoom battleRoom=(BattleRoom) DungeonMap.getInstance().getCurrentRoom();
+			FrontView.getInstance().outputChooseBattleOp(Adventurer.getInstance(),battleRoom);
 			String operation=FrontView.getInstance().inputChooseBattleOp();//input
 			if(operation.equals("pass-turn"))this.passTurn();
 			else if (operation.equals("play-card"))this.playCard();
 			else throw new Exception("operation selected do not exist");
 		}
 		catch (Exception e){
-			System.out.println(e.getMessage());
-
+			FrontView.getInstance().outputError("l'operazione selezionata non è supportata!!!");
+			this.nextBattleOp();
 		}
 
 	}
@@ -130,8 +132,8 @@ public class PlayTheGame {
 			battleRoom.performEffect(FrontView.getInstance().inputPlayCard());
 		}
 		catch (Exception e){
-			System.out.println(e.getMessage());
-
+			FrontView.getInstance().outputError("la carta selezionata non è disponibile!!!");
+			this.playCard();
 		}
 	}
 
@@ -143,8 +145,8 @@ public class PlayTheGame {
 			return FrontView.getInstance().inputChooseTarget();
 		}
 		catch (Exception e){
-			System.out.println(e.getMessage());
-			return chooseTarget();
+			FrontView.getInstance().outputError("il target selezionato non è valido!!!");
+			return this.chooseTarget();
 		}
 	}
 
@@ -154,7 +156,8 @@ public class PlayTheGame {
 			battleRoom.passTurn();
 		}
 		catch(Exception e){
-			System.out.println(e.getMessage());
+			FrontView.getInstance().outputError("non siamo riusciti a passre il turno!!!");
+			this.nextBattleOp();
 		}
 	}
 

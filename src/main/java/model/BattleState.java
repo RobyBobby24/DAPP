@@ -137,7 +137,7 @@ public class BattleState implements AdventurerState {
 	}
 
 	public String toString(){
-		return this.getClass().getName();
+		return "Protection="+this.protection+", EnergyPoint="+this.energyPoint;
 	}
 
 }

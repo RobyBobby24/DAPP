@@ -26,6 +26,7 @@ class SetNicknameView {
         else System.out.println(" inseisci il tuo nuovo nickname:");
         System.out.print("DAPP\\setNickname>");
         this.inputValue=prompt.next();
+        System.out.println("...\n...\n...\n");
     }
 
     public String input(){

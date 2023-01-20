@@ -106,7 +106,6 @@ public abstract class Effect implements Serializable {
 		if(this.target){
 			actualNumber=actualNumber+1;
 		}
-		System.out.println(this.target+" numberTarget:"+actualNumber);
 		if(this.nextEffect!=null)actualNumber=actualNumber+this.nextEffect.numberOfTarget(actualNumber);
 		return actualNumber;
 	}

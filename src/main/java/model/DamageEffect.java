@@ -61,7 +61,8 @@ public class DamageEffect extends Effect implements Serializable {
 	}
 	
 	public String toString() {
-		return super.toString();
+		if(this.nextEffect!=null)return "damage:"+this.damage+","+this.nextEffect;
+		else return "damage:"+this.damage;
 	}
 
 	public String var_dump(){

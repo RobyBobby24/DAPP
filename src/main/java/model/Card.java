@@ -140,7 +140,7 @@ public class Card implements Serializable {
 	}
 	
 	public String toString() {
-		return String.valueOf(getID());
+		return "Effect="+this.effect+", Description="+this.description;
 	}
 
 	public String var_dump() {

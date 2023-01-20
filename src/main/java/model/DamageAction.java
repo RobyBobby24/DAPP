@@ -75,7 +75,8 @@ public class DamageAction extends Action implements Serializable {
 	}
 	
 	public String toString() {
-		return String.valueOf(getID());
+		if(this.nextAction!=null)return "damage:"+this.damage+","+this.nextAction;
+		else return "damage:"+this.damage;
 	}
 
 	public String var_dump(){

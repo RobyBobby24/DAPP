@@ -71,7 +71,8 @@ public class ProtectionAction extends Action implements Serializable {
 	}
 	
 	public String toString() {
-		return String.valueOf(getID());
+		if(this.nextAction!=null)return "protection:"+this.protection+", "+this.nextAction;
+		else return "protection:"+this.protection;
 	}
 
 	public String var_dump(){

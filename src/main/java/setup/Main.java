@@ -2,6 +2,7 @@ package setup;
 
 import model.Adventurer;
 import model.PlayTheGame;
+import model.Warrior;
 import services.PersistenceInterface;
 
 import java.lang.reflect.InvocationTargetException;

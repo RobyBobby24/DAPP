@@ -22,6 +22,9 @@ public class PlayTheGame {
 		return PlayTheGame.instance;
 	}
 
+	/**
+	 * choose an operation between set-nickname e make-new-game
+	 */
 	public void chooseOperation(){
 		try{
 			if(Player.getInstance().getNickname()==null){
@@ -42,6 +45,9 @@ public class PlayTheGame {
 
 	}
 
+	/**
+	 * set new nickname
+	 */
 	public void setNickname(){
 		try{
 			FrontView.getInstance().outputSetNickname();
@@ -60,6 +66,9 @@ public class PlayTheGame {
 		}
 	}
 
+	/**
+	 * start the game
+	 */
 	public void makeNewGame() {
 		try{
 			List<Adventurer> adventurerList=(List<Adventurer>) PersistenceInterface.getInstance().search(new TreeMap<>(),Adventurer.class);
@@ -74,7 +83,7 @@ public class PlayTheGame {
 	}
 
 	/**
-	 *
+	 * set the new adventurer chosen
 	 */
 	public void chooseAdventurer() {
 		try{
@@ -90,7 +99,7 @@ public class PlayTheGame {
 	}
 
 	/**
-	 *
+	 * set new room chosen
 	 */
 	public void chooseRoom() {
 		try{
@@ -104,6 +113,9 @@ public class PlayTheGame {
 		}
 	}
 
+	/**
+	 * choose next battle operation
+	 */
 	public void nextBattleOp() {
 		try{
 			BattleRoom battleRoom=(BattleRoom) DungeonMap.getInstance().getCurrentRoom();
@@ -121,7 +133,7 @@ public class PlayTheGame {
 	}
 
 	/**
-	 *
+	 * play the card chosen
 	 */
 	public void playCard() {
 		try{
@@ -137,6 +149,9 @@ public class PlayTheGame {
 		}
 	}
 
+	/**
+	 * @return the target chosen
+	 */
 	public int chooseTarget() {
 		try{
 			BattleRoom room=(BattleRoom) DungeonMap.getInstance().getCurrentRoom();
@@ -150,6 +165,9 @@ public class PlayTheGame {
 		}
 	}
 
+	/**
+	 * pass turn to the monsters
+	 */
 	public void passTurn() {
 		try{
 			BattleRoom battleRoom= (BattleRoom) DungeonMap.getInstance().getCurrentRoom();

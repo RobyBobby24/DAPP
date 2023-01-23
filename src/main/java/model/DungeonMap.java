@@ -73,7 +73,6 @@ public class DungeonMap implements Serializable {
 			}
 			else{
 				DungeonMap.instance=new DungeonMap();
-				DungeonMap.instance.buildMap();
 			}
 		}
 		return DungeonMap.instance;
@@ -82,7 +81,7 @@ public class DungeonMap implements Serializable {
 	/**
 	 * build the map with all its room
 	 */
-	private void buildMap() {
+	public void buildMap() {
 		BattleRoomFactory battleRoomFactory=new BattleRoomFactory();
 		this.rooms.add(battleRoomFactory.createRoom());
 	}

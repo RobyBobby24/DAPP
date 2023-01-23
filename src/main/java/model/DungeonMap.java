@@ -82,8 +82,8 @@ public class DungeonMap implements Serializable {
 	 * build the map with all its room
 	 */
 	public void buildMap() {
-		BattleRoomFactory battleRoomFactory=new BattleRoomFactory();
-		this.rooms.add(battleRoomFactory.createRoom());
+		StandardRoomFactory standardRoomFactory =new StandardRoomFactory();
+		this.rooms.add(standardRoomFactory.createBattleRoom());
 	}
 
 	/**

@@ -2,16 +2,15 @@ package model;
 
 import services.PersistenceInterface;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeMap;
 
-public class BattleRoomFactory implements RoomFactory {
+public class StandardRoomFactory implements RoomFactory {
 
 	/**
 	 *
 	 */
-	public Room createRoom() {
+	public BattleRoom createBattleRoom() {
 		BattleRoom room=new BattleRoom();
 		TreeMap<String,String> attribute_value=new TreeMap<>();
 		attribute_value.put("name","Browser");

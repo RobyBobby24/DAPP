@@ -5,6 +5,6 @@ public interface RoomFactory {
 	/**
 	 *
 	 */
-	abstract Room createRoom();
+	abstract Room createBattleRoom();
 
 }

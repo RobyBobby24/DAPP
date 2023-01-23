@@ -23,7 +23,7 @@ import java.util.Random;
 
 @Entity
 @org.hibernate.annotations.Proxy(lazy=false)
-@Table(name="Monster")
+@Table(name="monster")
 public class Monster implements Serializable {
 	public Monster() {
 	}

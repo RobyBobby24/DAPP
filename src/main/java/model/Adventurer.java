@@ -21,7 +21,7 @@ import java.util.List;
 
 @Entity
 @org.hibernate.annotations.Proxy(lazy=true)
-@Table(name="Adventurer")
+@Table(name="adventurer")
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="Discriminator", discriminatorType=DiscriminatorType.STRING)
 @DiscriminatorValue("Adventurer")

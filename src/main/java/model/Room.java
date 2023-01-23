@@ -18,7 +18,7 @@ import jakarta.persistence.*;
 import java.io.Serializable;
 @Entity
 @org.hibernate.annotations.Proxy(lazy=false)
-@Table(name="Room")
+@Table(name="room")
 @Inheritance(strategy=InheritanceType.JOINED)
 @DiscriminatorValue("Room")
 public abstract class Room implements Serializable {

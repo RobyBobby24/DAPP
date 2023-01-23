@@ -18,7 +18,7 @@ import jakarta.persistence.*;
 import java.io.Serializable;
 @Entity
 @org.hibernate.annotations.Proxy(lazy=false)
-@Table(name="ProtectionAction")
+@Table(name="protectionaction")
 public class ProtectionAction extends Action implements Serializable {
 	public ProtectionAction() {
 	}

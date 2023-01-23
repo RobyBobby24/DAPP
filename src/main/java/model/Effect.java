@@ -20,7 +20,7 @@ import java.util.ArrayList;
 
 @Entity
 @org.hibernate.annotations.Proxy(lazy=false)
-@Table(name="Effect")
+@Table(name="effect")
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="Discriminator", discriminatorType=DiscriminatorType.STRING)
 @DiscriminatorValue("Effect")

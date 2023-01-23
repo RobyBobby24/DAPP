@@ -21,7 +21,7 @@ import java.util.List;
 
 @Entity
 @org.hibernate.annotations.Proxy(lazy=false)
-@Table(name="BattleRoom")
+@Table(name="battleroom")
 @Inheritance(strategy=InheritanceType.JOINED)
 @DiscriminatorValue("BattleRoom")
 @PrimaryKeyJoinColumn(name="RoomID", referencedColumnName="ID")

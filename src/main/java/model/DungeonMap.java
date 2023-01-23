@@ -23,7 +23,7 @@ import java.util.TreeMap;
 
 @Entity
 @org.hibernate.annotations.Proxy(lazy=false)
-@Table(name="DungeonMap")
+@Table(name="dungeonmap")
 public class DungeonMap implements Serializable {
 
 

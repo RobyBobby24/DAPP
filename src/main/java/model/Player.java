@@ -21,7 +21,7 @@ import java.util.TreeMap;
 
 @Entity
 @org.hibernate.annotations.Proxy(lazy=false)
-@Table(name="Player")
+@Table(name="player")
 public class Player implements Serializable {
 
 	@Transient

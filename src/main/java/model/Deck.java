@@ -20,11 +20,11 @@ import java.io.Serializable;
 import java.util.*;
 @Entity
 @org.hibernate.annotations.Proxy(lazy=false)
-@Table(name="Deck")
+@Table(name="deck")
 public class Deck implements Serializable {
 
 	
-	@Column(name="ID", nullable=false, length=10)	
+	@Column(name="ID", nullable=false, length=10)
 	@Id	
 	@GeneratedValue(generator="MODEL_DECK_ID_GENERATOR")	
 	@org.hibernate.annotations.GenericGenerator(name="MODEL_DECK_ID_GENERATOR", strategy="native")	
@@ -40,7 +40,7 @@ public class Deck implements Serializable {
 	 */
 	@ManyToMany(targetEntity=model.Card.class)
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})
-	@JoinTable(name="Deck_Card", joinColumns={ @JoinColumn(name="DeckID", referencedColumnName="ID", nullable=false) }, inverseJoinColumns={ @JoinColumn(name="CardID",referencedColumnName="ID", nullable=false) })
+	@JoinTable(name="deck_card", joinColumns={ @JoinColumn(name="DeckID", referencedColumnName="ID", nullable=false) }, inverseJoinColumns={ @JoinColumn(name="CardID",referencedColumnName="ID", nullable=false) })
 	@org.hibernate.annotations.IndexColumn(name="CardIndex")
 	@org.hibernate.annotations.LazyCollection(LazyCollectionOption.FALSE)
 	private List<Card> cards = new ArrayList<Card>();

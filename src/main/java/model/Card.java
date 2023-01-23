@@ -20,7 +20,7 @@ import java.util.ArrayList;
 
 @Entity
 @org.hibernate.annotations.Proxy(lazy=false)
-@Table(name="Card")
+@Table(name="card")
 public class Card implements Serializable {
 
 	

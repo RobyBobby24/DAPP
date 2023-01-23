@@ -18,7 +18,7 @@ import jakarta.persistence.*;
 import java.io.Serializable;
 @Entity
 @org.hibernate.annotations.Proxy(lazy=false)
-@Table(name="Action")
+@Table(name="action")
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Action implements Serializable {
 	

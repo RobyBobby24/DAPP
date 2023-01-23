@@ -53,7 +53,7 @@ public class Monster implements Serializable {
 
 	@ManyToMany(targetEntity=model.Action.class)
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})
-	@JoinTable(name="Monster_Action", joinColumns={ @JoinColumn(name="MonsterID", referencedColumnName="ID", nullable=false) }, inverseJoinColumns={ @JoinColumn(name="ActionID",referencedColumnName="ID", nullable=false) })
+	@JoinTable(name="monster_action", joinColumns={ @JoinColumn(name="MonsterID", referencedColumnName="ID", nullable=false) }, inverseJoinColumns={ @JoinColumn(name="ActionID",referencedColumnName="ID", nullable=false) })
 	@org.hibernate.annotations.IndexColumn(name="ActionIndex")
 	@org.hibernate.annotations.LazyCollection(LazyCollectionOption.FALSE)
 	private List<Action> availableActions = new ArrayList<Action>();

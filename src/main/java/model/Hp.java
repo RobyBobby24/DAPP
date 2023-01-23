@@ -19,7 +19,7 @@ import java.io.Serializable;
 
 @Entity
 @org.hibernate.annotations.Proxy(lazy=false)
-@Table(name="Hp")
+@Table(name="hp")
 public class Hp implements Serializable {
 	public Hp() {
 	}

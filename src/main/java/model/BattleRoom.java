@@ -102,7 +102,6 @@ public class BattleRoom extends Room implements Serializable {
 	 * run the battle passed between turn
 	 */
 	private void playBattle(){
-		this.ended=this.monsters.size();
 		while (this.ended>0){
 			this.currentTurn.startTurn(this);
 			this.currentTurn.playTurn(this);
@@ -131,6 +130,7 @@ public class BattleRoom extends Room implements Serializable {
 	public void startBattle() {
 		Adventurer.getInstance().setBattleState();
 		this.currentTurn=new AdventurerTurn();
+		this.ended=this.monsters.size();
 	}
 
 	/**

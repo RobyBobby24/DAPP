@@ -140,8 +140,7 @@ public class PlayTheGame {
 		try{
 			List<Card> cards=Adventurer.getInstance().getCardsFromHand();
 			BattleRoom battleRoom=(BattleRoom) DungeonMap.getInstance().getCurrentRoom();
-			Adventurer adventurer=Adventurer.getInstance();
-			FrontView.getInstance().outputPlayCard(cards,adventurer,battleRoom);
+			FrontView.getInstance().outputPlayCard(cards,Adventurer.getInstance(),battleRoom);
 			battleRoom.performEffect(FrontView.getInstance().inputPlayCard());
 		}
 		catch (Exception e){

@@ -103,10 +103,12 @@ public abstract class Effect implements Serializable {
 	 * @return if the effect need a target, one plus of the number passed as parameter
 	 */
 	public int numberOfTarget(int actualNumber){
-		if(this.target){
-			actualNumber=actualNumber+1;
-		}
-		if(this.nextEffect!=null)actualNumber=actualNumber+this.nextEffect.numberOfTarget(actualNumber);
+		if(this.target)
+			actualNumber = actualNumber+1;
+
+		if(this.nextEffect != null)
+			actualNumber = actualNumber+this.nextEffect.numberOfTarget(actualNumber);
+
 		return actualNumber;
 	}
 

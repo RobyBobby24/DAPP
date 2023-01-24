@@ -14,18 +14,20 @@ class SetNicknameView {
     }
 
     public static SetNicknameView getInstance(){
-        if(SetNicknameView.instance==null){
-            SetNicknameView.instance=new SetNicknameView();
+        if(SetNicknameView.instance == null){
+            SetNicknameView.instance = new SetNicknameView();
         }
         return SetNicknameView.instance;
     }
 
     public void output(String nickname){
-        Scanner prompt= new Scanner(System.in);
-        if(nickname!=null)System.out.println(nickname+" inseisci il tuo nuovo nickname:");
-        else System.out.println(" inseisci il tuo nuovo nickname:");
+        Scanner prompt = new Scanner(System.in);
+        if(nickname != null)
+            System.out.println(nickname+" inseisci il tuo nuovo nickname:");
+        else
+            System.out.println(" inseisci il tuo nuovo nickname:");
         System.out.print("DAPP\\setNickname>");
-        this.inputValue=prompt.next();
+        this.inputValue = prompt.next();
         System.out.println("...\n...\n...\n");
     }
 

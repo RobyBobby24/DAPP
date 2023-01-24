@@ -20,8 +20,8 @@ public class PlayCardView {
     }
 
     public static PlayCardView getInstance(){
-        if(PlayCardView.instance==null){
-            PlayCardView.instance=new PlayCardView();
+        if(PlayCardView.instance == null){
+            PlayCardView.instance = new PlayCardView();
         }
         return PlayCardView.instance;
     }
@@ -29,13 +29,13 @@ public class PlayCardView {
 
 
     public void outputPlayCard(String nickname, List<Card> handCards){
-        Scanner prompt= new Scanner(System.in);
+        Scanner prompt = new Scanner(System.in);
         System.out.println(nickname+" quale carta vuoi giocare :");
         for(Card card: handCards){
             System.out.println("Card: ("+card+") \u001B[32m ("+card.getID()+")\u001B[0m");
         }
         System.out.print("DAPP\\PlayCard>");
-        this.inputValue=Integer.parseInt(prompt.next());
+        this.inputValue = Integer.parseInt(prompt.next());
         System.out.println("...\n...\n...\n");
     }
 

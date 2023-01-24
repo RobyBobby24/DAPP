@@ -40,7 +40,7 @@ public class DiscardPile {
 	 * @return  "number" cards from the discardPile
 	 */
 	public ArrayList<Card> getCards(int number) {
-		ArrayList<Card> result= new ArrayList<Card>();
+		ArrayList<Card> result = new ArrayList<Card>();
 		for (int i = 0; i < number; i++) {
 			result.add(this.cards.get(0));
 		}
@@ -52,7 +52,7 @@ public class DiscardPile {
 	 * @param numberOfCards number of cards to get and remove
 	 */
 	public ArrayList<Card> getAndRemoveCards(int numberOfCards) {
-		ArrayList<Card> result= new ArrayList<Card>();
+		ArrayList<Card> result = new ArrayList<Card>();
 		for (int i = 0; i < numberOfCards; i++) {
 			result.add(this.cards.remove(0));
 		}
@@ -63,8 +63,8 @@ public class DiscardPile {
 	 * get and remove all cards from the DiscardPile
 	 */
 	public ArrayList<Card> getAndRemoveCards() {
-		ArrayList<Card> result= new ArrayList<Card>(this.cards);
-		this.cards=new ArrayList<Card>();
+		ArrayList<Card> result = new ArrayList<Card>(this.cards);
+		this.cards = new ArrayList<Card>();
 		return result;
 	}
 

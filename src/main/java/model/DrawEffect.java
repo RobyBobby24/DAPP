@@ -56,7 +56,8 @@ public class DrawEffect extends Effect implements Serializable {
 	 */
 	public void activeEffect(BattleRoom battleField, ArrayList<Integer> target) {
 		Adventurer.getInstance().drawCards(this.numberCards);
-		if(this.nextEffect!=null)this.nextEffect.activeEffect(battleField,target);
+		if(this.nextEffect != null)
+			this.nextEffect.activeEffect(battleField,target);
 	}
 	
 	public String toString() {

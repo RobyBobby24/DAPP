@@ -15,7 +15,7 @@ public class AdventurerTurn implements TurnState {
 	 * @param battleRoom
 	 */
 	public void startTurn(BattleRoom battleRoom) {
-		this.endAdventurerTurn=false;
+		this.endAdventurerTurn = false;
 		Adventurer.getInstance().startTurn();
 		battleRoom.setNextMonstersAction();
 	}
@@ -27,7 +27,8 @@ public class AdventurerTurn implements TurnState {
 	 */
 	public void notifyDeath(BattleRoom battle, int monsterID) {
 		battle.removeMonster(monsterID);
-		if(battle.getEnded()==0)this.setEndAdventurerTurn(true);
+		if(battle.getEnded() == 0)
+			this.setEndAdventurerTurn(true);
 	}
 
 	/**
@@ -37,7 +38,8 @@ public class AdventurerTurn implements TurnState {
 	 */
 	public void performEffect(BattleRoom battleRoom, int effectId) {
 		Card cardToPlay = Adventurer.getInstance().getCardFromHand(effectId);
-		if(cardToPlay.canBePlayed()){
+		if(cardToPlay.canBePlayed())
+		{
 			int numberOfTarget = cardToPlay.getNumberOfTarget();
 			ArrayList<Integer> target = new ArrayList<Integer>();
 			for (int i = 0; i < numberOfTarget; i++) {

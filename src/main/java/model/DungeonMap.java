@@ -67,12 +67,12 @@ public class DungeonMap implements Serializable {
 	}
 	
 	public static DungeonMap getInstance() {
-		if(DungeonMap.instance==null){
+		if(DungeonMap.instance == null){
 			if(PersistenceInterface.getInstance().exist(new TreeMap<>(),DungeonMap.class)){
 				DungeonMap.instance=(DungeonMap)PersistenceInterface.getInstance().search(new TreeMap<>(),DungeonMap.class).get(0);
 			}
 			else{
-				DungeonMap.instance=new DungeonMap();
+				DungeonMap.instance = new DungeonMap();
 			}
 		}
 		return DungeonMap.instance;
@@ -82,7 +82,7 @@ public class DungeonMap implements Serializable {
 	 * build the map with all its room
 	 */
 	public void buildMap() {
-		StandardRoomFactory standardRoomFactory =new StandardRoomFactory();
+		StandardRoomFactory standardRoomFactory = new StandardRoomFactory();
 		this.rooms.add(standardRoomFactory.createBattleRoom());
 	}
 
@@ -99,7 +99,8 @@ public class DungeonMap implements Serializable {
 	 */
 	public Room getRoom(int roomId) {
 		for (Room room : this.rooms) {
-			if (room.getID() == roomId) return room;
+			if (room.getID() == roomId)
+				return room;
 		}
 		return null;
 	}

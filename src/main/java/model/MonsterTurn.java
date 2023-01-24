@@ -32,7 +32,7 @@ public class MonsterTurn implements TurnState {
 	 * @param battleRoom
 	 */
 	public void startTurn(BattleRoom battleRoom) {
-		if(this.actualMonster==null){
+		if(this.actualMonster == null){
 			this.setActualMonster(battleRoom.getFirstMonster());
 		}
 		else{
@@ -47,10 +47,11 @@ public class MonsterTurn implements TurnState {
 	 */
 	@Override
 	public void playTurn(BattleRoom battleRoom) {
-		if(this.actualMonster!=null){
+		if(this.actualMonster != null){
 			this.actualMonster.getNextAction().activeAction(this.actualMonster);
 		}
-		else battleRoom.passTurn();
+		else
+			battleRoom.passTurn();
 	}
 
 	/**

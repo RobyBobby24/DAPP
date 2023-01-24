@@ -12,8 +12,8 @@ public class ErrorView {
     }
 
     public static ErrorView getInstance(){
-        if(ErrorView.instance==null){
-            ErrorView.instance=new ErrorView();
+        if(ErrorView.instance == null){
+            ErrorView.instance = new ErrorView();
         }
         return ErrorView.instance;
     }

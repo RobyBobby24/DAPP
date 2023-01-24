@@ -14,14 +14,14 @@ public class FrontView {
     }
 
     public static FrontView getInstance() {
-        if(FrontView.instance==null){
-            FrontView.instance=new FrontView();
+        if(FrontView.instance == null){
+            FrontView.instance = new FrontView();
         }
         return instance;
     }
 
     public  void setPlayer(String nickname){
-        this.nickname=nickname;
+        this.nickname = nickname;
     }
     public void outputChooseOperation(){
         ChooseOperationView.getInstance().output(this.nickname);

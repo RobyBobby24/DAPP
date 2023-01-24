@@ -150,10 +150,10 @@ public class Monster implements Serializable {
 	 */
 	private ArrayList<Action> getAvailableActions() {
 		try{
-			return  (ArrayList<Action>)availableActions;
+			return (ArrayList<Action>)availableActions;
 		}
 		catch (Exception e){
-			this.availableActions= new ArrayList<Action>(this.availableActions);
+			this.availableActions = new ArrayList<Action>(this.availableActions);
 			return (ArrayList<Action>) this.availableActions;
 		}
 	}
@@ -192,7 +192,7 @@ public class Monster implements Serializable {
 	 * @return random action from available
 	 */
 	public Action getRandomAction() {
-		Random random=new Random();
+		Random random =new Random();
 		return this.availableActions.get(random.nextInt(this.availableActions.size()));
 	}
 
@@ -216,13 +216,14 @@ public class Monster implements Serializable {
 	 * @param damage number of point to decrease hp and/or protection
 	 */
 	public void takeDamage(int damage) {
-		if(damage>this.protection){
-			this.hp.addCurrentHp(this.protection-damage);
-			this.protection=0;
+		if(damage > this.protection){
+			this.hp.addCurrentHp(this.protection - damage);
+			this.protection = 0;
 		}
-		else this.protection=this.protection-damage;
-		if(this.hp.getCurrentHp()==0){
-			BattleRoom battleRoom=(BattleRoom)DungeonMap.getInstance().getCurrentRoom();
+		else
+			this.protection = this.protection - damage;
+		if(this.hp.getCurrentHp() == 0){
+			BattleRoom battleRoom = (BattleRoom) DungeonMap.getInstance().getCurrentRoom();
 			battleRoom.notifyDeath(this.ID);
 		}
 	}

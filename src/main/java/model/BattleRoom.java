@@ -68,7 +68,7 @@ public class BattleRoom extends Room implements Serializable {
 			return  (ArrayList<Monster>)monsters;
 		}
 		catch (Exception e){
-			this.monsters= new ArrayList<Monster>(this.monsters);
+			this.monsters = new ArrayList<Monster>(this.monsters);
 			return (ArrayList<Monster>) this.monsters;
 		}
 	}
@@ -129,7 +129,7 @@ public class BattleRoom extends Room implements Serializable {
 	 */
 	public void startBattle() {
 		Adventurer.getInstance().setBattleState();
-		this.currentTurn=new AdventurerTurn();
+		this.currentTurn = new AdventurerTurn();
 		this.ended=this.monsters.size();
 	}
 
@@ -182,7 +182,8 @@ public class BattleRoom extends Room implements Serializable {
 	 */
 	public Monster getMonster(int monsterId) {
 		for (int i = 0; i < this.monsters.size(); i++) {
-			if(this.monsters.get(i).getId()==monsterId) return this.monsters.get(i);
+			if(this.monsters.get(i).getId() == monsterId)
+				return this.monsters.get(i);
 		}
 		return null;
 	}

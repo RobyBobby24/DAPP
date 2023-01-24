@@ -54,15 +54,18 @@ public class DamageEffect extends Effect implements Serializable {
 	 * @param target id of the target who will be changed in this effect or in the next
 	 */
 	public void activeEffect(BattleRoom battleField, ArrayList<Integer> target) {
-		int monsterId=target.remove(0);
-		Monster monster=battleField.getMonster(monsterId);
+		int monsterId = target.remove(0);
+		Monster monster = battleField.getMonster(monsterId);
 		monster.takeDamage(this.damage);
-		if(this.nextEffect!=null)this.nextEffect.activeEffect(battleField,target);
+		if(this.nextEffect != null)
+			this.nextEffect.activeEffect(battleField,target);
 	}
 	
 	public String toString() {
-		if(this.nextEffect!=null)return "damage:"+this.damage+","+this.nextEffect;
-		else return "damage:"+this.damage;
+		if(this.nextEffect != null)
+			return "damage:"+this.damage+","+this.nextEffect;
+		else
+			return "damage:"+this.damage;
 	}
 
 	public String var_dump(){

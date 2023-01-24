@@ -77,11 +77,12 @@ public class Player implements Serializable {
 	 * @return the unique instance of the player
 	 */
 	public static Player getInstance() {
-		if(Player.instance==null){
+		if(Player.instance == null){
 			if(PersistenceInterface.getInstance().exist(new TreeMap<>(),Player.class)){
-				Player.instance= (Player) PersistenceInterface.getInstance().search(new TreeMap<>(),Player.class).get(0);
+				Player.instance = (Player) PersistenceInterface.getInstance().search(new TreeMap<>(),Player.class).get(0);
 			}
-			else Player.instance= new Player();
+			else
+				Player.instance = new Player();
 		}
 		return Player.instance;
 	}

@@ -71,12 +71,15 @@ public class DamageAction extends Action implements Serializable {
 	 */
 	public void activeAction(Monster monster) {
 		Adventurer.getInstance().takeDamage(this.damage);
-		if(this.nextAction!=null)this.nextAction.activeAction(monster);
+		if(this.nextAction != null)
+			this.nextAction.activeAction(monster);
 	}
 	
 	public String toString() {
-		if(this.nextAction!=null)return "damage:"+this.damage+","+this.nextAction;
-		else return "damage:"+this.damage;
+		if(this.nextAction != null)
+			return "damage:"+this.damage+","+this.nextAction;
+		else
+			return "damage:"+this.damage;
 	}
 
 	public String var_dump(){

@@ -16,8 +16,8 @@ public class PlayTheGame {
 	}
 
 	public static PlayTheGame getInstance() {
-		if(PlayTheGame.instance==null){
-			PlayTheGame.instance=new PlayTheGame();
+		if(PlayTheGame.instance == null){
+			PlayTheGame.instance = new PlayTheGame();
 		}
 		return PlayTheGame.instance;
 	}
@@ -27,15 +27,17 @@ public class PlayTheGame {
 	 */
 	public void chooseOperation(){
 		try{
-			if(Player.getInstance().getNickname()==null){
+			if(Player.getInstance().getNickname() == null){
 				this.setNickname();
 			}
 			else{
 				FrontView.getInstance().setPlayer(Player.getInstance().getNickname());
 				FrontView.getInstance().outputChooseOperation();//output chooseOperation(setNickname,makeNewGame)
-				String operation=FrontView.getInstance().inputChooseOperation();
-				if(operation.equals("set-nickname"))this.setNickname();
-				else if(operation.equals("make-new-game"))this.makeNewGame();
+				String operation = FrontView.getInstance().inputChooseOperation();
+				if(operation.equals("set-nickname"))
+					this.setNickname();
+				else if(operation.equals("make-new-game"))
+					this.makeNewGame();
 			}
 		}
 		catch(Exception e){
@@ -57,7 +59,8 @@ public class PlayTheGame {
 			if(PersistenceInterface.getInstance().exist(new TreeMap<>(),Player.class)){
 				PersistenceInterface.getInstance().update(Player.getInstance());
 			}
-			else PersistenceInterface.getInstance().store(Player.getInstance());
+			else
+				PersistenceInterface.getInstance().store(Player.getInstance());
 			this.chooseOperation();
 		}
 		catch (Exception e){
@@ -71,7 +74,7 @@ public class PlayTheGame {
 	 */
 	public void makeNewGame() {
 		try{
-			List<Adventurer> adventurerList=(List<Adventurer>) PersistenceInterface.getInstance().search(new TreeMap<>(),Adventurer.class);
+			List<Adventurer> adventurerList = (List<Adventurer>) PersistenceInterface.getInstance().search(new TreeMap<>(),Adventurer.class);
 			FrontView.getInstance().outputMakeNewGame(adventurerList);
 			chooseAdventurer();
 		}
@@ -89,7 +92,7 @@ public class PlayTheGame {
 		try{
 			AdventurerHelper.getInstance().setAdventurerClass(FrontView.getInstance().inputMakeNewGame());
 			DungeonMap.getInstance().buildMap();
-			ArrayList<Room> availableRooms=DungeonMap.getInstance().giveMeAvailableRooms();
+			ArrayList<Room> availableRooms = DungeonMap.getInstance().giveMeAvailableRooms();
 			FrontView.getInstance().outputChooseRoom(availableRooms);
 			chooseRoom();
 		}
@@ -104,7 +107,7 @@ public class PlayTheGame {
 	 */
 	public void chooseRoom() {
 		try{
-			Room room=FrontView.getInstance().inputChooseRoom();
+			Room room = FrontView.getInstance().inputChooseRoom();
 			DungeonMap.getInstance().setCurrentRoom(room);
 			room.enterRoom();
 		}
@@ -119,12 +122,15 @@ public class PlayTheGame {
 	 */
 	public void nextBattleOp() {
 		try{
-			BattleRoom battleRoom=(BattleRoom) DungeonMap.getInstance().getCurrentRoom();
+			BattleRoom battleRoom = (BattleRoom) DungeonMap.getInstance().getCurrentRoom();
 			FrontView.getInstance().outputChooseBattleOp(Adventurer.getInstance(),battleRoom);
 			String operation=FrontView.getInstance().inputChooseBattleOp();//input
-			if(operation.equals("pass-turn"))this.passTurn();
-			else if (operation.equals("play-card"))this.playCard();
-			else throw new Exception("operation selected do not exist");
+			if(operation.equals("pass-turn"))
+				this.passTurn();
+			else if (operation.equals("play-card"))
+				this.playCard();
+			else
+				throw new Exception("operation selected do not exist");
 		}
 		catch (Exception e){
 			FrontView.getInstance().outputError("l'operazione selezionata non è supportata!!!");
@@ -138,8 +144,8 @@ public class PlayTheGame {
 	 */
 	public void playCard() {
 		try{
-			List<Card> cards=Adventurer.getInstance().getCardsFromHand();
-			BattleRoom battleRoom=(BattleRoom) DungeonMap.getInstance().getCurrentRoom();
+			List<Card> cards = Adventurer.getInstance().getCardsFromHand();
+			BattleRoom battleRoom = (BattleRoom) DungeonMap.getInstance().getCurrentRoom();
 			FrontView.getInstance().outputPlayCard(cards,Adventurer.getInstance(),battleRoom);
 			battleRoom.performEffect(FrontView.getInstance().inputPlayCard());
 		}
@@ -154,8 +160,8 @@ public class PlayTheGame {
 	 */
 	public int chooseTarget() {
 		try{
-			BattleRoom room=(BattleRoom) DungeonMap.getInstance().getCurrentRoom();
-			List<Monster> monsters=room.getMonsters();
+			BattleRoom room = (BattleRoom) DungeonMap.getInstance().getCurrentRoom();
+			List<Monster> monsters = room.getMonsters();
 			FrontView.getInstance().outputChooseTarget(monsters);
 			return FrontView.getInstance().inputChooseTarget();
 		}
@@ -170,7 +176,7 @@ public class PlayTheGame {
 	 */
 	public void passTurn() {
 		try{
-			BattleRoom battleRoom= (BattleRoom) DungeonMap.getInstance().getCurrentRoom();
+			BattleRoom battleRoom = (BattleRoom) DungeonMap.getInstance().getCurrentRoom();
 			battleRoom.passTurn();
 		}
 		catch(Exception e){

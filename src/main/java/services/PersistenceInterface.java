@@ -13,7 +13,7 @@ public class PersistenceInterface {
     }
 
     public static PersistenceInterface getInstance() {
-        if(PersistenceInterface.instance !=null){
+        if(PersistenceInterface.instance != null){
             return instance;
         }
         else{
@@ -24,8 +24,8 @@ public class PersistenceInterface {
 
     public void store(Object entity){
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
-        EntityManager entityManager=entityManagerFactory.createEntityManager();
-        EntityTransaction transaction= entityManager.getTransaction();
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        EntityTransaction transaction = entityManager.getTransaction();
 
         try{
             transaction.begin();
@@ -43,9 +43,9 @@ public class PersistenceInterface {
 
     public Object loadOne(int id,Class objClass){
         Object result;
-        EntityManagerFactory entityManagerFactory= Persistence.createEntityManagerFactory("default");
-        EntityManager entityManager=entityManagerFactory.createEntityManager();
-        EntityTransaction transaction= entityManager.getTransaction();
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        EntityTransaction transaction = entityManager.getTransaction();
 
         try{
             transaction.begin();
@@ -64,9 +64,9 @@ public class PersistenceInterface {
 
 
     public void update(Object entity){
-        EntityManagerFactory entityManagerFactory= Persistence.createEntityManagerFactory("default");
-        EntityManager entityManager=entityManagerFactory.createEntityManager();
-        EntityTransaction transaction= entityManager.getTransaction();
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        EntityTransaction transaction = entityManager.getTransaction();
 
         try{
             transaction.begin();
@@ -84,9 +84,9 @@ public class PersistenceInterface {
 
 
     public void delete(Object entity){
-        EntityManagerFactory entityManagerFactory= Persistence.createEntityManagerFactory("default");
-        EntityManager entityManager=entityManagerFactory.createEntityManager();
-        EntityTransaction transaction= entityManager.getTransaction();
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        EntityTransaction transaction = entityManager.getTransaction();
 
         try{
             transaction.begin();
@@ -127,26 +127,29 @@ public class PersistenceInterface {
      */
 
     public boolean exist(TreeMap<String,String> attribute_value,Class objClass){
-        EntityManagerFactory entityManagerFactory= Persistence.createEntityManagerFactory("default");
-        EntityManager entityManager=entityManagerFactory.createEntityManager();
-        EntityTransaction transaction= entityManager.getTransaction();
-        boolean result=false;
-        String where="";
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        EntityTransaction transaction = entityManager.getTransaction();
+        boolean result = false;
+        String where = "";
         for (String key : attribute_value.keySet()) {
-            if(!where.equals(""))where=where+" and ";
-            where=where+" table."+key+" :param"+key;
+            if( !where.equals(""))
+                where = where + " and ";
+            where = where + " table."+key+" :param"+key;
         }
 
         try{
             transaction.begin();
-
             Query query;
-            if(!where.equals(""))query = entityManager.createQuery("SELECT count(table) FROM "+objClass.getSimpleName()+" table "+" where "+where);
-            else query = entityManager.createQuery("SELECT count(table) FROM "+objClass.getSimpleName()+" table ");
+            if ( !where.equals(""))
+                query = entityManager.createQuery("SELECT count(table) FROM "+objClass.getSimpleName()+" table "+" where "+where);
+            else
+                query = entityManager.createQuery("SELECT count(table) FROM "+objClass.getSimpleName()+" table ");
             for (String key : attribute_value.keySet()) {
                 query.setParameter("param"+key,attribute_value.get(key));
             }
-            if(query.getResultList().size()>0 && (Long)query.getSingleResult()>0)result = true;
+            if(query.getResultList().size() > 0 && (Long)query.getSingleResult() > 0)
+                result = true;
             transaction.commit();
         }
         finally {
@@ -160,15 +163,15 @@ public class PersistenceInterface {
     }
 
     public Adventurer loadAdventurerByClass(Class adventurerClass){
-        EntityManagerFactory entityManagerFactory= Persistence.createEntityManagerFactory("default");
-        EntityManager entityManager=entityManagerFactory.createEntityManager();
-        EntityTransaction transaction= entityManager.getTransaction();
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        EntityTransaction transaction = entityManager.getTransaction();
         Adventurer result;
 
         try{
             transaction.begin();
             Query query = entityManager.createQuery("SELECT a FROM "+adventurerClass.getSimpleName()+" a");
-            result =(Adventurer) query.getSingleResult();
+            result = (Adventurer) query.getSingleResult();
             transaction.commit();
         }
         finally {
@@ -182,16 +185,18 @@ public class PersistenceInterface {
     }
 
     public boolean existAdventurerByClass(Class adventurerClass){
-        EntityManagerFactory entityManagerFactory= Persistence.createEntityManagerFactory("default");
-        EntityManager entityManager=entityManagerFactory.createEntityManager();
-        EntityTransaction transaction= entityManager.getTransaction();
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        EntityTransaction transaction = entityManager.getTransaction();
         boolean result;
 
         try{
             transaction.begin();
             Query query = entityManager.createQuery("SELECT count(a) FROM "+adventurerClass.getSimpleName()+" a");
-            if((Long)query.getSingleResult()>0) result=true;
-            else result=false;
+            if((Long)query.getSingleResult() > 0)
+                result = true;
+            else
+                result = false;
             transaction.commit();
         }
         finally {
@@ -205,21 +210,24 @@ public class PersistenceInterface {
     }
 
     public List search(TreeMap<String,String> attribute_value,Class objClass){
-        EntityManagerFactory entityManagerFactory= Persistence.createEntityManagerFactory("default");
-        EntityManager entityManager=entityManagerFactory.createEntityManager();
-        EntityTransaction transaction= entityManager.getTransaction();
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        EntityTransaction transaction = entityManager.getTransaction();
         List result;
-        String where="";
+        String where = "";
         for (String key : attribute_value.keySet()) {
-            if(!where.equals(""))where=where+" and ";
-            where=where+" table."+key+"= :param"+key;
+            if(!where.equals(""))
+                where = where+" and ";
+            where = where+" table."+key+" = :param"+key;
         }
 
         try{
             transaction.begin();
             Query query;
-            if(!where.equals(""))query = entityManager.createQuery("SELECT table FROM "+objClass.getSimpleName()+" table "+" where "+where);
-            else query = entityManager.createQuery("SELECT table FROM "+objClass.getSimpleName()+" table ");
+            if(!where.equals(""))
+                query = entityManager.createQuery("SELECT table FROM "+objClass.getSimpleName()+" table "+" where "+where);
+            else
+                query = entityManager.createQuery("SELECT table FROM "+objClass.getSimpleName()+" table ");
             for (String key : attribute_value.keySet()) {
                 query.setParameter("param"+key,attribute_value.get(key));
             }

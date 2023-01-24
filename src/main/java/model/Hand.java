@@ -40,7 +40,8 @@ public class Hand {
 	 */
 	public Card getCard(int cardId) {
 		for(Card card:this.cards){
-			if(card.getID()==cardId)return card;
+			if(card.getID() == cardId)
+				return card;
 		}
 		return null;
 	}
@@ -50,7 +51,7 @@ public class Hand {
 	 * @param numberOfCards number of cards to get and remove
 	 */
 	public ArrayList<Card> getAndRemoveCards(int numberOfCards) {
-		ArrayList<Card> result= new ArrayList<Card>();
+		ArrayList<Card> result = new ArrayList<Card>();
 		for (int i = 0; i < numberOfCards; i++) {
 			result.add(this.cards.remove(0));
 		}
@@ -62,10 +63,10 @@ public class Hand {
 	 */
 	public ArrayList<Card> getCards() {
 		try{
-			return  (ArrayList<Card>)cards;
+			return (ArrayList<Card>)cards;
 		}
 		catch (Exception e){
-			this.cards= new ArrayList<Card>(this.cards);
+			this.cards = new ArrayList<Card>(this.cards);
 			return (ArrayList<Card>) this.cards;
 		}
 	}
@@ -74,8 +75,8 @@ public class Hand {
 	 * get and remove all the cards from the hand
 	 */
 	public ArrayList<Card> getAndRemoveCards() {
-		ArrayList<Card> result= (ArrayList<Card>)this.cards.clone();
-		this.cards=new ArrayList<Card>();
+		ArrayList<Card> result = (ArrayList<Card>)this.cards.clone();
+		this.cards = new ArrayList<Card>();
 		return result;
 	}
 

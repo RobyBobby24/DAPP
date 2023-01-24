@@ -81,9 +81,9 @@ public class Deck implements Serializable {
 	 * @return ArrayList composed by the cards got and removed from the Deck's attribute cards
 	 */
 	public ArrayList<Card> getAndRemoveCards(int numberOfCards){
-		ArrayList<Card> result= new ArrayList<Card>();
-		int i=0;
-		while(i<numberOfCards && this.cards.size()>0){
+		ArrayList<Card> result = new ArrayList<Card>();
+		int i = 0;
+		while( i < numberOfCards && this.cards.size() > 0){
 			result.add(this.cards.remove(0));
 		}
 		return result;
@@ -94,7 +94,7 @@ public class Deck implements Serializable {
 	 * @return ArrayList composed by the cards got and removed from the Deck's attribute cards
 	 */
 	public ArrayList<Card> getCards(int numberOfCards) {
-		ArrayList<Card> result= new ArrayList<Card>();
+		ArrayList<Card> result = new ArrayList<Card>();
 		for (int i = 0; i < numberOfCards; i++) {
 			result.add(this.cards.get(0));
 		}
@@ -109,7 +109,7 @@ public class Deck implements Serializable {
 			return  (ArrayList<Card>)cards;
 		}
 		catch (Exception e){
-			this.cards= new ArrayList<Card>(this.cards);
+			this.cards = new ArrayList<Card>(this.cards);
 			return (ArrayList<Card>) this.cards;
 		}
 	}

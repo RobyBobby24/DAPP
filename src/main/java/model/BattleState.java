@@ -16,9 +16,9 @@ public class BattleState implements AdventurerState {
 
 
 	public BattleState() {
-		this.hand=new Hand();
-		this.discardPile=new DiscardPile();
-		this.deck=new Deck();
+		this.hand = new Hand();
+		this.discardPile = new DiscardPile();
+		this.deck = new Deck();
 		this.energyPoint=0;
 		this.protection=0;
 	}
@@ -68,18 +68,18 @@ public class BattleState implements AdventurerState {
 	 * @param numberOfCards number of cards to draw
 	 */
 	public void drawCards(int numberOfCards) {
-		int nCards=this.deck.getNumberOfCards();
-		if(nCards>numberOfCards) {
-			ArrayList<Card> cards=this.deck.getAndRemoveCards(numberOfCards);
+		int nCards = this.deck.getNumberOfCards();
+		if(nCards > numberOfCards) {
+			ArrayList<Card> cards = this.deck.getAndRemoveCards(numberOfCards);
 			this.hand.addCard(cards);
 		}
 		else{
-			ArrayList<Card> cards=this.deck.getAndRemoveCards(nCards);
+			ArrayList<Card> cards = this.deck.getAndRemoveCards(nCards);
 			this.hand.addCard(cards);
-			ArrayList<Card> discardPileCards=this.discardPile.getAndRemoveCards();
+			ArrayList<Card> discardPileCards = this.discardPile.getAndRemoveCards();
 			this.deck.addCard(discardPileCards);
 			this.deck.shuffle();
-			ArrayList<Card> otherCards=this.deck.getAndRemoveCards(numberOfCards-nCards);
+			ArrayList<Card> otherCards = this.deck.getAndRemoveCards(numberOfCards-nCards);
 			this.hand.addCard(otherCards);
 		}
 	}
@@ -111,7 +111,7 @@ public class BattleState implements AdventurerState {
 	 */
 	@Override
 	public void passTurn() {
-		ArrayList<Card> cards=this.hand.getAndRemoveCards();
+		ArrayList<Card> cards = this.hand.getAndRemoveCards();
 		this.discardPile.addCard(cards);
 	}
 
@@ -128,10 +128,12 @@ public class BattleState implements AdventurerState {
 	 */
 	@Override
 	public void takeDamage(int damage, Adventurer adventurer) {
-		if (this.protection-damage<0) adventurer.getHp().addCurrentHp(this.protection-damage);
-		else this.protection=this.protection-damage;
-		if(adventurer.getHp().getCurrentHp()==0){
-			BattleRoom battleRoom=(BattleRoom)DungeonMap.getInstance().getCurrentRoom();
+		if (this.protection-damage < 0)
+			adventurer.getHp().addCurrentHp(this.protection-damage);
+		else
+			this.protection=this.protection-damage;
+		if(adventurer.getHp().getCurrentHp() == 0){
+			BattleRoom battleRoom = (BattleRoom)DungeonMap.getInstance().getCurrentRoom();
 			battleRoom.notifyDeath(adventurer.getID());
 		}
 	}

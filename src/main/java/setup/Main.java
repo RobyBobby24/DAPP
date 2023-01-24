@@ -64,7 +64,7 @@ public class Main {
         try {
             Monster monster=(Monster)PersistenceInterface.getIstance().loadOne(1,Monster.class);
             Action action=(Action) PersistenceInterface.getIstance().loadOne(2,Action.class);
-            monster.addActionToAvailable(action);
+            monster.addActionToAvailable(action);m
             PersistenceInterface.getIstance().update(monster);
         }
         catch (Exception e){

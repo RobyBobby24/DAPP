@@ -21,7 +21,8 @@ public class AdventurerHelper {
      * @return the unique instance of AdventurerFactory
      */
     public static AdventurerHelper getInstance(){
-        if(AdventurerHelper.instance==null) AdventurerHelper.instance=new AdventurerHelper();
+        if(AdventurerHelper.instance == null)
+            AdventurerHelper.instance = new AdventurerHelper();
         return AdventurerHelper.instance;
     }
 
@@ -30,11 +31,11 @@ public class AdventurerHelper {
      * @param AdvClass TargetClass (class which has the static method to execute)
      * @throws Exception
      */
-    public void setAdventurerClass(Class AdvClass) throws Exception {
-        if(AdvClass.getSuperclass().getName().equals(Adventurer.class.getName())){
-            this.adventurerClass= AdvClass.getName();
-        }
-        else{
+    public void setAdventurerClass( Class AdvClass ) throws Exception {
+        if( AdvClass.getSuperclass().getName().equals( Adventurer.class.getName()) )
+            this.adventurerClass = AdvClass.getName();
+        else
+        {
             throw new Exception("The class passed as parameter must be a subclass of Adventurer");
         }
     }
@@ -44,7 +45,7 @@ public class AdventurerHelper {
      */
     public Adventurer getAdventurerInstance() {
         try{
-            if(PersistenceInterface.getInstance().existAdventurerByClass(Class.forName(this.adventurerClass))){
+            if( PersistenceInterface.getInstance().existAdventurerByClass(Class.forName(this.adventurerClass)) ){
                 return PersistenceInterface.getInstance().loadAdventurerByClass(Class.forName(this.adventurerClass));
             }
             else{

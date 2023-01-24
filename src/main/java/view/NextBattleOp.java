@@ -16,17 +16,17 @@ class NextBattleOp {
     }
 
     public static NextBattleOp getInstance(){
-        if(NextBattleOp.instance==null){
-            NextBattleOp.instance=new NextBattleOp();
+        if(NextBattleOp.instance == null){
+            NextBattleOp.instance = new NextBattleOp();
         }
         return NextBattleOp.instance;
     }
 
     public void outputChooseBattleOp(String nickname){
-        Scanner prompt= new Scanner(System.in);
+        Scanner prompt = new Scanner(System.in);
         System.out.println(nickname+" quale operazione di battaglia vuoi eseguire ? \u001B[32m (play-card,pass-turn)\u001B[0m \n");
         System.out.print("DAPP\\chooseBattleOp>");
-        this.inputValue=prompt.next();
+        this.inputValue = prompt.next();
         System.out.println("...\n...\n...\n");
     }
 
@@ -35,10 +35,10 @@ class NextBattleOp {
     }
 
     public void outputChooseCardToPlay(String nickname){
-        Scanner prompt= new Scanner(System.in);
+        Scanner prompt = new Scanner(System.in);
         System.out.println(nickname+" quale operazione di battaglia vuoi eseguire ? (play-card,pass-turn)\n");
         System.out.print("DAPP\\chooseBattleOp>");
-        this.inputCardId=Integer.parseInt(prompt.next());
+        this.inputCardId = Integer.parseInt(prompt.next());
     }
 
     public int inputChooseCardToPlay(){

@@ -27,26 +27,26 @@ public class Warrior extends Adventurer implements Serializable {
 
 
 	public Warrior() {
-		this.currentState=new NormalState();
+		this.currentState = new NormalState();
 	}
 
 
 	public static Adventurer getInstance(){
-		if(Warrior.instance==null){
-			Warrior.instance=new Warrior();
+		if(Warrior.instance == null){
+			Warrior.instance = new Warrior();
 		}
 		return instance;
 	}
 
 	@Override
 	public void setBattleState() {
-		this.currentState=new BattleState();
+		this.currentState = new BattleState();
 		this.currentState.setDeck(this.deck.clone());
 	}
 
 	@Override
 	public void setNormalState() {
-		this.currentState=new NormalState();
+		this.currentState = new NormalState();
 	}
 
 	public String toString(){

@@ -56,9 +56,12 @@ public class Hp implements Serializable {
 	 * @param numberOfHp number of Hp to add
 	 */
 	public void addCurrentHp(int numberOfHp) {
-		if(this.currentHp+numberOfHp>this.maxHp) this.currentHp=this.maxHp;
-		else if (this.currentHp+numberOfHp<0) this.currentHp=0;
-		else this.currentHp=this.currentHp+numberOfHp;
+		if(this.currentHp + numberOfHp > this.maxHp)
+			this.currentHp = this.maxHp;
+		else if (this.currentHp + numberOfHp < 0)
+			this.currentHp = 0;
+		else
+			this.currentHp = this.currentHp+numberOfHp;
 	}
 
 	/**
@@ -66,7 +69,8 @@ public class Hp implements Serializable {
 	 * @param value new currentHp
 	 */
 	public void setCurrentHp(int value) throws Exception {
-		if(value>this.maxHp || value<0) throw new Exception("currentHp must be minors than maxHp and greater of 0");
+		if(value > this.maxHp || value < 0)
+			throw new Exception("currentHp must be minors than maxHp and greater of 0");
 		this.currentHp = value;
 	}
 
@@ -74,7 +78,7 @@ public class Hp implements Serializable {
 	 * set currentHp=maxHp
 	 */
 	public void resetCurrentHp(){
-		this.currentHp=this.maxHp;
+		this.currentHp = this.maxHp;
 	}
 
 	/**
@@ -89,7 +93,8 @@ public class Hp implements Serializable {
 	 * @param value new maxHp
 	 */
 	public void setMaxHp(int value) throws Exception {
-		if(value<this.currentHp) throw new Exception("maxHp must be greater than maxHp");
+		if( value < this.currentHp)
+			throw new Exception("maxHp must be greater than maxHp");
 		this.currentHp = value;
 		this.maxHp = value;
 	}

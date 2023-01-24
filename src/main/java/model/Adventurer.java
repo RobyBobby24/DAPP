@@ -53,7 +53,6 @@ public abstract class Adventurer implements Serializable {
 
 
 	protected Adventurer() {
-
 	}
 
 	/**

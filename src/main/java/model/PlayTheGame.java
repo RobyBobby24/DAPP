@@ -51,7 +51,7 @@ public class PlayTheGame {
 	public void setNickname(){
 		try{
 			FrontView.getInstance().outputSetNickname();
-			String nickname=FrontView.getInstance().inputSetNickname(); //input
+			String nickname = FrontView.getInstance().inputSetNickname(); //input
 			Player.getInstance().setNickname(nickname);
 			FrontView.getInstance().setPlayer(Player.getInstance().getNickname());
 			if(PersistenceInterface.getInstance().exist(new TreeMap<>(),Player.class)){

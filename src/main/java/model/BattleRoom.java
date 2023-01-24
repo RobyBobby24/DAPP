@@ -78,7 +78,6 @@ public class BattleRoom extends Room implements Serializable {
 	 */
 	public void enterRoom() {
 		this.startBattle();
-		this.currentTurn=new AdventurerTurn();
 		this.playBattle();
 	}
 
@@ -131,6 +130,7 @@ public class BattleRoom extends Room implements Serializable {
 	 */
 	public void startBattle() {
 		Adventurer.getInstance().setBattleState();
+		this.currentTurn=new AdventurerTurn();
 	}
 
 	/**

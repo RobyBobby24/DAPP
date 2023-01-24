@@ -23,7 +23,7 @@ public class PersistenceInterface {
     }
 
     public void store(Object entity){
-        EntityManagerFactory entityManagerFactory= Persistence.createEntityManagerFactory("default");
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
         EntityManager entityManager=entityManagerFactory.createEntityManager();
         EntityTransaction transaction= entityManager.getTransaction();
 
@@ -102,7 +102,7 @@ public class PersistenceInterface {
         }
     }
 
-
+    /*
     public List genericQuery(String from,String select,String where){
         EntityManagerFactory entityManagerFactory= Persistence.createEntityManagerFactory("default");
         EntityManager entityManager=entityManagerFactory.createEntityManager();
@@ -124,6 +124,7 @@ public class PersistenceInterface {
         }
         return result;
     }
+     */
 
     public boolean exist(TreeMap<String,String> attribute_value,Class objClass){
         EntityManagerFactory entityManagerFactory= Persistence.createEntityManagerFactory("default");

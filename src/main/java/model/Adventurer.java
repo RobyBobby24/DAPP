@@ -16,7 +16,6 @@ package model;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
-import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 @Entity
@@ -138,7 +137,7 @@ public abstract class Adventurer implements Serializable {
 	 */
 	public static Adventurer getInstance() {
 		if(Adventurer.instance==null) {
-			Adventurer.instance=AdventurerFactory.getInstance().getAdventurerInstance();
+			Adventurer.instance= AdventurerHelper.getInstance().getAdventurerInstance();
 		}
 		return Adventurer.instance;
 	}

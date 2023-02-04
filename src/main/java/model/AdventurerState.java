@@ -76,5 +76,5 @@ public interface AdventurerState {
 	public String toString();
 
 
-
+    void removeCardFromHand(Card card);
 }

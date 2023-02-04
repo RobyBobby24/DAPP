@@ -142,4 +142,10 @@ public class BattleState implements AdventurerState {
 		return "Protection="+this.protection+", EnergyPoint="+this.energyPoint;
 	}
 
+	@Override
+	public void removeCardFromHand(Card card) {
+		this.hand.removeCard(card);
+		this.discardPile.addCard(card);
+	}
+
 }

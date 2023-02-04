@@ -221,6 +221,10 @@ public abstract class Adventurer implements Serializable {
 	public void takeDamage(int damage) {
 		this.currentState.takeDamage(damage,this);
 	}
+
+	public void removeCardFromHand(Card card){
+		this.currentState.removeCardFromHand(card);
+	}
 	
 	public String toString() {
 		return String.valueOf(getID());

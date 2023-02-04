@@ -46,6 +46,7 @@ public class AdventurerTurn implements TurnState {
 				target.add(PlayTheGame.getInstance().chooseTarget());
 			}
 			cardToPlay.activeEffect(battleRoom,target);
+			Adventurer.getInstance().removeCardFromHand(cardToPlay);
 		}
 	}
 

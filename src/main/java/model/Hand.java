@@ -80,4 +80,12 @@ public class Hand {
 		return result;
 	}
 
+	/**
+	 * remove the passed card as parameter
+	 * @param card the card to remove
+	 */
+	public void removeCard(Card card){
+		this.cards.remove(card);
+	}
+
 }

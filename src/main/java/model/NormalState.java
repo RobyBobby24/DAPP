@@ -106,4 +106,9 @@ public class NormalState implements AdventurerState {
 		return this.getClass().getSimpleName();
 	}
 
+	@Override
+	public void removeCardFromHand(Card card) {
+
+	}
+
 }

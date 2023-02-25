@@ -9,7 +9,6 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-
 public class Main {
     public static void main(String[] args) throws ClassNotFoundException, InvocationTargetException, NoSuchMethodException, IllegalAccessException {
         //PersistenceInterface persistence=PersistenceInterface.getInstance();
@@ -59,7 +58,7 @@ public class Main {
             m.setHp(hp);
             m.setChallengeRating(3);
             PersistenceInterface.getIstance().store(m);
-         */
+        */
         /*
         try {
             Monster monster=(Monster)PersistenceInterface.getIstance().loadOne(1,Monster.class);
@@ -70,10 +69,9 @@ public class Main {
         catch (Exception e){
             throw new UnsupportedOperationException(e);
         }
-         */
+        */
         Logger logger = Logger.getLogger("org.hibernate");
         logger.setLevel(Level.SEVERE);
         PlayTheGame.getInstance().chooseOperation();
-
     }
 }

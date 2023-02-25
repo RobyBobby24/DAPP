@@ -14,7 +14,6 @@ public class BattleState implements AdventurerState {
 
 
 
-
 	public BattleState() {
 		this.hand = new Hand();
 		this.discardPile = new DiscardPile();

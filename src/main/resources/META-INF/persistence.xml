@@ -21,6 +21,7 @@
         <class>model.ProtectionEffect</class>
         <class>model.Room</class>
         <class>model.Warrior</class>
+        <class>model.AdventurerDescription</class>
         <properties>
             <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/dappsweng"/>
             <property name="hibernate.connection.driver_class" value="com.mysql.cj.jdbc.Driver"/>

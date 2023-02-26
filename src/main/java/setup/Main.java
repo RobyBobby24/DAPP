@@ -1,11 +1,11 @@
 package setup;
 
-import model.Adventurer;
+import model.AdventurerDescription;
 import model.PlayTheGame;
-import model.Warrior;
 import services.PersistenceInterface;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.TreeMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -72,6 +72,11 @@ public class Main {
         */
         Logger logger = Logger.getLogger("org.hibernate");
         logger.setLevel(Level.SEVERE);
+        TreeMap<String,String> att_val=new TreeMap<>();
+        att_val.put("type","Warrior");
+        AdventurerDescription advdes= (AdventurerDescription) PersistenceInterface.getInstance().search(att_val, AdventurerDescription.class).get(0);
+        System.out.println(advdes.getType());
+
         PlayTheGame.getInstance().chooseOperation();
     }
 }

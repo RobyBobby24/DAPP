@@ -19,7 +19,7 @@ public class MerchantController {
 	}
 
 	public static MerchantController getInstance() {
-		return this.instance;
+		return MerchantController.instance;
 	}
 
 	/**

@@ -19,7 +19,7 @@ public class FrontController {
 	}
 
 	public static FrontController getInstance() {
-		return this.instance;
+		return FrontController.instance;
 	}
 
 	public void makeNewGame() {

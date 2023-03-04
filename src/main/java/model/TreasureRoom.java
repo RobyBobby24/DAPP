@@ -19,4 +19,19 @@ public class TreasureRoom implements Room {
 		throw new UnsupportedOperationException();
 	}
 
+	@Override
+	public void enterRoom() {
+
+	}
+
+	@Override
+	public int getId() {
+		return 0;
+	}
+
+	@Override
+	public void setId(int id) {
+
+	}
+
 }

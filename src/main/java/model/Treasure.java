@@ -26,7 +26,7 @@ public abstract class Treasure {
 		throw new UnsupportedOperationException();
 	}
 
-	public string giveTreasureDescription() {
+	public String giveTreasureDescription() {
 		// TODO - implement Treasure.giveTreasureDescription
 		throw new UnsupportedOperationException();
 	}

@@ -19,7 +19,7 @@ public class TreasureController {
 	}
 
 	public static TreasureController getInstance() {
-		return this.instance;
+		return TreasureController.instance;
 	}
 
 	public void chooseTreasure() {

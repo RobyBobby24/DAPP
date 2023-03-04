@@ -7,6 +7,11 @@ public class HardDifficultyStrategy implements BuildMapDifficultyStrategy {
 		throw new UnsupportedOperationException();
 	}
 
+	@Override
+	public void BuildMapDifficultyStrategy() {
+
+	}
+
 	public HardDifficultyStrategy() {
 		// TODO - implement HardDifficultyStrategy.HardDifficultyStrategy
 		throw new UnsupportedOperationException();

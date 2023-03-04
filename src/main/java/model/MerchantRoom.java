@@ -5,14 +5,13 @@ import java.util.*;
 public class MerchantRoom implements Room {
 
 	protected int ID;
-	ArrayList<Card> cards;
-	private Card[] purchasableCards;
+	private List<Card> purchasableCards;
 
-	public Card[] getPurchasableCards() {
+	public List<Card> getPurchasableCards() {
 		return this.purchasableCards;
 	}
 
-	public void setPurchasableCards(Card[] purchasableCards) {
+	public void setPurchasableCards(ArrayList<Card> purchasableCards) {
 		this.purchasableCards = purchasableCards;
 	}
 

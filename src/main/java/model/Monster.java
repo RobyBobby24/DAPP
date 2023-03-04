@@ -14,6 +14,7 @@
 package model;
 
 import jakarta.persistence.*;
+import org.glassfish.jaxb.core.v2.TODO;
 import org.hibernate.annotations.LazyCollectionOption;
 
 import java.io.Serializable;
@@ -58,7 +59,8 @@ public class Monster implements Serializable {
 	@org.hibernate.annotations.LazyCollection(LazyCollectionOption.FALSE)
 	private List<Action> availableActions = new ArrayList<Action>();
 
-
+	@Column(name="RewardCoins", nullable=false, length=10)
+	private int rewardCoins;
 	@Transient
 	private Action nextAction;
 
@@ -200,6 +202,7 @@ public class Monster implements Serializable {
 	 * @return ID (identifier of the instance also in DB)
 	 */
 	public int getId() {
+		//TODO elimina questo metodo o getID
 		return this.ID;
 	}
 
@@ -208,7 +211,19 @@ public class Monster implements Serializable {
 	 * @param id new ID
 	 */
 	public void setId(int id) {
+		//TODO elimina questo metodo o setID
 		this.ID=id;
+	}
+
+	/**
+	 * @return RewardCoins (the coins that the adventurer acquire
+	 */
+	public int getRewardCoins() {
+		return rewardCoins;
+	}
+
+	public void setRewardCoins(int rewardCoins) {
+		this.rewardCoins = rewardCoins;
 	}
 
 	/**

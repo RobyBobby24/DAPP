@@ -10,6 +10,7 @@ import java.util.TreeMap;
 public class PlayTheGame {
 
 	private static PlayTheGame instance;
+	private boolean endGame;
 
 	private PlayTheGame() {
 
@@ -20,6 +21,14 @@ public class PlayTheGame {
 			PlayTheGame.instance = new PlayTheGame();
 		}
 		return PlayTheGame.instance;
+	}
+
+	public boolean getEndGame() {
+		return endGame;
+	}
+
+	public void setEndGame(boolean endGame) {
+		this.endGame = endGame;
 	}
 
 	/**

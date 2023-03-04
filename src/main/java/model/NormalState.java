@@ -111,4 +111,29 @@ public class NormalState implements AdventurerState {
 
 	}
 
+	@Override
+	public void buyAcard(Card card) {
+
+	}
+
+	@Override
+	public void addCoins(int coins) {
+
+	}
+
+	@Override
+	public void addCard(Card card) {
+
+	}
+
+	@Override
+	public void drawCardsStartTurn() {
+
+	}
+
+	@Override
+	public void catchReward(int coins) {
+
+	}
+
 }

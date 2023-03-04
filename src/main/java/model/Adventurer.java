@@ -42,6 +42,8 @@ public abstract class Adventurer implements Serializable {
 	@JoinColumns(value={ @JoinColumn(name="DeckID", referencedColumnName="ID", nullable=false) }, foreignKey=@ForeignKey(name="FKAdventurer341408"))
 	protected Deck deck;
 
+	private int coins;
+
 	protected static Adventurer instance;
 
 	@Transient
@@ -225,7 +227,54 @@ public abstract class Adventurer implements Serializable {
 	public void removeCardFromHand(Card card){
 		this.currentState.removeCardFromHand(card);
 	}
-	
+
+
+	public int isAlive() {
+		// TODO - implement Adventurer.getEnergyPoint
+		throw new UnsupportedOperationException();
+	}
+
+	public int getCoins() {
+		// TODO - implement Adventurer.getEnergyPoint
+		throw new UnsupportedOperationException();
+	}
+
+	public void setCoins(int coins) {
+		// TODO - implement Adventurer.getEnergyPoint
+		throw new UnsupportedOperationException();
+	}
+
+	public void buyACard() {
+		// TODO - implement Adventurer.getEnergyPoint
+		throw new UnsupportedOperationException();
+	}
+
+	public void addHp(int hp) {
+		// TODO - implement Adventurer.getEnergyPoint
+		throw new UnsupportedOperationException();
+	}
+
+	public void addCoins(int coins) {
+		// TODO - implement Adventurer.getEnergyPoint
+		throw new UnsupportedOperationException();
+	}
+
+	public void addCard(Card card) {
+		// TODO - implement Adventurer.getEnergyPoint
+		throw new UnsupportedOperationException();
+	}
+
+	public void drawCardsStartTurn() {
+		// TODO - implement Adventurer.getEnergyPoint
+		throw new UnsupportedOperationException();
+	}
+
+	public void catchReward() {
+		// TODO - implement Adventurer.getEnergyPoint
+		throw new UnsupportedOperationException();
+	}
+
+
 	public String toString() {
 		return String.valueOf(getID());
 	}

@@ -47,6 +47,9 @@ public class DungeonMap implements Serializable {
 	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
 	private List<Room> rooms = new ArrayList<Room>();
 
+	@Transient
+	private BuildMapDifficultyStrategy difficulty;
+
 
 	protected DungeonMap() {
 	}
@@ -120,6 +123,16 @@ public class DungeonMap implements Serializable {
 		this.currentRoom=currentRoom;
 	}
 
+
+	public void setDifficulty(BuildMapDifficultyStrategy difficultyStrategy) {
+		// TODO - implement DecoratorState.getCardsFromHand
+		throw new UnsupportedOperationException();
+	}
+
+	public boolean areThereAvailableRooms() {
+		// TODO - implement DecoratorState.getCardsFromHand
+		throw new UnsupportedOperationException();
+	}
 	/**
 	 * add a room to the map
 	 * @param room room to add

@@ -77,4 +77,14 @@ public interface AdventurerState {
 
 
     void removeCardFromHand(Card card);
+
+	void buyAcard(Card card);
+
+	void addCoins(int coins);
+
+	void addCard(Card card);
+
+	void drawCardsStartTurn();
+
+	void catchReward(int coins);
 }

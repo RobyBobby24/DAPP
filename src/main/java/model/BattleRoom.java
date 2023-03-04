@@ -98,13 +98,23 @@ public class BattleRoom extends Room implements Serializable {
 		this.ID=id;
 	}
 
+
+	/**
+	 * start the operation that will be in the battle
+	 */
+	public void startBattle() {
+		Adventurer.getInstance().setBattleState();
+		this.currentTurn = new AdventurerTurn();
+		this.ended=this.monsters.size();
+	}
+
 	/**
 	 * run the battle passed between turn
 	 */
 	private void playBattle(){
 		while (this.ended>0){
-			this.currentTurn.startTurn(this);
-			this.currentTurn.playTurn(this);
+			this.startTurn();
+			this.playTurn();
 		}
 	}
 
@@ -115,6 +125,28 @@ public class BattleRoom extends Room implements Serializable {
 		this.currentTurn.startTurn(this);
 	}
 
+	/**
+	 * play a turn
+	 */
+	public void playTurn() {
+		this.currentTurn.playTurn(this);
+	}
+
+	/**
+	 * pass tarn to Adventurer or monsters
+	 */
+	public void passTurn() {
+		this.currentTurn.passTurn(this);
+	}
+
+	/**
+	 * play a card or no op
+	 * @param effectID id of the card
+	 */
+	public void performEffect(int effectID) {
+		this.currentTurn.performEffect(this,effectID);
+	}
+
 
 	/**
 	 * set new currentTurn (turn witch is actual run)
@@ -122,15 +154,6 @@ public class BattleRoom extends Room implements Serializable {
 	 */
 	public void setCurrentTurn(TurnState currentTurn) {
 		this.currentTurn=currentTurn;
-	}
-
-	/**
-	 * start the operation that will be in the battle
-	 */
-	public void startBattle() {
-		Adventurer.getInstance().setBattleState();
-		this.currentTurn = new AdventurerTurn();
-		this.ended=this.monsters.size();
 	}
 
 	/**
@@ -158,14 +181,6 @@ public class BattleRoom extends Room implements Serializable {
 			Action action=monster.getRandomAction();
 			monster.setNextAction(action);
 		}
-	}
-
-	/**
-	 * play a card or no op
-	 * @param effectID id of the card
-	 */
-	public void performEffect(int effectID) {
-		this.currentTurn.performEffect(this,effectID);
 	}
 
 	/**
@@ -220,12 +235,7 @@ public class BattleRoom extends Room implements Serializable {
 		}
 	}
 
-	/**
-	 * pass tarn to Adventurer or monsters
-	 */
-	public void passTurn() {
-		this.currentTurn.passTurn(this);
-	}
+
 
 	/**
 	 * @param actualMonsterId monster of the previous monster that we want to take

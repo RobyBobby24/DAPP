@@ -147,4 +147,29 @@ public class BattleState implements AdventurerState {
 		this.discardPile.addCard(card);
 	}
 
+	@Override
+	public void buyAcard(Card card) {
+
+	}
+
+	@Override
+	public void addCoins(int coins) {
+
+	}
+
+	@Override
+	public void addCard(Card card) {
+
+	}
+
+	@Override
+	public void drawCardsStartTurn() {
+
+	}
+
+	@Override
+	public void catchReward(int coins) {
+
+	}
+
 }

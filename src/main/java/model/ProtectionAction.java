@@ -69,6 +69,7 @@ public class ProtectionAction extends Action implements Serializable {
 	public void activeAction(Monster monster) {
 		monster.addProtection(this.protection);
 	}
+	// TODO cambiarlo in activateAction ovunque
 	
 	public String toString() {
 		if(this.nextAction!=null)return "protection:"+this.protection+", "+this.nextAction;
@@ -76,7 +77,7 @@ public class ProtectionAction extends Action implements Serializable {
 	}
 
 	public String var_dump(){
-		return "ID:"+this.getID()+" damage:"+this.protection+" nextAction:"+this.nextAction;
+		return "ID:"+this.getID()+" protection:"+this.protection+" nextAction:"+this.nextAction;
 	}
 	
 }

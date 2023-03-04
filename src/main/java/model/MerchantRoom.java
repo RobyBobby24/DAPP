@@ -4,6 +4,7 @@ import java.util.*;
 
 public class MerchantRoom implements Room {
 
+	protected int ID;
 	ArrayList<Card> cards;
 	private Card[] purchasableCards;
 
@@ -21,17 +22,17 @@ public class MerchantRoom implements Room {
 	}
 
 	@Override
-	public void enterRoom() {
+	public void setID(int value) {
 
 	}
 
 	@Override
-	public int getId() {
+	public int getID() {
 		return 0;
 	}
 
 	@Override
-	public void setId(int id) {
+	public void enterRoom() {
 
 	}
 

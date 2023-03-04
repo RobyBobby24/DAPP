@@ -21,33 +21,39 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeMap;
 
+/*
 @Entity
 @org.hibernate.annotations.Proxy(lazy=false)
 @Table(name="dungeonmap")
+ */
 public class DungeonMap implements Serializable {
 
 
 
-	@Transient
+	//@Transient
 	private static DungeonMap instance;
 
-	@Transient
+	//@Transient
 	private Room currentRoom;
 
+	/*
 	@Column(name="ID", nullable=false, length=10)	
 	@Id	
 	@GeneratedValue(generator="MODEL_DUNGEONMAP_ID_GENERATOR")	
-	@org.hibernate.annotations.GenericGenerator(name="MODEL_DUNGEONMAP_ID_GENERATOR", strategy="native")	
+	@org.hibernate.annotations.GenericGenerator(name="MODEL_DUNGEONMAP_ID_GENERATOR", strategy="native")
+	 */
 	private int ID;
-	
+
+	/*
 	@OneToMany(targetEntity= Room.class)
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
 	@JoinColumns({ @JoinColumn(name="DungeonMapID", nullable=false) })	
 	@org.hibernate.annotations.IndexColumn(name="DungeonMapIndex")	
-	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
+	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)
+	 */
 	private List<Room> rooms = new ArrayList<Room>();
 
-	@Transient
+	//@Transient
 	private BuildMapDifficultyStrategy difficulty;
 
 

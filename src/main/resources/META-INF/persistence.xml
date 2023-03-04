@@ -6,7 +6,6 @@
     <persistence-unit name="default">
         <class>model.Action</class>
         <class>model.Adventurer</class>
-        <class>model.BattleRoom</class>
         <class>model.Card</class>
         <class>model.DamageAction</class>
         <class>model.DamageEffect</class>
@@ -19,7 +18,6 @@
         <class>model.Player</class>
         <class>model.ProtectionAction</class>
         <class>model.ProtectionEffect</class>
-        <class>model.Room</class>
         <class>model.Warrior</class>
         <class>model.AdventurerDescription</class>
         <properties>

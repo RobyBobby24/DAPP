@@ -16,37 +16,29 @@ package model;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+/*
 @Entity
 @org.hibernate.annotations.Proxy(lazy=false)
 @Table(name="room")
 @Inheritance(strategy=InheritanceType.JOINED)
 @DiscriminatorValue("Room")
-public abstract class Room implements Serializable {
-	public Room() {
-	}
-	
+ */
+public interface Room {
+
+	/*
 	@Column(name="ID", nullable=false, length=10)	
 	@Id	
 	@GeneratedValue(generator="MODEL_ROOM_ID_GENERATOR")	
-	@org.hibernate.annotations.GenericGenerator(name="MODEL_ROOM_ID_GENERATOR", strategy="native")	
-	protected int ID;
+	@org.hibernate.annotations.GenericGenerator(name="MODEL_ROOM_ID_GENERATOR", strategy="native")
+	 */
+
 	
-	private void setID(int value) {
-		this.ID = value;
-	}
+	void setID(int value);
 	
-	public int getID() {
-		return ID;
-	}
+	int getID();
 	
 	public abstract void enterRoom();
 	
-	public abstract int getId();
-	
-	public abstract void setId(int id);
-	
-	public String toString() {
-		return String.valueOf(getID());
-	}
+	String toString();
 	
 }

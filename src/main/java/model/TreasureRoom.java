@@ -4,6 +4,7 @@ import java.util.*;
 
 public class TreasureRoom implements Room {
 
+	protected int ID;
 	ArrayList<Treasure> treasures;
 
 	public ArrayList<Treasure> getTreasures() {
@@ -20,17 +21,17 @@ public class TreasureRoom implements Room {
 	}
 
 	@Override
-	public void enterRoom() {
+	public void setID(int value) {
 
 	}
 
 	@Override
-	public int getId() {
+	public int getID() {
 		return 0;
 	}
 
 	@Override
-	public void setId(int id) {
+	public void enterRoom() {
 
 	}
 

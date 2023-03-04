@@ -136,7 +136,7 @@ public class Card implements Serializable {
 	 * @param target id of the target to change
 	 */
 	public void activeEffect(BattleRoom battleField, ArrayList<Integer> target) {
-		this.effect.activeEffect(battleField,target);
+		this.effect.activateEffect(battleField,target);
 		int newEnergyPoint = Adventurer.getInstance().getEnergyPoint() - this.energyCost;
 		Adventurer.getInstance().setEnergyPoint(newEnergyPoint);
 	}

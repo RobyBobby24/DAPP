@@ -19,4 +19,19 @@ public class StandardRoomFactory implements RoomFactory {
 		return room;
 	}
 
+	public TreasureRoom createTreasureRoom() {
+		TreasureRoom room = new TreasureRoom();
+		return room;
+	}
+
+	public BonfireRoom createBonfireRoom() {
+		BonfireRoom room = new BonfireRoom();
+		return room;
+	}
+
+	public MerchantRoom createMerchantRoom() {
+		MerchantRoom room = new MerchantRoom();
+		return room;
+	}
+
 }

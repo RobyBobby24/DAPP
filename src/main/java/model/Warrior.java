@@ -24,14 +24,12 @@ public class Warrior extends Adventurer implements Serializable {
 
 
 
-
-
 	public Warrior() {
 		this.currentState = new NormalState();
 	}
 
 
-	public static Adventurer getInstance(){
+	public static Adventurer getInstance() {
 		if(Warrior.instance == null){
 			Warrior.instance = new Warrior();
 		}

@@ -69,10 +69,10 @@ public class DamageAction extends Action implements Serializable {
 	 * take away the hp to the Adventurer
 	 * @param monster monster who activated the effect
 	 */
-	public void activeAction(Monster monster) {
+	public void activateAction(Monster monster) {
 		Adventurer.getInstance().takeDamage(this.damage);
 		if(this.nextAction != null)
-			this.nextAction.activeAction(monster);
+			this.nextAction.activateAction(monster);
 	}
 	
 	public String toString() {

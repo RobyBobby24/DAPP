@@ -50,7 +50,7 @@ public abstract class Action implements Serializable {
 		return nextAction;
 	}
 	
-	public abstract void activeAction(Monster monster);
+	public abstract void activateAction(Monster monster);
 	
 	public String toString() {
 		return String.valueOf(getID());

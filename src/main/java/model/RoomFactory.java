@@ -5,6 +5,12 @@ public interface RoomFactory {
 	/**
 	 *
 	 */
-	abstract Room createBattleRoom();
+	public abstract Room createBattleRoom();
+
+	public abstract Room createTreasureRoom();
+
+	public abstract Room createBonfireRoom();
+
+	public abstract Room createMerchantRoom();
 
 }

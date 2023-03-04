@@ -96,7 +96,7 @@ public abstract class Effect implements Serializable {
 	 * @param battleField field that contain all the variable that an effect could change
 	 * @param target id of the target who will be changed in this effect or in the next
 	 */
-	public abstract void activeEffect(BattleRoom battleField, ArrayList<Integer> target);
+	public abstract void activateEffect(BattleRoom battleField, ArrayList<Integer> target);
 
 	/**
 	 * @param actualNumber number of target that need the previous effect

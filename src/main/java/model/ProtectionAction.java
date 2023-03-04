@@ -66,10 +66,10 @@ public class ProtectionAction extends Action implements Serializable {
 	 * after that the Adventurer can take "protection" damage without lose hp
 	 * @param monster monster who activated the action and take the protection
 	 */
-	public void activeAction(Monster monster) {
+	public void activateAction(Monster monster) {
 		monster.addProtection(this.protection);
 	}
-	// TODO cambiare nome metodo in activateAction e farlo anche nella classe DamageAction
+
 	
 	public String toString() {
 		if(this.nextAction!=null)return "protection:"+this.protection+", "+this.nextAction;

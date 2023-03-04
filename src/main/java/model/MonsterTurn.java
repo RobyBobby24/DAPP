@@ -48,7 +48,7 @@ public class MonsterTurn implements TurnState {
 	@Override
 	public void playTurn(BattleRoom battleRoom) {
 		if(this.actualMonster != null){
-			this.actualMonster.getNextAction().activeAction(this.actualMonster);
+			this.actualMonster.getNextAction().activateAction(this.actualMonster);
 		}
 		else
 			battleRoom.passTurn();

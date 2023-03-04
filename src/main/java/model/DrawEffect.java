@@ -54,10 +54,10 @@ public class DrawEffect extends Effect implements Serializable {
 	 * @param battleField field that contain all the variable that an effect could change
 	 * @param target id of the target who will be changed in this effect or in the next
 	 */
-	public void activeEffect(BattleRoom battleField, ArrayList<Integer> target) {
+	public void activateEffect(BattleRoom battleField, ArrayList<Integer> target) {
 		Adventurer.getInstance().drawCards(this.numberCards);
 		if(this.nextEffect != null)
-			this.nextEffect.activeEffect(battleField,target);
+			this.nextEffect.activateEffect(battleField,target);
 	}
 	
 	public String toString() {

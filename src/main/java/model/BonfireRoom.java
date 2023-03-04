@@ -2,10 +2,14 @@ package model;
 
 public class BonfireRoom implements Room {
 
+
+	private int percentageRestore;
 	public BonfireRoom() {
 		// TODO - implement BonfireRoom.BonfireRoom
 		throw new UnsupportedOperationException();
 	}
+
+	
 
 	@Override
 	public void setID(int value) {

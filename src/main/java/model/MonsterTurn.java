@@ -2,7 +2,7 @@ package model;
 
 public class MonsterTurn implements TurnState {
 
-	private Monster actualMonster;
+	private Monster currentMonster;
 
 
 	public  MonsterTurn() {
@@ -32,11 +32,11 @@ public class MonsterTurn implements TurnState {
 	 * @param battleRoom
 	 */
 	public void startTurn(BattleRoom battleRoom) {
-		if(this.actualMonster == null){
-			this.setActualMonster(battleRoom.getFirstMonster());
+		if(this.currentMonster == null){
+			this.setCurrentMonster(battleRoom.getFirstMonster());
 		}
 		else{
-			this.setActualMonster(battleRoom.getNextMonster(this.actualMonster.getID()));
+			this.setCurrentMonster(battleRoom.getNextMonster(this.currentMonster.getID()));
 		}
 	}
 
@@ -47,8 +47,8 @@ public class MonsterTurn implements TurnState {
 	 */
 	@Override
 	public void playTurn(BattleRoom battleRoom) {
-		if(this.actualMonster != null){
-			this.actualMonster.getNextAction().activateAction(this.actualMonster);
+		if(this.currentMonster != null){
+			this.currentMonster.getNextAction().activateAction(this.currentMonster);
 		}
 		else
 			battleRoom.passTurn();
@@ -66,8 +66,8 @@ public class MonsterTurn implements TurnState {
 	 * set new actualMonster (the monster who are playing the turn)
 	 * @param monster
 	 */
-	public void setActualMonster(Monster monster) {
-		this.actualMonster=monster;
+	public void setCurrentMonster(Monster monster) {
+		this.currentMonster =monster;
 	}
 
 }

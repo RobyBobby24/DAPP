@@ -35,7 +35,15 @@ public class BattleRoom implements Serializable,Room {
 	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
 	private List<Monster> monsters = new ArrayList<Monster>();
 
+	public int getBattleReward() {
+		return battleReward;
+	}
 
+	public void setBattleReward(int battleReward) {
+		this.battleReward = battleReward;
+	}
+
+	private int battleReward;
 	@Transient
 	private int ended;
 

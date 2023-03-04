@@ -162,10 +162,7 @@ public class BattleState implements AdventurerState {
 
 	}
 
-	@Override
-	public void drawCardsStartTurn() {
 
-	}
 
 	@Override
 	public void catchReward(int coins) {

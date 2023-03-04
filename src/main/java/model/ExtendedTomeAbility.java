@@ -7,4 +7,8 @@ public class ExtendedTomeAbility extends DecoratorState {
 		throw new UnsupportedOperationException();
 	}
 
+	public void startTurn(){
+
+	}
+
 }

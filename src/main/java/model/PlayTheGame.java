@@ -99,7 +99,7 @@ public class PlayTheGame {
 	 */
 	public void chooseAdventurer() {
 		try{
-			AdventurerHelper.getInstance().setAdventurerClass(FrontView.getInstance().inputMakeNewGame());
+			AdventurerFactory.getInstance().setAdventurerClass(FrontView.getInstance().inputMakeNewGame());
 			DungeonMap.getInstance().buildMap();
 			ArrayList<Room> availableRooms = DungeonMap.getInstance().giveMeAvailableRooms();
 			FrontView.getInstance().outputChooseRoom(availableRooms);

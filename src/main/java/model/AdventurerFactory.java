@@ -4,26 +4,26 @@ import services.PersistenceInterface;
 
 import java.lang.reflect.Method;
 
-public class AdventurerHelper {
+public class AdventurerFactory {
     public String adventurerClass;
 
-    private static AdventurerHelper instance;
+    private static AdventurerFactory instance;
 
 
 
 
 
-    private AdventurerHelper(){
+    private AdventurerFactory(){
 
     }
 
     /**
      * @return the unique instance of AdventurerFactory
      */
-    public static AdventurerHelper getInstance(){
-        if(AdventurerHelper.instance == null)
-            AdventurerHelper.instance = new AdventurerHelper();
-        return AdventurerHelper.instance;
+    public static AdventurerFactory getInstance(){
+        if(AdventurerFactory.instance == null)
+            AdventurerFactory.instance = new AdventurerFactory();
+        return AdventurerFactory.instance;
     }
 
     /**

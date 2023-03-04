@@ -27,6 +27,18 @@ public class AdventurerDescription {
     @Column(name="Discriminator", nullable=false)
     protected String type;
 
+    public int getID() {
+        return ID;
+    }
+
+    public Hp getHp() {
+        return hp;
+    }
+
+    public Deck getDeck() {
+        return deck;
+    }
+
     public String getType() {
         return type;
     }

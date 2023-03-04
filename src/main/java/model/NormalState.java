@@ -128,10 +128,7 @@ public class NormalState implements AdventurerState {
 		//TODO to implement
 	}
 
-	@Override
-	public void drawCardsStartTurn() {
 
-	}
 
 	@Override
 	public void catchReward(int coins) {

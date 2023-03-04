@@ -69,7 +69,7 @@ public class ProtectionAction extends Action implements Serializable {
 	public void activeAction(Monster monster) {
 		monster.addProtection(this.protection);
 	}
-	// TODO cambiarlo in activateAction ovunque
+	// TODO cambiare nome metodo in activateAction e farlo anche nella classe DamageAction
 	
 	public String toString() {
 		if(this.nextAction!=null)return "protection:"+this.protection+", "+this.nextAction;

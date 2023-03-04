@@ -30,7 +30,6 @@ public class ProtectionEffect extends Effect implements Serializable {
 	private int protection;
 
 
-
 	public ProtectionEffect() {
 		this.target=false;
 	}
@@ -60,6 +59,7 @@ public class ProtectionEffect extends Effect implements Serializable {
 		if(this.nextEffect != null)
 			this.nextEffect.activeEffect(battleField,target);
 	}
+	// TODO cambiare nome metodo in activateEffect e anche in DamageEffect e DrawEffect
 	
 	public String toString() {
 		if(this.nextEffect!=null)return "protection:"+this.protection+", "+this.nextEffect;

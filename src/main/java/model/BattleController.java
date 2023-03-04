@@ -1,5 +1,9 @@
 package model;
 
+import view.FrontView;
+
+import java.util.List;
+
 public class BattleController {
 
 	private static BattleController instance;
@@ -18,9 +22,24 @@ public class BattleController {
 		throw new UnsupportedOperationException();
 	}
 
+	public static BattleController getInstance() {
+		return BattleController.instance;
+	}
+
+	/**
+	 * play the card chosen
+	 */
 	public void playCard() {
-		// TODO - implement BattleController.playCard
-		throw new UnsupportedOperationException();
+		try{
+			List<Card> cards = Adventurer.getInstance().getCardsFromHand();
+			BattleRoom battleRoom = (BattleRoom) DungeonMap.getInstance().getCurrentRoom();
+			FrontView.getInstance().outputPlayCard(cards,Adventurer.getInstance(),battleRoom);
+			battleRoom.performEffect(FrontView.getInstance().inputPlayCard());
+		}
+		catch (Exception e){
+			FrontView.getInstance().outputError("la carta selezionata non è disponibile!!!");
+			this.playCard();
+		}
 	}
 
 	public void passTurn() {
@@ -28,23 +47,43 @@ public class BattleController {
 		throw new UnsupportedOperationException();
 	}
 
+	/**
+	 * choose next battle operation
+	 */
 	public void nextBattleOp() {
-		// TODO - implement BattleController.nextBattleOp
-		throw new UnsupportedOperationException();
+		try{
+			BattleRoom battleRoom = (BattleRoom) DungeonMap.getInstance().getCurrentRoom();
+			FrontView.getInstance().outputChooseBattleOp(Adventurer.getInstance(),battleRoom);
+			String operation=FrontView.getInstance().inputChooseBattleOp();//input
+			if(operation.equals("pass-turn"))
+				this.passTurn();
+			else if (operation.equals("play-card"))
+				this.playCard();
+			else
+				throw new Exception("operation selected do not exist");
+		}
+		catch (Exception e){
+			FrontView.getInstance().outputError("l'operazione selezionata non è supportata!!!");
+			this.nextBattleOp();
+		}
+
 	}
 
 	public void chooseTarget() {
-		// TODO - implement BattleController.chooseTarget
-		throw new UnsupportedOperationException();
+		try{
+			BattleRoom room = (BattleRoom) DungeonMap.getInstance().getCurrentRoom();
+			List<Monster> monsters = room.getMonsters();
+			FrontView.getInstance().outputChooseTarget(monsters);
+		}
+		catch (Exception e){
+			FrontView.getInstance().outputError("il target selezionato non è valido!!!");
+		}
 	}
 
 	public int takeTarget() {
-		// TODO - implement BattleController.takeTarget
-		throw new UnsupportedOperationException();
+		return FrontView.getInstance().inputChooseTarget();
 	}
 
-	public static BattleController getInstance() {
-		return BattleController.instance;
-	}
+
 
 }

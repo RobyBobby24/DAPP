@@ -10,6 +10,7 @@ import java.util.TreeMap;
 public class PlayTheGame {
 
 	private static PlayTheGame instance;
+	private boolean endGame;
 
 	private PlayTheGame() {
 
@@ -20,6 +21,14 @@ public class PlayTheGame {
 			PlayTheGame.instance = new PlayTheGame();
 		}
 		return PlayTheGame.instance;
+	}
+
+	public boolean getEndGame() {
+		return endGame;
+	}
+
+	public void setEndGame(boolean endGame) {
+		this.endGame = endGame;
 	}
 
 	/**
@@ -115,74 +124,6 @@ public class PlayTheGame {
 		catch(Exception e){
 			FrontView.getInstance().outputError("l'avvio della battaglia non è andato a buon fine!!!");
 			this.chooseRoom();
-		}
-	}
-
-	/**
-	 * choose next battle operation
-	 */
-	public void nextBattleOp() {
-		try{
-			BattleRoom battleRoom = (BattleRoom) DungeonMap.getInstance().getCurrentRoom();
-			FrontView.getInstance().outputChooseBattleOp(Adventurer.getInstance(),battleRoom);
-			String operation=FrontView.getInstance().inputChooseBattleOp();//input
-			if(operation.equals("pass-turn"))
-				this.passTurn();
-			else if (operation.equals("play-card"))
-				this.playCard();
-			else
-				throw new Exception("operation selected do not exist");
-		}
-		catch (Exception e){
-			FrontView.getInstance().outputError("l'operazione selezionata non è supportata!!!");
-			this.nextBattleOp();
-		}
-
-	}
-
-	/**
-	 * play the card chosen
-	 */
-	public void playCard() {
-		try{
-			List<Card> cards = Adventurer.getInstance().getCardsFromHand();
-			BattleRoom battleRoom = (BattleRoom) DungeonMap.getInstance().getCurrentRoom();
-			FrontView.getInstance().outputPlayCard(cards,Adventurer.getInstance(),battleRoom);
-			battleRoom.performEffect(FrontView.getInstance().inputPlayCard());
-		}
-		catch (Exception e){
-			FrontView.getInstance().outputError("la carta selezionata non è disponibile!!!");
-			this.playCard();
-		}
-	}
-
-	/**
-	 * @return the target chosen
-	 */
-	public int chooseTarget() {
-		try{
-			BattleRoom room = (BattleRoom) DungeonMap.getInstance().getCurrentRoom();
-			List<Monster> monsters = room.getMonsters();
-			FrontView.getInstance().outputChooseTarget(monsters);
-			return FrontView.getInstance().inputChooseTarget();
-		}
-		catch (Exception e){
-			FrontView.getInstance().outputError("il target selezionato non è valido!!!");
-			return this.chooseTarget();
-		}
-	}
-
-	/**
-	 * pass turn to the monsters
-	 */
-	public void passTurn() {
-		try{
-			BattleRoom battleRoom = (BattleRoom) DungeonMap.getInstance().getCurrentRoom();
-			battleRoom.passTurn();
-		}
-		catch(Exception e){
-			FrontView.getInstance().outputError("non siamo riusciti a passre il turno!!!");
-			this.nextBattleOp();
 		}
 	}
 

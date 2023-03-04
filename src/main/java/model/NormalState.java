@@ -99,6 +99,7 @@ public class NormalState implements AdventurerState {
 	 */
 	@Override
 	public void takeDamage(int damage, Adventurer adventurer) {
+		//TODO verify if it will be implemented
 		adventurer.getHp().addCurrentHp(-damage);
 	}
 
@@ -113,17 +114,18 @@ public class NormalState implements AdventurerState {
 
 	@Override
 	public void buyAcard(Card card) {
+		//TODO to implement
 
 	}
 
 	@Override
 	public void addCoins(int coins) {
-
+		//TODO to implement
 	}
 
 	@Override
 	public void addCard(Card card) {
-
+		//TODO to implement
 	}
 
 	@Override
@@ -133,7 +135,7 @@ public class NormalState implements AdventurerState {
 
 	@Override
 	public void catchReward(int coins) {
-
+		//TODO to implement
 	}
 
 }

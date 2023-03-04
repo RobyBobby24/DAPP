@@ -97,7 +97,8 @@ public class PlayTheGame {
 			chooseRoom();
 		}
 		catch(Exception e){
-			FrontView.getInstance().outputError("la stanza scelta non è valida!!!");
+			//FrontView.getInstance().outputError("la stanza scelta non è valida!!!");
+			FrontView.getInstance().outputError(e.getMessage());
 			this.chooseAdventurer();
 		}
 	}

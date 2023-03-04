@@ -42,6 +42,7 @@ public abstract class Adventurer implements Serializable {
 	@JoinColumns(value={ @JoinColumn(name="DeckID", referencedColumnName="ID", nullable=false) }, foreignKey=@ForeignKey(name="FKAdventurer341408"))
 	protected Deck deck;
 
+	@Column(name="Coins", nullable=false, length=10)
 	private int coins;
 
 	protected static Adventurer instance;

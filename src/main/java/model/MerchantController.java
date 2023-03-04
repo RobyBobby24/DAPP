@@ -3,15 +3,7 @@ package model;
 public class MerchantController {
 
 	private static MerchantController instance;
-	private boolean endGame;
 
-	public boolean isEndGame() {
-		return this.endGame;
-	}
-
-	public void setEndGame(boolean endGame) {
-		this.endGame = endGame;
-	}
 
 	private MerchantController() {
 		// TODO - implement MerchantController.MerchantController

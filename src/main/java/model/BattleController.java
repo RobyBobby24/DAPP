@@ -7,15 +7,7 @@ import java.util.List;
 public class BattleController {
 
 	private static BattleController instance;
-	private boolean endGame;
 
-	public boolean isEndGame() {
-		return this.endGame;
-	}
-
-	public void setEndGame(boolean endGame) {
-		this.endGame = endGame;
-	}
 
 	private BattleController() {
 		// TODO - implement BattleController.BattleController

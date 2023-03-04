@@ -3,15 +3,8 @@ package model;
 public class FrontController {
 
 	private static FrontController instance;
-	private boolean endGame;
 
-	public boolean isEndGame() {
-		return this.endGame;
-	}
 
-	public void setEndGame(boolean endGame) {
-		this.endGame = endGame;
-	}
 
 	private FrontController() {
 		// TODO - implement FrontController.FrontController

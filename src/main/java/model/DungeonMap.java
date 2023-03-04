@@ -51,7 +51,7 @@ public class DungeonMap implements Serializable {
 	@org.hibernate.annotations.IndexColumn(name="DungeonMapIndex")	
 	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)
 	 */
-	private List<Room> rooms = new ArrayList<Room>();
+	private TreeMap< Room, List<Room>> rooms = new TreeMap();
 
 	//@Transient
 	private BuildMapDifficultyStrategy difficulty;
@@ -87,14 +87,14 @@ public class DungeonMap implements Serializable {
 	 */
 	public void buildMap() {
 		StandardRoomFactory standardRoomFactory = new StandardRoomFactory();
-		this.rooms.add(standardRoomFactory.createBattleRoom());
+		this.difficulty.buildMap();
 	}
 
 	/**
 	 * @return the list of the room reachable where the Adventurer is
 	 */
 	public ArrayList<Room> giveMeAvailableRooms() {
-		return new ArrayList<Room>(this.rooms);
+		return new ArrayList<Room>(this.rooms.get(this.currentRoom));
 	}
 
 	/**
@@ -102,7 +102,7 @@ public class DungeonMap implements Serializable {
 	 * @return the room that has "roomId" as ID
 	 */
 	public Room getRoom(int roomId) {
-		for (Room room : this.rooms) {
+		for (Room room : this.rooms.keySet()) {
 			if (room.getID() == roomId)
 				return room;
 		}
@@ -136,12 +136,20 @@ public class DungeonMap implements Serializable {
 	}
 	/**
 	 * add a room to the map
-	 * @param room room to add
 	 */
-	public void addRoom(Room room){
-		this.rooms.add(room);
+	public void addRoom(Room keyRoom, Room roomToAdd){
+		if(this.rooms.get(keyRoom) != null){
+
+			this.rooms.get(keyRoom).add(roomToAdd);
+		}
+		else {
+
+			ArrayList<Room> arrayRoom = new ArrayList<>();
+			arrayRoom.add(roomToAdd);
+			this.rooms.put(keyRoom, arrayRoom);
+		}
 	}
-	
+
 	public String toString() {
 		return String.valueOf(getID());
 	}

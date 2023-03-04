@@ -3,7 +3,7 @@ package model;
 public abstract class Treasure {
 
 	private int rewardCoins;
-	private Card[] cards;
+	private Card card;
 
 	public int getRewardCoins() {
 		return this.rewardCoins;
@@ -13,12 +13,12 @@ public abstract class Treasure {
 		this.rewardCoins = rewardCoins;
 	}
 
-	public Card[] getCards() {
-		return this.cards;
+	public Card getCard() {
+		return this.card;
 	}
 
-	public void setCards(Card[] cards) {
-		this.cards = cards;
+	public void setCards(Card card) {
+		this.card = card;
 	}
 
 	public void provideReward() {

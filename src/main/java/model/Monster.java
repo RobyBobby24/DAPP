@@ -76,7 +76,7 @@ public class Monster implements Serializable {
 	 * @return ID (identifier of the instance also in DB)
 	 */
 	public int getID() {
-		return ID;
+		return this.ID;
 	}
 
 	/**
@@ -193,27 +193,11 @@ public class Monster implements Serializable {
 	/**
 	 * @return random action from available
 	 */
-	public Action getRandomAction() {
+	public Action getRandomAction() {	// TODO verificare se è possibile stabilire una % per ogni azione
 		Random random =new Random();
 		return this.availableActions.get(random.nextInt(this.availableActions.size()));
 	}
 
-	/**
-	 * @return ID (identifier of the instance also in DB)
-	 */
-	public int getId() {
-		//TODO elimina questo metodo o getID
-		return this.ID;
-	}
-
-	/**
-	 * set new ID (identifier of the instance also in DB)
-	 * @param id new ID
-	 */
-	public void setId(int id) {
-		//TODO elimina questo metodo o setID
-		this.ID=id;
-	}
 
 	/**
 	 * @return RewardCoins (the coins that the adventurer acquire

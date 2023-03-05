@@ -209,7 +209,7 @@ public class BattleRoom implements Serializable,Room {
 	 */
 	public Monster getMonster(int monsterId) {
 		for (int i = 0; i < this.monsters.size(); i++) {
-			if(this.monsters.get(i).getId() == monsterId)
+			if(this.monsters.get(i).getID() == monsterId)
 				return this.monsters.get(i);
 		}
 		return null;
@@ -238,7 +238,7 @@ public class BattleRoom implements Serializable,Room {
 		boolean removed=false;
 		int i=0;
 		while(i<this.monsters.size() && !removed){
-			if(this.monsters.get(i).getId()==monsterId){
+			if(this.monsters.get(i).getID()==monsterId){
 				this.monsters.remove(i);
 				this.ended=this.ended-1;
 				removed=true;
@@ -257,7 +257,7 @@ public class BattleRoom implements Serializable,Room {
 		boolean finded=false;
 		int i=0;
 		while(i<this.monsters.size() && !finded){
-			if(this.monsters.get(i).getId()==actualMonsterId) finded=true;
+			if(this.monsters.get(i).getID()==actualMonsterId) finded=true;
 			i=i+1;
 		}
 		if(i<this.monsters.size())return this.monsters.get(i);

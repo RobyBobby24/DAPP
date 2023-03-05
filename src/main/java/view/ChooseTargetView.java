@@ -27,7 +27,7 @@ public class ChooseTargetView {
         Scanner prompt = new Scanner(System.in);
         System.out.println(nickname+" scegli il mostro da attaccare: \n");
         for (int i = 0; i < monsters.size(); i++) {
-            System.out.println(monsters.get(i) + "\u001B[32m("+monsters.get(i).getId() + ")\u001B[0m");
+            System.out.println(monsters.get(i) + "\u001B[32m("+monsters.get(i).getID() + ")\u001B[0m");
         }
         System.out.print("DAPP\\chooseTarget>");
         this.inputValue = Integer.parseInt(prompt.next());

@@ -37,12 +37,12 @@ public class Treasure {
 	}
 
 	public void provideReward() {
-		// TODO - implement Treasure.provideReward
+		// TODO - implement Treasure.provideReward da fare dopo aver creato i tesori
 		throw new UnsupportedOperationException();
 	}
 
 	public String giveTreasureDescription() {
-		// TODO - implement Treasure.giveTreasureDescription
+		// TODO - implement Treasure.giveTreasureDescription da fare dopo aver creato i tesori
 		throw new UnsupportedOperationException();
 	}
 

@@ -81,6 +81,43 @@ public class FrontView {
         return ChooseTargetView.getInstance().input();
     }
 
+    public void outputChooseDifficulty(List<String> difficultys){
+        ChooseDifficultyView.getInstance().output(this.nickname,difficultys);
+    }
+
+    public BuildMapDifficultyStrategy inputChooseDifficulty(){
+        return ChooseDifficultyView.getInstance().input();
+    }
+
+    public void outputChooseCardToBuy(List<Card> cards){
+        ChooseCardToBuyView.getInstance().output(this.nickname,cards);
+    }
+
+    public Card inputChooseCardToBuy(){
+        return ChooseCardToBuyView.getInstance().input();
+    }
+
+    public void outputSkipRest(int restPercentage){
+        SkipRestView.getInstance().output(this.nickname,restPercentage);
+    }
+
+    public boolean inputSkipRest(){
+        return SkipRestView.getInstance().input();
+    }
+
+    public void outputChooseTreasure(List<Treasure> treasures){
+        ChooseTreasureView.getInstance().output(this.nickname,treasures);
+    }
+
+    public Treasure inputChooseTreasure(){
+        return ChooseTreasureView.getInstance().input();
+    }
+
+
+
+
+
+
     public void outputError(String error){ErrorView.getInstance().output(error);}
 
     public void outputBattle(Adventurer adventurer,BattleRoom room){

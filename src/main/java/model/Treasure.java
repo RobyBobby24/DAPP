@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 @Entity
 @org.hibernate.annotations.Proxy(lazy=false)
 @Table(name="treasure")
-public abstract class Treasure {
+public class Treasure {
 
 	@Column(name="ID", nullable=false, length=10)
 	@Id
@@ -32,7 +32,7 @@ public abstract class Treasure {
 		return this.card;
 	}
 
-	public void setCards(Card card) {
+	public void setCard(Card card) {
 		this.card = card;
 	}
 

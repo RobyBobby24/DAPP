@@ -45,6 +45,8 @@ public abstract class Adventurer implements Serializable {
 	@Column(name="Coins", nullable=false, length=10)
 	private int coins;
 
+
+	@Transient
 	protected static Adventurer instance;
 
 	@Transient

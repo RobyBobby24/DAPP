@@ -27,6 +27,8 @@ public class AdventurerDescription {
     @Column(name="Discriminator", nullable=false)
     protected String type;
 
+    @Column(name="Coins", nullable=false, length=10)
+    private int coins;
     public int getID() {
         return ID;
     }
@@ -41,5 +43,9 @@ public class AdventurerDescription {
 
     public String getType() {
         return type;
+    }
+
+    public int getCoins() {
+        return coins;
     }
 }

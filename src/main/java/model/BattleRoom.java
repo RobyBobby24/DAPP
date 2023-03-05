@@ -19,20 +19,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
-@org.hibernate.annotations.Proxy(lazy=false)
-@Table(name="battleroom")
-@Inheritance(strategy=InheritanceType.JOINED)
-@DiscriminatorValue("BattleRoom")
-@PrimaryKeyJoinColumn(name="RoomID", referencedColumnName="ID")
 public class BattleRoom implements Serializable,Room {
 
 	//	Attribute!!!
-	@OneToMany(targetEntity= Monster.class)
-	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
-	@JoinColumns({ @JoinColumn(name="BattleRoomRoomID", nullable=true) })
-	@org.hibernate.annotations.IndexColumn(name="BattleRoomIndex")	
-	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
 	private List<Monster> monsters = new ArrayList<Monster>();
 
 	public int getBattleReward() {
@@ -44,16 +33,12 @@ public class BattleRoom implements Serializable,Room {
 	}
 
 	private int battleReward;
-	@Transient
+
 	private int ended;
 
-	@Transient
 	private TurnState currentTurn;
 
-	@Column(name="ID", nullable=false, length=10)
-	@Id
-	@GeneratedValue(generator="MODEL_DECK_ID_GENERATOR")
-	@org.hibernate.annotations.GenericGenerator(name="MODEL_DECK_ID_GENERATOR", strategy="native")
+
 	protected int ID;
 
 

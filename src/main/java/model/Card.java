@@ -32,9 +32,12 @@ public class Card implements Serializable {
 	
 	@Column(name="EnergyCost", nullable=false, length=10)	
 	private int energyCost;
-	
+
 	@Column(name="Description", nullable=false, length=255)
 	private String description="";
+
+	@Column(name="Name", nullable=false, length=255)
+	private String name="";
 
 
 
@@ -80,6 +83,14 @@ public class Card implements Serializable {
 	 */
 	public int getEnergyCost() {
 		return energyCost;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	/**
@@ -142,10 +153,12 @@ public class Card implements Serializable {
 	}
 	
 	public String toString() {
+		//TODO aggiungi il nome
 		return "Effect="+this.effect+", Description="+this.description;
 	}
 
 	public String var_dump() {
+		//TODO aggiungi il nome
 		return "id:"+this.ID+" energyCost:"+this.energyCost+" effect:"+this.effect+" description"+this.description;
 	}
 	

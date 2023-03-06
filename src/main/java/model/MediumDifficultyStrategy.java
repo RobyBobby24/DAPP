@@ -6,9 +6,14 @@ import java.util.*;
 
 public class MediumDifficultyStrategy implements BuildMapDifficultyStrategy {
 
+	int numberOfLevel=6;
+	int numberOfBattleRoom=8;
+	int numberOfMerchantRoom=3;
+	int numberOfTreasureRoom=3;
+	int numberOfBonfireRoom=3;
+
 	public void MediumDifficultySrategy() {
-		// TODO - implement MediumDifficultyStrategy.MediumDifficultySrategy
-		throw new UnsupportedOperationException();
+
 	}
 	public void buildMap(DungeonMap dungeonMap) {
 		TreeMap<String,String> key_value = new TreeMap<>();
@@ -21,7 +26,7 @@ public class MediumDifficultyStrategy implements BuildMapDifficultyStrategy {
 		List<Monster> normalMonstersRatingOne = (List<Monster>) PersistenceInterface.getInstance().search(key_value,Monster.class);
 		normalMonsters.addAll( normalMonstersRatingOne );
 		Collections.shuffle(normalMonsters);
-		
+
 		key_value = new TreeMap<>();
 		key_value.put("type","boss");
 		key_value.put("challengeRating","2");
@@ -32,21 +37,9 @@ public class MediumDifficultyStrategy implements BuildMapDifficultyStrategy {
 		List<Treasure>  treasures = (List<Treasure>) PersistenceInterface.getInstance().search(new TreeMap<>(),Treasure.class);
 
 		BattleRoom startingRoom = this.createBattleRoomRandomNormalMonster(normalMonsters,normalMonstersRatingOne);
-		
-		List<Room> rooms = new ArrayList<Room>();
-		for (int i = 0; i < 6; i++) {
-			rooms.add(this.createBattleRoomRandomNormalMonster(normalMonsters,normalMonstersRatingOne));
-		}
-		for (int i = 0; i < 3; i++) {
-			rooms.add(this.createMerchantRoomRandomCards(cards));
-		}
-		for (int i = 0; i < 3; i++) {
-			rooms.add(this.createTreasureRoomRandomTreasure(treasures));
-		}
-		for (int i = 0; i < 3; i++) {
-			RoomFactory roomFactory = ServicesFactory.getInstance().getRoomFactoryInstance();
-			BonfireRoom bonfireRoom=roomFactory.createBonfireRoom();
-		}
+
+		List<Room> rooms = this.takeRooms(normalMonsters,normalMonstersRatingOne,cards,treasures);
+
 		Random random = new Random();
 
 		dungeonMap.setCurrentRoom(startingRoom);
@@ -56,24 +49,48 @@ public class MediumDifficultyStrategy implements BuildMapDifficultyStrategy {
 			secondLevel.add( rooms.remove( random.nextInt( rooms.size() ) ) );
 			dungeonMap.addRoom( startingRoom, secondLevel.get(i) );
 		}
+		BattleRoom endRoom = this.createBattleRoomRandomBossMonster(bossMonsters);
 		for( Room room : secondLevel){
 			List<Room> level = new ArrayList<>();
 			level.add(room);
-			int choose = random.nextInt( 3 );
-			for (int i = 0; i < 4; i++) {
+			int choose = random.nextInt( this.numberOfLevel-2 );
+			for (int i = 0; i < this.numberOfLevel-2; i++) {
 				List<Room> actualLevel = new ArrayList<>();
 				actualLevel.add( rooms.remove( random.nextInt( rooms.size() ) ) );
 				if( choose==i ) actualLevel.add( rooms.remove( random.nextInt( rooms.size() ) ) );
-				for (Room r : level){
-					for (Room r1 : actualLevel){
-						dungeonMap.addRoom(r,r1);
+				for (Room rKey : level){
+					for (Room rValue : actualLevel){
+						dungeonMap.addRoom(rKey, rValue);
 					}
 				}
 				level = new ArrayList<>(actualLevel);
 			}
+			for( Room secondLastRoom : secondLevel){
+				dungeonMap.addRoom(secondLastRoom,endRoom);
+			}
 		}
 
 		
+	}
+
+	private List<Room> takeRooms(List<Monster> normalMonsters,List<Monster> normalMonstersRatingOne,List<Card>  cards,List<Treasure>  treasures ){
+
+		List<Room> rooms = new ArrayList<Room>();
+		for (int i = 0; i < numberOfBattleRoom-2; i++) {
+			rooms.add(this.createBattleRoomRandomNormalMonster(normalMonsters,normalMonstersRatingOne));
+		}
+		for (int i = 0; i < this.numberOfMerchantRoom; i++) {
+			rooms.add(this.createMerchantRoomRandomCards(cards));
+		}
+		for (int i = 0; i < this.numberOfTreasureRoom; i++) {
+			rooms.add(this.createTreasureRoomRandomTreasure(treasures));
+		}
+		for (int i = 0; i < this.numberOfBonfireRoom; i++) {
+			RoomFactory roomFactory = ServicesFactory.getInstance().getRoomFactoryInstance();
+			BonfireRoom bonfireRoom=roomFactory.createBonfireRoom();
+			rooms.add(bonfireRoom);
+		}
+		return rooms;
 	}
 
 	private BattleRoom createBattleRoomRandomNormalMonster(List<Monster> monsters, List<Monster> monstersRatingOne){

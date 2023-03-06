@@ -16,8 +16,6 @@ public class TreasureRoom implements Room {
 	}
 
 	public TreasureRoom() {
-		// TODO - implement TreasureRoom.TreasureRoom
-		throw new UnsupportedOperationException();
 	}
 
 	@Override

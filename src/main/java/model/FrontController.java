@@ -5,13 +5,14 @@ public class FrontController {
 	private static FrontController instance;
 
 
-
 	private FrontController() {
-		// TODO - implement FrontController.FrontController
-		throw new UnsupportedOperationException();
 	}
 
 	public static FrontController getInstance() {
+
+		if (FrontController.instance == null)
+			FrontController.instance = new FrontController();
+
 		return FrontController.instance;
 	}
 

@@ -18,8 +18,11 @@ public class Wizard extends Adventurer implements Serializable {
 
     @Override
     public void setBattleState() {
-        this.currentState = new BattleState();
-        this.currentState.setDeck(this.deck.clone());
+        AdventurerState battleState = new BattleState();
+        battleState.setDeck(this.deck.clone());
+        DecoratorState extendedTomeAbility = new ExtendedTomeAbility();
+        extendedTomeAbility.setComponent(battleState);
+        this.currentState = extendedTomeAbility;
     }
 
     @Override

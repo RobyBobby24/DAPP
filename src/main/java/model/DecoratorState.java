@@ -77,7 +77,7 @@ public class DecoratorState implements AdventurerState {
 
 	@Override
 	public void startTurn() {
-
+      component.startTurn();
 	}
 
 	/**
@@ -139,13 +139,12 @@ public class DecoratorState implements AdventurerState {
 	}
 
 	public void drawCardsStartTurn() {
-		// TODO - implement DecoratorState.drawCardsStartTurn
-		throw new UnsupportedOperationException();
+
 	}
 
 	@Override
 	public void catchBattleReward() {
-
+    component.catchBattleReward();
 	}
 
 }

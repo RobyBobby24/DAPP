@@ -7,11 +7,6 @@ public class MediumDifficultyStrategy implements BuildMapDifficultyStrategy {
 		throw new UnsupportedOperationException();
 	}
 
-	@Override
-	public void BuildMapDifficultyStrategy() {
-
-	}
-
 	public void MediumDifficultySrategy() {
 		// TODO - implement MediumDifficultyStrategy.MediumDifficultySrategy
 		throw new UnsupportedOperationException();

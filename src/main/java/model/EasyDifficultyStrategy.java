@@ -27,12 +27,49 @@ public class EasyDifficultyStrategy implements BuildMapDifficultyStrategy {
 		key_value.put("challengeRating","1");
 		List<Monster>  bossMonsters = (List<Monster>) PersistenceInterface.getInstance().search(key_value,Monster.class);
 
+		List<Card>  cards = (List<Card>) PersistenceInterface.getInstance().search(new TreeMap<>(),Card.class);
+
+		List<Treasure>  treasures = (List<Treasure>) PersistenceInterface.getInstance().search(new TreeMap<>(),Treasure.class);
+
 		RoomFactory roomFactory = ServicesFactory.getInstance().getRoomFactoryInstance();
 
 		BattleRoom startingRoom = roomFactory.createBattleRoom();
 		int number = random.nextInt(normalMonsters.size());
 		startingRoom.addMonster(normalMonsters.get(number));
 
+		MerchantRoom merchantRoom=roomFactory.createMerchantRoom();
+		number = random.nextInt(cards.size());
+		merchantRoom.addCard(cards.get(number));
+		number = random.nextInt(cards.size());
+		merchantRoom.addCard(cards.get(number));
+		number = random.nextInt(cards.size());
+		merchantRoom.addCard(cards.get(number));
+
+		TreasureRoom treasureRoom=roomFactory.createTreasureRoom();
+		number = random.nextInt(treasures.size());
+		treasureRoom.addTreasure(treasures.get(number));
+		number = random.nextInt(treasures.size());
+		treasureRoom.addTreasure(treasures.get(number));
+		number = random.nextInt(treasures.size());
+		treasureRoom.addTreasure(treasures.get(number));
+
+		BonfireRoom bonfireRoom=roomFactory.createBonfireRoom();
+
+		BattleRoom endRoom = roomFactory.createBattleRoom();
+		number = random.nextInt(bossMonsters.size());
+		startingRoom.addMonster(bossMonsters.get(number));
+
+		dungeonMap.setCurrentRoom(startingRoom);
+
+		dungeonMap.addRoom(startingRoom,bonfireRoom);
+		dungeonMap.addRoom(startingRoom,merchantRoom);
+		dungeonMap.addRoom(startingRoom,treasureRoom);
+
+		dungeonMap.addRoom(bonfireRoom,endRoom);
+		dungeonMap.addRoom(merchantRoom,endRoom);
+		dungeonMap.addRoom(treasureRoom,endRoom);
+
+		dungeonMap.addRoom(endRoom,null);
 	}
 
 }

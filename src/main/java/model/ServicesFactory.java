@@ -1,9 +1,6 @@
 package model;
 
-import services.Configuration;
-
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Method;
+import services.ConfigurationReader;
 
 public class ServicesFactory {
 
@@ -24,10 +21,8 @@ public class ServicesFactory {
     public RoomFactory getRoomFactoryInstance(){
         try{
             if(this.roomFactoryInstance==null){
-                Class roomFactoryClass= Configuration.getInstance().getRoomFactoryClass();
-                Class[] parameter={};
-                Constructor constructor=roomFactoryClass.getConstructor(parameter);
-                this.roomFactoryInstance=(RoomFactory) constructor.newInstance();
+                Class roomFactoryClass= ConfigurationReader.getInstance().getRoomFactoryClass();
+                this.roomFactoryInstance=(RoomFactory) roomFactoryClass.newInstance();
             }
             return this.roomFactoryInstance;
         }

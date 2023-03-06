@@ -16,7 +16,6 @@ public class EasyDifficultyStrategy implements BuildMapDifficultyStrategy {
 
 	@Override
 	public void buildMap(DungeonMap dungeonMap) {
-		Random random = new Random();
 
 		TreeMap<String,String> key_value = new TreeMap<>();
 		key_value.put("type","normal");
@@ -31,33 +30,19 @@ public class EasyDifficultyStrategy implements BuildMapDifficultyStrategy {
 
 		List<Treasure>  treasures = (List<Treasure>) PersistenceInterface.getInstance().search(new TreeMap<>(),Treasure.class);
 
+
+
+		BattleRoom startingRoom = this.createBattleRoomRandomMonster(normalMonsters);
+
+		MerchantRoom merchantRoom=this.createMerchantRoomRandomCards(cards);
+
+		TreasureRoom treasureRoom=this.createTreasureRoomRandomTreasure(treasures);
+
+
 		RoomFactory roomFactory = ServicesFactory.getInstance().getRoomFactoryInstance();
-
-		BattleRoom startingRoom = roomFactory.createBattleRoom();
-		int number = random.nextInt(normalMonsters.size());
-		startingRoom.addMonster(normalMonsters.get(number));
-
-		MerchantRoom merchantRoom=roomFactory.createMerchantRoom();
-		number = random.nextInt(cards.size());
-		merchantRoom.addCard(cards.get(number));
-		number = random.nextInt(cards.size());
-		merchantRoom.addCard(cards.get(number));
-		number = random.nextInt(cards.size());
-		merchantRoom.addCard(cards.get(number));
-
-		TreasureRoom treasureRoom=roomFactory.createTreasureRoom();
-		number = random.nextInt(treasures.size());
-		treasureRoom.addTreasure(treasures.get(number));
-		number = random.nextInt(treasures.size());
-		treasureRoom.addTreasure(treasures.get(number));
-		number = random.nextInt(treasures.size());
-		treasureRoom.addTreasure(treasures.get(number));
-
 		BonfireRoom bonfireRoom=roomFactory.createBonfireRoom();
 
-		BattleRoom endRoom = roomFactory.createBattleRoom();
-		number = random.nextInt(bossMonsters.size());
-		startingRoom.addMonster(bossMonsters.get(number));
+		BattleRoom endRoom = this.createBattleRoomRandomMonster( bossMonsters );
 
 		dungeonMap.setCurrentRoom(startingRoom);
 
@@ -70,6 +55,35 @@ public class EasyDifficultyStrategy implements BuildMapDifficultyStrategy {
 		dungeonMap.addRoom(treasureRoom,endRoom);
 
 		dungeonMap.addRoom(endRoom,null);
+	}
+
+	private BattleRoom createBattleRoomRandomMonster(List<Monster> monsters){
+		Random random = new Random();
+		RoomFactory roomFactory = ServicesFactory.getInstance().getRoomFactoryInstance();
+		BattleRoom battleRoom = roomFactory.createBattleRoom();
+		int number = random.nextInt(monsters.size());
+		battleRoom.addMonster(monsters.get(number));
+		return battleRoom;
+	}
+
+	private MerchantRoom createMerchantRoomRandomCards(List<Card> cards){
+		Random random = new Random();
+		RoomFactory roomFactory = ServicesFactory.getInstance().getRoomFactoryInstance();
+		MerchantRoom merchantRoom=roomFactory.createMerchantRoom();
+		for(int i=0;i<3;i++){
+			merchantRoom.addCard( cards.get( random.nextInt( cards.size() ) ) );
+		}
+		return merchantRoom;
+	}
+
+	private TreasureRoom createTreasureRoomRandomTreasure(List<Treasure> treasures){
+		Random random = new Random();
+		RoomFactory roomFactory = ServicesFactory.getInstance().getRoomFactoryInstance();
+		TreasureRoom treasureRoom=roomFactory.createTreasureRoom();
+		for(int i=0;i<3;i++){
+			treasureRoom.addTreasure(treasures.get( random.nextInt(treasures.size()) ));
+		}
+		return treasureRoom;
 	}
 
 }

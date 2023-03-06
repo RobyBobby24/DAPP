@@ -27,7 +27,8 @@ public class Deck implements Serializable {
 	@Column(name="ID", nullable=false, length=10)
 	@Id	
 	@GeneratedValue(generator="MODEL_DECK_ID_GENERATOR")	
-	@org.hibernate.annotations.GenericGenerator(name="MODEL_DECK_ID_GENERATOR", strategy="native")	
+	@org.hibernate.annotations.GenericGenerator(name="MODEL_DECK_ID_GENERATOR", strategy="native")
+
 	private int ID;
 
 
@@ -43,6 +44,7 @@ public class Deck implements Serializable {
 	@JoinTable(name="deck_card", joinColumns={ @JoinColumn(name="DeckID", referencedColumnName="ID", nullable=false) }, inverseJoinColumns={ @JoinColumn(name="CardID",referencedColumnName="ID", nullable=false) })
 	@org.hibernate.annotations.IndexColumn(name="CardIndex")
 	@org.hibernate.annotations.LazyCollection(LazyCollectionOption.FALSE)
+
 	private List<Card> cards = new ArrayList<Card>();
 
 

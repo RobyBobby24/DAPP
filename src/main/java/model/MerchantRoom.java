@@ -16,8 +16,7 @@ public class MerchantRoom implements Room {
 	}
 
 	public MerchantRoom() {
-		// TODO - implement MerchantRoom.MerchantRoom
-		throw new UnsupportedOperationException();
+
 	}
 
 	@Override
@@ -33,6 +32,10 @@ public class MerchantRoom implements Room {
 	@Override
 	public void enterRoom() {
 
+	}
+
+	public void addCard(Card card) {
+		this.getPurchasableCards().add( card );
 	}
 
 }

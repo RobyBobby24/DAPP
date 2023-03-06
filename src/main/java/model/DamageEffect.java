@@ -25,9 +25,9 @@ import java.util.ArrayList;
 public class DamageEffect extends Effect implements Serializable {
 
 	
-	@Column(name="Damage", nullable=true, length=10)	
-	private int damage;
+	@Column(name="Damage", nullable=true, length=10)
 
+	private int damage;
 
 	public DamageEffect() {
 		this.target=true;

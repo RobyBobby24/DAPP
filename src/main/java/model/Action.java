@@ -27,11 +27,13 @@ public abstract class Action implements Serializable {
 	//@GeneratedValue(generator="MODEL_ACTION_ID_GENERATOR")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@org.hibernate.annotations.GenericGenerator(name="MODEL_ACTION_ID_GENERATOR", strategy="native")	
+
 	private int ID;
 	
 	@ManyToOne(targetEntity= Action.class, fetch=FetchType.LAZY)
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
 	@JoinColumns(value={ @JoinColumn(name="ActionID", referencedColumnName="ID") }, foreignKey=@ForeignKey(name="FKAction727678"))	
+
 	protected Action nextAction;
 	
 	private void setID(int value) {

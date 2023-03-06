@@ -25,6 +25,7 @@ import java.util.TreeMap;
 public class Player implements Serializable {
 
 	@Transient
+
 	private static Player instance;
 
 
@@ -32,9 +33,11 @@ public class Player implements Serializable {
 	@Id	
 	@GeneratedValue(generator="MODEL_PLAYER_ID_GENERATOR")	
 	@org.hibernate.annotations.GenericGenerator(name="MODEL_PLAYER_ID_GENERATOR", strategy="native")	
+
 	private int ID;
 	
 	@Column(name="Nickname", nullable=true, length=255)	
+
 	private String nickname;
 
 
@@ -43,8 +46,7 @@ public class Player implements Serializable {
 
 
 
-	protected Player() {
-	}
+	protected Player() { }
 
 	private void setID(int value) {
 		this.ID = value;

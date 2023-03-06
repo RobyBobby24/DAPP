@@ -49,7 +49,7 @@ public class Treasure {
 	public String giveTreasureDescription() {
 		String card = "";
 		if (this.card != null)
-			card = "1 carta ";
-		return "Complimenti! Hai trovato " + this.rewardCoins + " monete " + card + "!";
+			card = " e la carta " + this.card.getName();
+		return "Complimenti! Hai trovato " + this.rewardCoins + " monete" + card + "!";
 	}
 }

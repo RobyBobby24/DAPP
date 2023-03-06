@@ -73,12 +73,6 @@ public class Main {
         */
         Logger logger = Logger.getLogger("org.hibernate");
         logger.setLevel(Level.SEVERE);
-        try{
-            System.out.println(ConfigurationReader.getInstance().getRoomFactoryClass().getName());
-        }
-        catch(Exception e){
-            System.out.println(e.getMessage());
-        }
-        //PlayTheGame.getInstance().chooseOperation();
+        PlayTheGame.getInstance().chooseOperation();
     }
 }

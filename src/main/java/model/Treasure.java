@@ -36,7 +36,7 @@ public class Treasure {
 		this.card = card;
 	}
 
-	public void provideReward() {
+	public void provideReward() throws Exception {
 
 		Adventurer.getInstance().addCoins(this.getRewardCoins());
 		Adventurer.getInstance().addCard(this.getCard());

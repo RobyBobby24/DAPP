@@ -1,9 +1,5 @@
 package model;
 
-import services.Configuration;
-
-import java.lang.reflect.Method;
-
 public interface RoomFactory {
 
 	public abstract BattleRoom createBattleRoom();

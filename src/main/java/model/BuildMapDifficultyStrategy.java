@@ -2,8 +2,6 @@ package model;
 
 public interface BuildMapDifficultyStrategy {
 
-	abstract void buildMap();
-
-	void BuildMapDifficultyStrategy();
+	abstract void buildMap(DungeonMap dungeonMap);
 
 }

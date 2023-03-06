@@ -32,7 +32,6 @@ public class TreasureRoom implements Room {
 
 	@Override
 	public void enterRoom() {
-
+		FrontController.getInstance().chooseTreasure();
 	}
-
 }

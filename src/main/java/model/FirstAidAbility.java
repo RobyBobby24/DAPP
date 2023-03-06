@@ -8,6 +8,8 @@ public class FirstAidAbility extends DecoratorState {
 
     public void catchReward (){
 
+        super.catchBattleReward();
+        restoreHp();
 
     }
 }

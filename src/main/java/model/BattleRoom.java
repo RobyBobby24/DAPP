@@ -279,6 +279,11 @@ public class BattleRoom implements Serializable,Room {
 		//TODO implement
 	}
 
+	public void addMonster(Monster monster){
+		if(this.monsters==null) this.monsters=new ArrayList<Monster>();
+		this.monsters.add(monster);
+	}
+
 	public String toString(){
 		return this.getClass().getSimpleName();
 	}

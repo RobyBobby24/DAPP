@@ -7,6 +7,7 @@ import java.util.TreeMap;
 
 public class StandardRoomFactory implements RoomFactory {
 
+
 	/**
 	 *
 	 */

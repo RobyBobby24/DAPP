@@ -1,16 +1,17 @@
 package model;
 
+import services.Configuration;
+
+import java.lang.reflect.Method;
+
 public interface RoomFactory {
 
-	/**
-	 *
-	 */
-	public abstract Room createBattleRoom();
+	public abstract BattleRoom createBattleRoom();
 
-	public abstract Room createTreasureRoom();
+	public abstract TreasureRoom createTreasureRoom();
 
-	public abstract Room createBonfireRoom();
+	public abstract BonfireRoom createBonfireRoom();
 
-	public abstract Room createMerchantRoom();
+	public abstract MerchantRoom createMerchantRoom();
 
 }

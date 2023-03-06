@@ -2,7 +2,7 @@ package model;
 
 public class MediumDifficultyStrategy implements BuildMapDifficultyStrategy {
 
-	public void buildMap() {
+	public void buildMap(DungeonMap dungeonMap) {
 		// TODO - implement MediumDifficultyStrategy.buildMap
 		throw new UnsupportedOperationException();
 	}

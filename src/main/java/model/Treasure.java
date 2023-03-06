@@ -36,14 +36,20 @@ public class Treasure {
 		this.card = card;
 	}
 
-	public void provideReward() {
-		// TODO - implement Treasure.provideReward da fare dopo aver creato i tesori
-		throw new UnsupportedOperationException();
+	public void provideReward() throws Exception {
+
+		Adventurer.getInstance().addCoins(this.getRewardCoins());
+		Adventurer.getInstance().addCard(this.getCard());
+		throw new UnsupportedOperationException();	// TODO non ho capito se questa va tenuta o no
 	}
 
+	/**
+	 * Stampa la frase all'apertura del tesoro
+	 */
 	public String giveTreasureDescription() {
-		// TODO - implement Treasure.giveTreasureDescription da fare dopo aver creato i tesori
-		throw new UnsupportedOperationException();
+		String card = "";
+		if (this.card != null)
+			card = "1 carta ";
+		return "Complimenti! Hai trovato " + this.rewardCoins + " monete " + card + "!";
 	}
-
 }

@@ -9,7 +9,6 @@ import java.nio.file.Paths;
 
 public class ConfigurationReader {
     static private ConfigurationReader instance;
-    private Class roomFactoryClass= StandardRoomFactory.class;
 
 
     private ConfigurationReader(){
@@ -24,7 +23,7 @@ public class ConfigurationReader {
     }
 
     public Class getRoomFactoryClass() throws IOException, ClassNotFoundException {
-        String data = new String(Files.readAllBytes(Paths.get("../utility/configurationFile.json")));
+        String data = new String(Files.readAllBytes(Paths.get("src/main/java/utility/configurationFile.json")));
         JSONObject jsonObject = new JSONObject(data);
         String className = jsonObject.getString("roomFactoryClass");
         return Class.forName( className );

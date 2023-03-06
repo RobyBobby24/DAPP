@@ -14,6 +14,7 @@ class MakeNewGameView {
 
     private MakeNewGameView(){
 
+
     }
 
     public static MakeNewGameView getInstance(){

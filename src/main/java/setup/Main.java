@@ -2,6 +2,7 @@ package setup;
 
 import model.AdventurerDescription;
 import model.PlayTheGame;
+import services.ConfigurationReader;
 import services.PersistenceInterface;
 
 import java.lang.reflect.InvocationTargetException;
@@ -72,7 +73,12 @@ public class Main {
         */
         Logger logger = Logger.getLogger("org.hibernate");
         logger.setLevel(Level.SEVERE);
-
-        PlayTheGame.getInstance().chooseOperation();
+        try{
+            System.out.println(ConfigurationReader.getInstance().getRoomFactoryClass().getName());
+        }
+        catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+        //PlayTheGame.getInstance().chooseOperation();
     }
 }

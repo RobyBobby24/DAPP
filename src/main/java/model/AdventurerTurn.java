@@ -43,7 +43,8 @@ public class AdventurerTurn implements TurnState {
 			int numberOfTarget = cardToPlay.getNumberOfTarget();
 			ArrayList<Integer> target = new ArrayList<Integer>();
 			for (int i = 0; i < numberOfTarget; i++) {
-				target.add(PlayTheGame.getInstance().chooseTarget());
+				FrontController.getInstance().chooseTarget();
+				target.add(FrontController.getInstance().takeTarget());
 			}
 			cardToPlay.activeEffect(battleRoom,target);
 			Adventurer.getInstance().removeCardFromHand(cardToPlay);
@@ -64,7 +65,7 @@ public class AdventurerTurn implements TurnState {
 	 */
 	public void playTurn(BattleRoom battleRoom){
 		while (!this.endAdventurerTurn){
-			PlayTheGame.getInstance().nextBattleOp();
+			FrontController.getInstance().nextBattleOp();
 		}
 	}
 

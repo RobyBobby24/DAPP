@@ -1,7 +1,6 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class BattleState implements AdventurerState {
 
@@ -165,7 +164,7 @@ public class BattleState implements AdventurerState {
 
 
 	@Override
-	public void catchReward(int coins) {
+	public void catchBattleReward() {
 
 	}
 

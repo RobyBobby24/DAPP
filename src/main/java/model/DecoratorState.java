@@ -144,7 +144,7 @@ public class DecoratorState implements AdventurerState {
 	}
 
 	@Override
-	public void catchReward(int coins) {
+	public void catchBattleReward() {
 
 	}
 

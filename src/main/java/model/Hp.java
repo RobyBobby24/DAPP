@@ -95,7 +95,6 @@ public class Hp implements Serializable {
 	public void setMaxHp(int value) throws Exception {
 		if( value < this.currentHp)
 			throw new Exception("maxHp must be greater than maxHp");
-		this.currentHp = value;
 		this.maxHp = value;
 	}
 
@@ -105,6 +104,15 @@ public class Hp implements Serializable {
 	public int getMaxHp() {
 		return maxHp;
 	}
+
+	/**
+	 * increase or decrease of "hp" the maxHp
+	 * @param hp number of Hp to add
+	 * @throws Exception if maxHp will be less than currentHp
+	 */
+	public void addMaxHp(int hp) throws Exception {
+		this.setMaxHp(this.getMaxHp()+hp);
+	}
 	
 	public String toString() {
 		return this.currentHp+"/"+this.maxHp;
@@ -113,5 +121,6 @@ public class Hp implements Serializable {
 	public String var_dump(){
 		return "ID:"+this.ID+" currentHp:"+this.currentHp+" maxHp:"+this.maxHp;
 	}
-	
+
+
 }

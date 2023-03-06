@@ -41,6 +41,11 @@ public class Card implements Serializable {
 
 
 
+	@Column(name="CoinCost", nullable=false, length=10)
+	private int CoinCost;
+
+
+
 
 	@OneToOne(targetEntity= Effect.class, fetch=FetchType.EAGER)
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK, org.hibernate.annotations.CascadeType.DELETE})
@@ -85,10 +90,33 @@ public class Card implements Serializable {
 		return energyCost;
 	}
 
+
+	/**
+	 * @return the coinCost of the card (number of coins to pay to buy the card)
+	 */
+	public int getCoinCost() {
+		return CoinCost;
+	}
+
+	/**
+	 * set the new coinCost
+	 * @param coinCost (number of coins to pay to buy the card)
+	 */
+	public void setCoinCost(int coinCost) {
+		CoinCost = coinCost;
+	}
+
+	/**
+	 * @return the name of the card
+	 */
 	public String getName() {
 		return name;
 	}
 
+	/**
+	 * set new card name
+	 * @param name new card name
+	 */
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -161,5 +189,6 @@ public class Card implements Serializable {
 		//TODO aggiungi il nome
 		return "id:"+this.ID+" energyCost:"+this.energyCost+" effect:"+this.effect+" description"+this.description;
 	}
-	
+
+
 }

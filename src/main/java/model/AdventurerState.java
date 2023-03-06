@@ -84,5 +84,5 @@ public interface AdventurerState {
 
 	void addCard(Card card);
 
-	void catchReward(int coins);
+	void catchBattleReward();
 }

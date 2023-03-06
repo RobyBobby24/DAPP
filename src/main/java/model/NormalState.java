@@ -131,7 +131,7 @@ public class NormalState implements AdventurerState {
 
 
 	@Override
-	public void catchReward(int coins) {
+	public void catchBattleReward() {
 		//TODO to implement
 	}
 

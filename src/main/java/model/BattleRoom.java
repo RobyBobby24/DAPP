@@ -24,15 +24,11 @@ public class BattleRoom implements Serializable,Room {
 	//	Attribute!!!
 	private List<Monster> monsters = new ArrayList<Monster>();
 
-	public int getBattleReward() {
-		return battleReward;
-	}
 
-	public void setBattleReward(int battleReward) {
-		this.battleReward = battleReward;
-	}
 
-	private int battleReward;
+
+
+	private int coinReward;
 
 	private int ended;
 
@@ -78,6 +74,14 @@ public class BattleRoom implements Serializable,Room {
 	@Override
 	public int getID() {
 		return 0;
+	}
+
+	public int getCoinRewardReward() {
+		return coinReward;
+	}
+
+	public void setCoinRewardReward(int coinReward) {
+		this.coinReward = coinReward;
 	}
 
 	/**
@@ -269,6 +273,10 @@ public class BattleRoom implements Serializable,Room {
 	 */
 	public Monster getFirstMonster(){
 		return this.monsters.get(0);
+	}
+
+	public void rewardAdventurer(){
+		//TODO implement
 	}
 
 	public String toString(){

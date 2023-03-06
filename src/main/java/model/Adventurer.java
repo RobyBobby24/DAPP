@@ -232,49 +232,81 @@ public abstract class Adventurer implements Serializable {
 	}
 
 
-	public int isAlive() {
-		// TODO - implement Adventurer.getEnergyPoint
-		throw new UnsupportedOperationException();
+	/**
+	 * @return true if the adventurer is alive (Hp.currentHp>0) else false
+	 */
+	public boolean isAlive() {
+		if(this.hp.getCurrentHp()>0)return true;
+		else return false;
 	}
 
+	/**
+	 * @return the number of coins that the Adventurer has
+	 */
 	public int getCoins() {
-		// TODO - implement Adventurer.getEnergyPoint
-		throw new UnsupportedOperationException();
+		return this.coins;
 	}
 
-	public void setCoins(int coins) {
-		// TODO - implement Adventurer.getEnergyPoint
-		throw new UnsupportedOperationException();
+	/**
+	 * set the new coins (number of coins that the Adventurer has)
+	 * @param coins new coins
+	 */
+	public void setCoins(int coins) throws Exception {
+		if(coins<0) throw new Exception("the coin has to be positive");
+		this.coins=coins;
 	}
 
-	public void buyACard() {
-		// TODO - implement Adventurer.getEnergyPoint
-		throw new UnsupportedOperationException();
+	/**
+	 * add the card passed as parameter in the adventurer deck and pay the cost amount of the card
+	 * @param cardToBuy card to buy
+	 * @throws Exception if the adventurer don't have enough money
+	 */
+	public void buyACard(Card cardToBuy) throws Exception {
+		if( cardToBuy.getCoinCost() > this.getCoins() ) throw new Exception("the Adventurer don't has enough coins to buy the card");
+		this.setCoins( this.getCoins() - cardToBuy.getCoinCost() );
+		this.getDeck().addCard( cardToBuy );
+		this.getDeck().shuffle();
 	}
 
-	public void addHp(int hp) {
-		// TODO - implement Adventurer.getEnergyPoint
-		throw new UnsupportedOperationException();
+	/**
+	 * increase the adventurer currentHp of hp point
+	 * @param hp number of point to add at the adventurer currentHp
+	 */
+	public void addCurrentHp(int hp) {
+		this.getHp().addCurrentHp( hp );
 	}
 
-	public void addCoins(int coins) {
-		// TODO - implement Adventurer.getEnergyPoint
-		throw new UnsupportedOperationException();
+
+	/**
+	 * increase the adventurer maxHp of hp point
+	 * @param hp number of point to add at the adventurer maxHp
+	 * @throws Exception if maxHp become less than currentHp
+	 */
+	public void addMaxHp(int hp) throws Exception {
+		this.getHp().addMaxHp( hp );
 	}
 
+	/**
+	 * increase the adventurer coins of the parameter value
+	 * @param coins number of coins to add
+	 */
+	public void addCoins(int coins) throws Exception {
+		this.setCoins( this.getCoins()+coins );
+	}
+
+	/**
+	 * add a card to the adventurer deck without pay its cost
+	 * @param card card to add at the deck
+	 */
 	public void addCard(Card card) {
-		// TODO - implement Adventurer.getEnergyPoint
-		throw new UnsupportedOperationException();
+		this.getDeck().addCard( card );
 	}
 
-	public void drawCardsStartTurn() {
-		// TODO - implement Adventurer.getEnergyPoint
-		throw new UnsupportedOperationException();
-	}
-
-	public void catchReward() {
-		// TODO - implement Adventurer.getEnergyPoint
-		throw new UnsupportedOperationException();
+	/**
+	 * call the eventual other action that an Adventurer do when win a battle
+	 */
+	public void catchBattleReward() {
+		this.currentState.catchBattleReward();
 	}
 
 

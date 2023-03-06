@@ -27,9 +27,11 @@ public class ProtectionAction extends Action implements Serializable {
 	@Id	
 	@GeneratedValue(generator="MODEL_PROTECTIONACTION_ID_GENERATOR")	
 	@org.hibernate.annotations.GenericGenerator(name="MODEL_PROTECTIONACTION_ID_GENERATOR", strategy="native")	
+
 	private int ID;
 	
 	@Column(name="Protection", nullable=false, length=10)	
+
 	private int protection;
 
 	/**
@@ -67,6 +69,7 @@ public class ProtectionAction extends Action implements Serializable {
 	 * @param monster monster who activated the action and take the protection
 	 */
 	public void activateAction(Monster monster) {
+
 		monster.addProtection(this.protection);
 	}
 

@@ -4,6 +4,9 @@ import java.util.List;
 
 public class NormalState implements AdventurerState {
 
+	private int coins;
+
+	private Deck deck;
 	/**
 	 * no op
 	 * @param numberOfCards number of cards to draw
@@ -113,19 +116,19 @@ public class NormalState implements AdventurerState {
 	}
 
 	@Override
-	public void buyAcard(Card card) {
+	public void buyAcard(Card cardToAdd) {
 		//TODO to implement
 
 	}
 
 	@Override
-	public void addCoins(int coins) {
-		//TODO to implement
+	public void addCoins(int coinsToAdd) {
+		this.coins=this.coins+coinsToAdd;
 	}
 
 	@Override
 	public void addCard(Card card) {
-		//TODO to implement
+		this.deck.addCard(card);
 	}
 
 

@@ -36,11 +36,10 @@ public class Treasure {
 		this.card = card;
 	}
 
-	public void provideReward() throws Exception {
+	public void provideReward() {
 
 		Adventurer.getInstance().addCoins(this.getRewardCoins());
 		Adventurer.getInstance().addCard(this.getCard());
-		throw new UnsupportedOperationException();	// TODO non ho capito se questa va tenuta o no
 	}
 
 	/**

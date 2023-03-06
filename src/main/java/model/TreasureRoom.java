@@ -34,4 +34,8 @@ public class TreasureRoom implements Room {
 	public void enterRoom() {
 		FrontController.getInstance().chooseTreasure();
 	}
+
+	public void addTreasure(Treasure treasure){
+		this.treasures.add(treasure);
+	}
 }

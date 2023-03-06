@@ -2,6 +2,7 @@ package model;
 
 import services.Configuration;
 
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 
 public class ServicesFactory {
@@ -24,8 +25,9 @@ public class ServicesFactory {
         try{
             if(this.roomFactoryInstance==null){
                 Class roomFactoryClass= Configuration.getInstance().getRoomFactoryClass();
-                Method getInstance=roomFactoryClass.getDeclaredMethod("getInstance");
-                this.roomFactoryInstance=(RoomFactory) getInstance.invoke(roomFactoryClass);
+                Class[] parameter={};
+                Constructor constructor=roomFactoryClass.getConstructor(parameter);
+                this.roomFactoryInstance=(RoomFactory) constructor.newInstance();
             }
             return this.roomFactoryInstance;
         }

@@ -94,7 +94,7 @@ public class FrontController {
 	}
 
 	public int takeTarget() {
-		BattleController.getInstance().takeTarget()
+		return BattleController.getInstance().takeTarget();
 	}
 
 }

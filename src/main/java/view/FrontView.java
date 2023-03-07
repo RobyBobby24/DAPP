@@ -3,6 +3,7 @@ package view;
 import model.*;
 
 import java.util.List;
+import java.util.Set;
 
 public class FrontView {
 
@@ -39,12 +40,12 @@ public class FrontView {
         return SetNicknameView.getInstance().input();
     }
 
-    public void outputMakeNewGame(List<Adventurer> adventurers) throws ClassNotFoundException {
-        MakeNewGameView.getInstance().output(this.nickname, adventurers);
+    public void outputChooseAdventurer(List<AdventurerDescription> adventurers) throws ClassNotFoundException {
+        ChooseAdventurer.getInstance().output(this.nickname, adventurers);
     }
 
-    public Class inputMakeNewGame(){
-        return MakeNewGameView.getInstance().input();
+    public  Class inputChooseAdventurer(){
+        return ChooseAdventurer.getInstance().input();
     }
 
     public void outputChooseRoom(List<Room> rooms){
@@ -81,11 +82,11 @@ public class FrontView {
         return ChooseTargetView.getInstance().input();
     }
 
-    public void outputChooseDifficulty(List<String> difficultys){
+    public void outputChooseDifficulty(Set<String> difficultys){
         ChooseDifficultyView.getInstance().output(this.nickname,difficultys);
     }
 
-    public BuildMapDifficultyStrategy inputChooseDifficulty(){
+    public String inputChooseDifficulty(){
         return ChooseDifficultyView.getInstance().input();
     }
 
@@ -118,7 +119,11 @@ public class FrontView {
 
 
 
-    public void outputError(String error){ErrorView.getInstance().output(error);}
+    public void outputError(String error){ErrorView.getInstance().output(error,this.nickname);}
+
+    public boolean inputError(){
+        return ErrorView.getInstance().input();
+    }
 
     public void outputBattle(Adventurer adventurer,BattleRoom room){
         System.out.println("\n \u001B[34m");

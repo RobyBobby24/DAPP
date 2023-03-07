@@ -1,3 +1,24 @@
 {
-  "roomFactoryClass" : "StandardRoomFactory"
+  "roomFactoryClass" : "StandardRoomFactory",
+  "difficulty" : {
+    "easy" : {
+      "ClassName" : "EasyDifficultyStrategy"
+    },
+    "medium" : {
+      "ClassName" : "MediumDifficultyStrategy",
+      "numberOfLevel" : 6,
+      "numberOfBattleRoom" : 8,
+      "numberOfMerchantRoom" : 3,
+      "numberOfTreasureRoom" : 3,
+      "numberOfBonfireRoom" : 3
+    },
+    "hard" : {
+      "ClassName" : "MediumDifficultyStrategy",
+      "numberOfLevel" : 9,
+      "numberOfBattleRoom" : 14,
+      "numberOfMerchantRoom" : 5,
+      "numberOfTreasureRoom" : 5,
+      "numberOfBonfireRoom" : 5
+    }
+  }
 }

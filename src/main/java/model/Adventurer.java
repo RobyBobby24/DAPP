@@ -141,7 +141,7 @@ public abstract class Adventurer implements Serializable {
 	 */
 	public static Adventurer getInstance() {
 		if(Adventurer.instance==null) {
-			Adventurer.instance= AdventurerFactory.getInstance().getAdventurerInstance();
+			Adventurer.instance= ServicesFactory.getInstance().getAdventurerInstance();
 		}
 		return Adventurer.instance;
 	}

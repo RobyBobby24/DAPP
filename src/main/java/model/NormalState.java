@@ -112,20 +112,34 @@ public class NormalState implements AdventurerState {
 
 	@Override
 	public void buyAcard(Card cardToBuy) {
+	if( cardToBuy.getCoinCost() > Adventurer.getInstance().getCoins() )
+		/*throw new Exception("the Adventurer don't has enough coins to buy the card")*/ //TODO L'eccezione
+	try {
+		Adventurer.getInstance().setCoins( Adventurer.getInstance().getCoins() - cardToBuy.getCoinCost() );
+	} catch (Exception e) {
+		throw new RuntimeException(e);
+	}
+	Adventurer.getInstance().getDeck().addCard( cardToBuy );
+	Adventurer.getInstance().getDeck().shuffle();
 	}
 
 	@Override
 	public void addCoins(int coinsToAdd) {
-
+		try {
+			Adventurer.getInstance().setCoins( Adventurer.getInstance().getCoins()+coinsToAdd);
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 	@Override
 	public void addCard(Card card) {
+		Adventurer.getInstance().getDeck().addCard( card );
 
 	}
 
 	@Override
-	public void catchBattleReward() {
+	public void catchBattleReward () {
 	}
 
 }

@@ -20,33 +20,28 @@ public class FrontController {
 	}
 
 	public void makeNewGame() {
-		// TODO - implement FrontController.makeNewGame
-		throw new UnsupportedOperationException();
+		PlayTheGame.getInstance().makeNewGame();
 	}
 
 	public void chooseAdventurer() {
-		// TODO - implement FrontController.chooseAdventurer
-		throw new UnsupportedOperationException();
+		PlayTheGame.getInstance().chooseAdventurer();
 	}
 
 	public void chooseRoom() {
-		// TODO - implement FrontController.chooseRoom
-		throw new UnsupportedOperationException();
+		PlayTheGame.getInstance().chooseRoom();
 	}
 
 	public void playCard() {
-		// TODO - implement FrontController.playCard
-		throw new UnsupportedOperationException();
+		BattleController.getInstance().playCard();
 	}
 
 	public void chooseTarget() {
-		// TODO - implement FrontController.chooseTarget
-		throw new UnsupportedOperationException();
+		BattleController.getInstance().chooseTarget();
 	}
 
 	public void passTurn() {
-		// TODO - implement FrontController.passTurn
-		throw new UnsupportedOperationException();
+		BattleRoom battleRoom = (BattleRoom) DungeonMap.getInstance().getCurrentRoom(); // cast necessario per il tipo ritornato
+		battleRoom.passTurn();
 	}
 
 	public void nextBattleOp() {
@@ -99,8 +94,7 @@ public class FrontController {
 	}
 
 	public int takeTarget() {
-		// TODO - implement FrontController.takeTarget
-		throw new UnsupportedOperationException();
+		BattleController.getInstance().takeTarget()
 	}
 
 }

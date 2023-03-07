@@ -261,11 +261,12 @@ public abstract class Adventurer implements Serializable {
 	 * @param cardToBuy card to buy
 	 * @throws Exception if the adventurer don't have enough money
 	 */
-	public void buyACard(Card cardToBuy) throws Exception {
-		if( cardToBuy.getCoinCost() > this.getCoins() ) throw new Exception("the Adventurer don't has enough coins to buy the card");
+	public void buyACard(Card cardToBuy)  {
+		this.currentState.buyAcard(cardToBuy);
+		/*if( cardToBuy.getCoinCost() > this.getCoins() ) throw new Exception("the Adventurer don't has enough coins to buy the card");
 		this.setCoins( this.getCoins() - cardToBuy.getCoinCost() );
 		this.getDeck().addCard( cardToBuy );
-		this.getDeck().shuffle();
+		this.getDeck().shuffle();*/
 	}
 
 	/**
@@ -290,8 +291,8 @@ public abstract class Adventurer implements Serializable {
 	 * increase the adventurer coins of the parameter value
 	 * @param coins number of coins to add
 	 */
-	public void addCoins(int coins) throws Exception {
-		this.setCoins( this.getCoins()+coins );
+	public void addCoins(int coins) {
+		this.currentState.addCoins(coins);
 	}
 
 	/**
@@ -299,7 +300,7 @@ public abstract class Adventurer implements Serializable {
 	 * @param card card to add at the deck
 	 */
 	public void addCard(Card card) {
-		this.getDeck().addCard( card );
+		this.currentState.addCard(card);
 	}
 
 	/**

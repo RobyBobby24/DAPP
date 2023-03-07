@@ -45,33 +45,27 @@ public class FrontController {
 	}
 
 	public void nextBattleOp() {
-		// TODO - implement FrontController.nextBattleOp
-		throw new UnsupportedOperationException();
+		BattleController.getInstance().nextBattleOp();
 	}
 
 	public void setNickname() {
-		// TODO - implement FrontController.setNickname
-		throw new UnsupportedOperationException();
+		PlayTheGame.getInstance().setNickname();
 	}
 
 	public void chooseOperation() {
-		// TODO - implement FrontController.chooseOperation
-		throw new UnsupportedOperationException();
+		PlayTheGame.getInstance().chooseOperation();
 	}
 
 	public void chooseDifficulty() {
-		// TODO - implement FrontController.chooseDifficulty
-		throw new UnsupportedOperationException();
+		PlayTheGame.getInstance().chooseDifficulty();
 	}
 
 	public void playGame() {
-		// TODO - implement FrontController.playGame
-		throw new UnsupportedOperationException();
+		PlayTheGame.getInstance().playGame();
 	}
 
 	public void restartGame() {
-		// TODO - implement FrontController.restartGame
-		throw new UnsupportedOperationException();
+		PlayTheGame.getInstance().restartGame();
 	}
 
 	/**
@@ -79,22 +73,19 @@ public class FrontController {
 	 * @param purchasableCards
 	 */
 	public void chooseCardToBuy(List<Card> purchasableCards) {
-		// TODO - implement FrontController.chooseCardToBuy
-		throw new UnsupportedOperationException();
+		MerchantController.getInstance().chooseCardToBuy(purchasableCards);
 	}
 
 	public void skipRest() {
-		// TODO - implement FrontController.skipRest
-		throw new UnsupportedOperationException();
+		BonfireController.getInstance().skipRest();
 	}
 
 	public void chooseTreasure() {
-		// TODO - implement FrontController.chooseTreasure
-		throw new UnsupportedOperationException();
+		TreasureController.getInstance().chooseTreasure();
 	}
 
 	public int takeTarget() {
-		BattleController.getInstance().takeTarget()
+		return BattleController.getInstance().takeTarget();
 	}
 
 }

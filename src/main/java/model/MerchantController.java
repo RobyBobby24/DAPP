@@ -1,5 +1,7 @@
 package model;
 
+import java.util.List;
+
 public class MerchantController {
 
 	private static MerchantController instance;
@@ -18,7 +20,7 @@ public class MerchantController {
 	 * 
 	 * @param purchasableCards
 	 */
-	public void chooseCardToBuy(Card[] purchasableCards) {
+	public void chooseCardToBuy(List<Card> purchasableCards) {
 		// TODO - implement MerchantController.chooseCardToBuy
 		throw new UnsupportedOperationException();
 	}

@@ -30,7 +30,7 @@ public class MerchantRoom implements Room {
 	}
 
 	@Override
-	public void enterRoom() {
+	public void enterRoom() { /*FrontController.getInstance().chooseCardToBuy();*/
 
 	}
 

@@ -102,8 +102,6 @@ public class NormalState implements AdventurerState {
 	 */
 	@Override
 	public void takeDamage(int damage, Adventurer adventurer) {
-		//TODO verify if it will be implemented
-		adventurer.getHp().addCurrentHp(-damage);
 	}
 
 	public String toString(){
@@ -116,15 +114,14 @@ public class NormalState implements AdventurerState {
 	}
 
 	@Override
-	public void buyAcard(Card cardToAdd) {
+	public void buyAcard(Card cardToBuy) {
+
 		//TODO to implement
 
 	}
 
 	@Override
-	public void addCoins(int coinsToAdd) {
-		this.coins=this.coins+coinsToAdd;
-	}
+	public void addCoins(int coinsToAdd) { this.coins=this.coins+coinsToAdd;}
 
 	@Override
 	public void addCard(Card card) {
@@ -135,7 +132,6 @@ public class NormalState implements AdventurerState {
 
 	@Override
 	public void catchBattleReward() {
-		//TODO to implement
 	}
 
 }

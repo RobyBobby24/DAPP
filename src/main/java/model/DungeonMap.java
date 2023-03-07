@@ -122,13 +122,14 @@ public class DungeonMap implements Serializable {
 
 
 	public void setDifficulty(BuildMapDifficultyStrategy difficultyStrategy) {
-		// TODO - implement DecoratorState.getCardsFromHand
-		throw new UnsupportedOperationException();
+		this.difficulty = difficultyStrategy;
 	}
 
 	public boolean areThereAvailableRooms() {
-		// TODO - implement DecoratorState.getCardsFromHand
-		throw new UnsupportedOperationException();
+		if (rooms.get(currentRoom) == null){
+			return true;
+		}
+		return false;
 	}
 	/**
 	 * add a room to the map

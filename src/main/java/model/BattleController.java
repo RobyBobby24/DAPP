@@ -10,8 +10,7 @@ public class BattleController {
 
 
 	private BattleController() {
-		// TODO - implement BattleController.BattleController
-		throw new UnsupportedOperationException();
+
 	}
 
 	public static BattleController getInstance() {
@@ -35,8 +34,14 @@ public class BattleController {
 	}
 
 	public void passTurn() {
-		// TODO - implement BattleController.passTurn
-		throw new UnsupportedOperationException();
+		try{
+			BattleRoom battleRoom = (BattleRoom) DungeonMap.getInstance().getCurrentRoom();
+			battleRoom.passTurn();
+		}
+		catch(Exception e){
+			FrontView.getInstance().outputError("non siamo riusciti a passare il turno!!!");
+			this.nextBattleOp();
+		}
 	}
 
 	/**

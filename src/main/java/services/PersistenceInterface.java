@@ -243,4 +243,44 @@ public class PersistenceInterface {
         }
         return result;
     }
+
+    public List complexSearch(List<TreeMap<String,String>> attribute_value, List<String> operation,Class objClass){
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        EntityTransaction transaction = entityManager.getTransaction();
+        List result;
+        String where = "";
+        for (int i = 0; i < attribute_value.size(); i++) {
+            for (String key : attribute_value.get(i).keySet()) {
+                if(!where.equals(""))
+                    where = where+" and ";
+                where = where+" table."+key+" "+operation.get(i)+" :param"+key+i;
+            }
+        }
+
+
+        try{
+            transaction.begin();
+            Query query;
+            if(!where.equals(""))
+                query = entityManager.createQuery("SELECT table FROM "+objClass.getSimpleName()+" table "+" where "+where);
+            else
+                query = entityManager.createQuery("SELECT table FROM "+objClass.getSimpleName()+" table ");
+            for (int i = 0; i < attribute_value.size(); i++) {
+                for (String key : attribute_value.get(i).keySet()) {
+                    query.setParameter("param"+key+i,attribute_value.get(i).get(key));
+                }
+            }
+            result = query.getResultList();
+            transaction.commit();
+        }
+        finally {
+            if(transaction.isActive()){
+                transaction.rollback();
+            }
+            entityManager.close();
+            entityManagerFactory.close();
+        }
+        return result;
+    }
 }

@@ -1,5 +1,6 @@
 package model;
 
+import services.ConfigurationReader;
 import services.PersistenceInterface;
 import view.FrontView;
 
@@ -99,7 +100,7 @@ public class PlayTheGame {
 	 */
 	public void chooseAdventurer() {
 		try{
-			AdventurerFactory.getInstance().setAdventurerClass(FrontView.getInstance().inputMakeNewGame());
+			ConfigurationReader.getInstance().setAdventurerClass(FrontView.getInstance().inputMakeNewGame());
 			DungeonMap.getInstance().buildMap();
 			ArrayList<Room> availableRooms = DungeonMap.getInstance().giveMeAvailableRooms();
 			FrontView.getInstance().outputChooseRoom(availableRooms);

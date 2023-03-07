@@ -16,18 +16,32 @@ public class EasyDifficultyStrategy implements BuildMapDifficultyStrategy {
 
 	@Override
 	public void buildMap(DungeonMap dungeonMap) {
+		ArrayList<TreeMap<String,String>> clause= new ArrayList<>();
+		ArrayList<String> operation= new ArrayList<>();
+		TreeMap<String,String> key_value_equal = new TreeMap<>();
+		TreeMap<String,String> key_value_lessEqual = new TreeMap<>();
 
-		TreeMap<String,String> key_value = new TreeMap<>();
-		key_value.put("type","normal");
-		key_value.put("challengeRating","1");
-		List<Monster>  normalMonsters = (List<Monster>) PersistenceInterface.getInstance().search(key_value,Monster.class);
-		key_value = new TreeMap<>();
-		key_value.put("type","boss");
-		key_value.put("challengeRating","1");
-		List<Monster>  bossMonsters = (List<Monster>) PersistenceInterface.getInstance().search(key_value,Monster.class);
+		//query normal monsters with challengeRating<1
+		key_value_equal.put("type","normal");
+		operation.add("=");
+		clause.add(key_value_equal);
 
+		key_value_lessEqual.put("challengeRating","1");
+		operation.add("<=");
+		clause.add(key_value_lessEqual);
+
+		List<Monster>  normalMonsters = (List<Monster>) PersistenceInterface.getInstance().complexSearch(clause,operation,Monster.class);
+
+
+		//query boss monsters with challengeRating<1
+		key_value_equal.put("type","boss");
+
+		List<Monster>  bossMonsters = (List<Monster>) PersistenceInterface.getInstance().complexSearch(clause,operation,Monster.class);
+
+		//query cards
 		List<Card>  cards = (List<Card>) PersistenceInterface.getInstance().search(new TreeMap<>(),Card.class);
 
+		//query treasures
 		List<Treasure>  treasures = (List<Treasure>) PersistenceInterface.getInstance().search(new TreeMap<>(),Treasure.class);
 
 

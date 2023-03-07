@@ -1,39 +1,61 @@
 package model;
 
+import services.ConfigurationReader;
 import services.PersistenceInterface;
 
+import java.io.IOException;
 import java.util.*;
 
 public class MediumDifficultyStrategy implements BuildMapDifficultyStrategy {
 
-	int numberOfLevel=6;
-	int numberOfBattleRoom=8;
-	int numberOfMerchantRoom=3;
-	int numberOfTreasureRoom=3;
-	int numberOfBonfireRoom=3;
+	private int numberOfLevel;
+	private int numberOfBattleRoom;
+	private int numberOfMerchantRoom;
+	private int numberOfTreasureRoom;
+	private int numberOfBonfireRoom;
 
-	public void MediumDifficultySrategy() {
-
+	public void MediumDifficultySrategy() throws IOException, ClassNotFoundException {
+		String difficultyStrategyName = "Medium";
+		this.numberOfLevel = ConfigurationReader.getInstance().getDifficultyStrategyParameter(difficultyStrategyName,"numberOfLevel");
+		this.numberOfBattleRoom = ConfigurationReader.getInstance().getDifficultyStrategyParameter(difficultyStrategyName,"numberOfBattleRoom");
+		this.numberOfMerchantRoom = ConfigurationReader.getInstance().getDifficultyStrategyParameter(difficultyStrategyName,"numberOfMerchantRoom");
+		this.numberOfTreasureRoom = ConfigurationReader.getInstance().getDifficultyStrategyParameter(difficultyStrategyName,"numberOfTreasureRoom");
+		this.numberOfBonfireRoom = ConfigurationReader.getInstance().getDifficultyStrategyParameter(difficultyStrategyName,"numberOfTreasureRoom");
 	}
 	public void buildMap(DungeonMap dungeonMap) {
-		TreeMap<String,String> key_value = new TreeMap<>();
-		key_value.put("type","normal");
-		key_value.put("challengeRating","2");
-		List<Monster> normalMonsters = (List<Monster>) PersistenceInterface.getInstance().search(key_value,Monster.class);
-		key_value = new TreeMap<>();
-		key_value.put("type","normal");
-		key_value.put("challengeRating","1");
-		List<Monster> normalMonstersRatingOne = (List<Monster>) PersistenceInterface.getInstance().search(key_value,Monster.class);
-		normalMonsters.addAll( normalMonstersRatingOne );
+		ArrayList<TreeMap<String,String>> clause= new ArrayList<>();
+		ArrayList<String> operation= new ArrayList<>();
+		TreeMap<String,String> key_value_equal = new TreeMap<>();
+		TreeMap<String,String> key_value_lessEqual = new TreeMap<>();
+
+		//query normal monsters with challengeRating<=2
+		key_value_equal.put("type","normal");
+		operation.add("=");
+		clause.add(key_value_equal);
+
+		key_value_lessEqual.put("challengeRating","2");
+		operation.add("<=");
+		clause.add(key_value_lessEqual);
+
+		List<Monster>  normalMonsters = (List<Monster>) PersistenceInterface.getInstance().complexSearch(clause,operation,Monster.class);
+
+		//query normal monsters with challengeRating<=1
+		key_value_lessEqual.put("challengeRating","1");
+
+		List<Monster> normalMonstersRatingOne = (List<Monster>) PersistenceInterface.getInstance().complexSearch(clause,operation,Monster.class);
+
+
 		Collections.shuffle(normalMonsters);
 
-		key_value = new TreeMap<>();
-		key_value.put("type","boss");
-		key_value.put("challengeRating","2");
-		List<Monster>  bossMonsters = (List<Monster>) PersistenceInterface.getInstance().search(key_value,Monster.class);
+		//query boss monsters with challengeRating=2
+		key_value_equal.put("type","boss");
+		key_value_equal.put("challengeRating","2");
+		List<Monster>  bossMonsters = (List<Monster>) PersistenceInterface.getInstance().search(key_value_equal,Monster.class);
 
+		//query cards
 		List<Card>  cards = (List<Card>) PersistenceInterface.getInstance().search(new TreeMap<>(),Card.class);
 
+		//query treasures
 		List<Treasure>  treasures = (List<Treasure>) PersistenceInterface.getInstance().search(new TreeMap<>(),Treasure.class);
 
 		BattleRoom startingRoom = this.createBattleRoomRandomNormalMonster(normalMonsters,normalMonstersRatingOne);
@@ -100,9 +122,11 @@ public class MediumDifficultyStrategy implements BuildMapDifficultyStrategy {
 		int number = random.nextInt( monsters.size() );
 		Monster monster = monsters.get( number );
 		battleRoom.addMonster( monster );
-		if( monster.getChallengeRating()==1 ){
-			number = random.nextInt( monsters.size() );
-			battleRoom.addMonster( monsters.get(number) );
+		double monsterRating=monster.getChallengeRating();
+		while( monsterRating <= 1 ){
+			number = random.nextInt(  monstersRatingOne.size() );
+			monsterRating = monsterRating + monstersRatingOne.get(number).getChallengeRating();
+			battleRoom.addMonster(  monstersRatingOne.get(number) );
 		}
 		return battleRoom;
 	}

@@ -1,5 +1,8 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class FrontController {
 
 	private static FrontController instance;
@@ -80,7 +83,7 @@ public class FrontController {
 	 * 
 	 * @param purchasableCards
 	 */
-	public void chooseCardToBuy(Card[] purchasableCards) {
+	public void chooseCardToBuy(List<Card> purchasableCards) {
 		// TODO - implement FrontController.chooseCardToBuy
 		throw new UnsupportedOperationException();
 	}

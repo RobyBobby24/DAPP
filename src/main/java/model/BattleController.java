@@ -14,6 +14,9 @@ public class BattleController {
 	}
 
 	public static BattleController getInstance() {
+		if(BattleController.instance == null){
+			BattleController.instance = new BattleController();
+		}
 		return BattleController.instance;
 	}
 

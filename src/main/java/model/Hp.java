@@ -112,6 +112,16 @@ public class Hp implements Serializable {
 	public void addMaxHp(int hp) throws Exception {
 		this.setMaxHp(this.getMaxHp()+hp);
 	}
+
+	public void restorePercentageHp(int percentage){
+
+		int restoredHp = maxHp*(percentage/100) + this.currentHp;
+		if (restoredHp < maxHp)
+			this.currentHp = restoredHp;
+		else{
+			this.currentHp = maxHp;
+		}
+	}
 	
 	public String toString() {return this.currentHp+"/"+this.maxHp;}
 

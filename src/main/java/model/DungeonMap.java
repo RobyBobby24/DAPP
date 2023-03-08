@@ -13,6 +13,7 @@
  */
 package model;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -82,7 +83,7 @@ public class DungeonMap implements Serializable {
 	/**
 	 * build the map with all its room
 	 */
-	public void buildMap() {
+	public void buildMap() throws IOException {
 		this.difficulty.buildMap(this);
 	}
 

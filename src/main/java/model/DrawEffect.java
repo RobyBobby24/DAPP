@@ -33,6 +33,9 @@ public class DrawEffect extends Effect implements Serializable {
 	public DrawEffect() {
 	}
 
+	public DrawEffect(int numberCards) {
+		this.numberCards = numberCards;
+	}
 
 	/**
 	 * set new numberCards (number of card that the effect allows to draw at the Adventurer)

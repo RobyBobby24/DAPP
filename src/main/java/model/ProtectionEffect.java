@@ -34,6 +34,10 @@ public class ProtectionEffect extends Effect implements Serializable {
 		this.target=false;
 	}
 
+	public ProtectionEffect(int protection) {
+		this.protection = protection;
+	}
+
 	/**
 	 * set protection (number of damage that the adventurer will be taken without lose hp)
 	 * @param value new protection

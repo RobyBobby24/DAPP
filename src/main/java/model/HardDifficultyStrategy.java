@@ -23,7 +23,7 @@ public class HardDifficultyStrategy implements BuildMapDifficultyStrategy {
 		this.numberOfBonfireRoom = ConfigurationReader.getInstance().getDifficultyStrategyParameter(difficultyStrategyName,"numberOfTreasureRoom");
 	}
 
-	public void buildMap(DungeonMap dungeonMap) {
+	public void buildMap(DungeonMap dungeonMap) throws IOException {
 		ArrayList<TreeMap<String,String>> clause= new ArrayList<>();
 		ArrayList<String> operation= new ArrayList<>();
 		TreeMap<String,String> key_value_equal = new TreeMap<>();
@@ -102,7 +102,7 @@ public class HardDifficultyStrategy implements BuildMapDifficultyStrategy {
 	}
 
 
-	private List<Room> takeRooms(List<Monster> normalMonsters, List<Monster> normalMonstersRatingOne , List<Monster> normalMonstersRatingTwo , List<Card>  cards, List<Treasure>  treasures ){
+	private List<Room> takeRooms(List<Monster> normalMonsters, List<Monster> normalMonstersRatingOne , List<Monster> normalMonstersRatingTwo , List<Card>  cards, List<Treasure>  treasures ) throws IOException {
 
 		List<Room> rooms = new ArrayList<Room>();
 		for (int i = 0; i < numberOfBattleRoom-2; i++) {

@@ -73,7 +73,7 @@ public class Main {
         */
         Logger logger = Logger.getLogger("org.hibernate");
         logger.setLevel(Level.SEVERE);
-        PlayTheGame.getInstance().chooseOperation();
+        //PlayTheGame.getInstance().chooseOperation();
 
         //cvhsdvb
         //kdscnsdcf
@@ -92,34 +92,41 @@ public class Main {
         actions.add(action);
         actions.add(action2);
         Monster monster = new Monster(hp,"Wolf","normal",1.0,0,actions,25,null);
+        PersistenceInterface.getInstance().store(monster);
+
 
         Hp hp1 = new Hp(30,30);
         PersistenceInterface.getInstance().store(hp1);
         DamageAction action3 = new DamageAction(8);
         PersistenceInterface.getInstance().store(action3);
         DamageAction action4 = new DamageAction(12);
-        action4.setNextAction(new ProtectionAction(5));
+        ProtectionAction action21 = new ProtectionAction(5);
+        action4.setNextAction(action21);
+        PersistenceInterface.getInstance().store(action21);
         PersistenceInterface.getInstance().store(action4);
         ArrayList<Action> actions1 = new ArrayList<>();
-        actions.add(action3);
-        actions.add(action4);
+        actions1.add(action3);
+        actions1.add(action4);
         Monster monster1 = new Monster(hp1,"Cobra","normal",1.0,0,actions1,15,null);
-
+        PersistenceInterface.getInstance().store(monster1);
 
         Hp hp4 = new Hp(50,50);
         PersistenceInterface.getInstance().store(hp4);
         DamageAction action5 = new DamageAction(10);
         PersistenceInterface.getInstance().store(action5);
         DamageAction action6 = new DamageAction(8);
-        action6.setNextAction(new ProtectionAction(8));
+        DamageAction action20 = new DamageAction(8);
+        action6.setNextAction(action20);
+        PersistenceInterface.getInstance().store(action20);
         PersistenceInterface.getInstance().store(action6);
         ProtectionAction action7 = new ProtectionAction(15);
         PersistenceInterface.getInstance().store(action7);
         ArrayList<Action> actions3 = new ArrayList<>();
-        actions.add(action5);
-        actions.add(action6);
-        actions.add(action7);
+        actions3.add(action5);
+        actions3.add(action6);
+        actions3.add(action7);
         Monster monster2 = new Monster(hp4,"Goblin","normal",1.0,0,actions3,35,null);
+        PersistenceInterface.getInstance().store(monster2);
 
         Hp hp5 = new Hp(200,200);
         PersistenceInterface.getInstance().store(hp5);
@@ -130,13 +137,14 @@ public class Main {
         ProtectionAction action10 = new ProtectionAction(15);
         DamageAction action11 = new DamageAction(15);
         action10.setNextAction(action11);
+        PersistenceInterface.getInstance().store(action11);
         PersistenceInterface.getInstance().store(action10);
         ArrayList<Action> actions4 = new ArrayList<>();
-        actions.add(action8);
-        actions.add(action9);
-        actions.add(action10);
+        actions4.add(action8);
+        actions4.add(action9);
+        actions4.add(action10);
         Monster monster3 = new Monster(hp5,"Dark Sorcerer","boss",1.0,0,actions4,250,null);
-
+        PersistenceInterface.getInstance().store(monster3);
 
 
     }

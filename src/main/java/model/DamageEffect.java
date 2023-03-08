@@ -33,6 +33,11 @@ public class DamageEffect extends Effect implements Serializable {
 		this.target=true;
 	}
 
+
+	public DamageEffect(int damage) {
+		this.damage = damage;
+	}
+
 	/**
 	 * set new damage (hp that the effect take away by the monster)
 	 * @param value new damage

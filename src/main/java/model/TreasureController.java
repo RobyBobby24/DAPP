@@ -21,7 +21,7 @@ public class TreasureController {
 	}
 
 	public void chooseTreasure(List<Treasure> treasures) throws Exception {
-		FrontView.getInstance().outputChooseTreasure(treasures);
+		 FrontView.getInstance().outputChooseTreasure(treasures);
 		 Treasure choosenTreasure = FrontView.getInstance().inputChooseTreasure();
 		 choosenTreasure.provideReward();
 		 String description = choosenTreasure.giveTreasureDescription();

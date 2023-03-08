@@ -114,7 +114,7 @@ public class Main {
         ArrayList<Action> actions1 = new ArrayList<>();
         actions1.add(action2);
         actions1.add(action3);
-        Monster monster1 = new Monster(hp1,"Giant Bear","normal",2.0,0,actions,95,null);
+        Monster monster1 = new Monster(hp1,"Giant Bear","normal",2.0,0,actions1,95,null);
         PersistenceInterface.getInstance().store(monster1);
 
 

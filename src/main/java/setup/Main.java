@@ -91,77 +91,180 @@ public class Main {
     }
     public static void Matteo(){
 
-       /* Hp hp = new Hp(60,60);
+        Hp hp = new Hp(120,120);
         PersistenceInterface.getInstance().store(hp);
-        DamageAction action = new DamageAction(10);
+        DamageAction action = new DamageAction(20);
         PersistenceInterface.getInstance().store(action);
-        DamageAction action2 = new DamageAction(15);
-        PersistenceInterface.getInstance().store(action2);
+        ProtectionAction action1 = new ProtectionAction(30);
+        PersistenceInterface.getInstance().store(action1);
         ArrayList<Action> actions = new ArrayList<>();
         actions.add(action);
-        actions.add(action2);
-        Monster monster = new Monster(hp,"Wolf","normal",1.0,0,actions,25,null);
+        actions.add(action1);
+        Monster monster = new Monster(hp,"Empty Armor","normal",2.0,0,actions,80,null);
         PersistenceInterface.getInstance().store(monster);
 
 
-        Hp hp1 = new Hp(30,30);
+
+        Hp hp1 = new Hp(150,150);
         PersistenceInterface.getInstance().store(hp1);
-        DamageAction action3 = new DamageAction(8);
+        DamageAction action2 = new DamageAction(15);
+        PersistenceInterface.getInstance().store(action2);
+        ProtectionAction action3 = new ProtectionAction(25);
         PersistenceInterface.getInstance().store(action3);
-        DamageAction action4 = new DamageAction(12);
-        ProtectionAction action21 = new ProtectionAction(5);
-        action4.setNextAction(action21);
-        PersistenceInterface.getInstance().store(action21);
-        PersistenceInterface.getInstance().store(action4);
         ArrayList<Action> actions1 = new ArrayList<>();
+        actions1.add(action2);
         actions1.add(action3);
-        actions1.add(action4);
-        Monster monster1 = new Monster(hp1,"Cobra","normal",1.0,0,actions1,15,null);
+        Monster monster1 = new Monster(hp1,"Giant Bear","normal",2.0,0,actions,95,null);
         PersistenceInterface.getInstance().store(monster1);
 
-        Hp hp4 = new Hp(50,50);
-        PersistenceInterface.getInstance().store(hp4);
+
+
+
+
+
+
+        Hp hp2 = new Hp(100,100);
+        PersistenceInterface.getInstance().store(hp2);
+        ProtectionAction action4 = new ProtectionAction(10);
+        PersistenceInterface.getInstance().store(action4);
         DamageAction action5 = new DamageAction(10);
+        action5.setNextAction(action4);
         PersistenceInterface.getInstance().store(action5);
-        DamageAction action6 = new DamageAction(8);
-        DamageAction action20 = new DamageAction(8);
-        action6.setNextAction(action20);
-        PersistenceInterface.getInstance().store(action20);
+
+        ProtectionAction action6 = new ProtectionAction(5);
         PersistenceInterface.getInstance().store(action6);
-        ProtectionAction action7 = new ProtectionAction(15);
+        DamageAction action7 = new DamageAction(20);
+        action7.setNextAction(action6);
         PersistenceInterface.getInstance().store(action7);
-        ArrayList<Action> actions3 = new ArrayList<>();
-        actions3.add(action5);
-        actions3.add(action6);
-        actions3.add(action7);
-        Monster monster2 = new Monster(hp4,"Goblin","normal",1.0,0,actions3,35,null);
+
+        ProtectionAction action8 = new ProtectionAction(60);
+        PersistenceInterface.getInstance().store(action8);
+
+        ArrayList<Action> actions2 = new ArrayList<>();
+        actions2.add(action5);
+        actions2.add(action7);
+        actions2.add(action8);
+
+        Monster monster2 = new Monster(hp2,"Green Slime","normal",2.0,0,actions2,100,null);
         PersistenceInterface.getInstance().store(monster2);
 
-        Hp hp5 = new Hp(200,200);
-        PersistenceInterface.getInstance().store(hp5);
-        DamageAction action8 = new DamageAction(20);
-        PersistenceInterface.getInstance().store(action8);
-        ProtectionAction action9 = new ProtectionAction(30);
-        PersistenceInterface.getInstance().store(action9);
+
+
+
+
+
+        Hp hp3 = new Hp(300,300);
+        PersistenceInterface.getInstance().store(hp3);
         ProtectionAction action10 = new ProtectionAction(15);
-        DamageAction action11 = new DamageAction(15);
-        action10.setNextAction(action11);
-        PersistenceInterface.getInstance().store(action11);
         PersistenceInterface.getInstance().store(action10);
-        ArrayList<Action> actions4 = new ArrayList<>();
-        actions4.add(action8);
-        actions4.add(action9);
-        actions4.add(action10);
-        Monster monster3 = new Monster(hp5,"Dark Sorcerer","boss",1.0,0,actions4,250,null);
+        DamageAction action11 = new DamageAction(30);
+        action11.setNextAction(action10);
+        PersistenceInterface.getInstance().store(action11);
+
+        DamageAction action12 = new DamageAction(45);
+        PersistenceInterface.getInstance().store(action12);
+
+
+        ProtectionAction action13 = new ProtectionAction(15);
+        PersistenceInterface.getInstance().store(action13);
+
+        ArrayList<Action> actions3 = new ArrayList<>();
+        actions3.add(action11);
+        actions3.add(action12);
+        actions3.add(action13);
+
+        Monster monster3 = new Monster(hp3,"3-Headed Hydra","boss",2.0,0,actions3,350,null);
         PersistenceInterface.getInstance().store(monster3);
-        */
+
+
+
+        Hp hp4 = new Hp(250,250);
+        PersistenceInterface.getInstance().store(hp4);
+        DamageAction action14  = new DamageAction(30);
+        PersistenceInterface.getInstance().store(action14);
+        DamageAction action15 = new DamageAction(50);
+        PersistenceInterface.getInstance().store(action15);
+        ArrayList<Action> actions4 = new ArrayList<>();
+        actions4.add(action14);
+        actions4.add(action15);
+        Monster monster4 = new Monster(hp4,"Ogre","normal",3.0,0,actions4,300,null);
+        PersistenceInterface.getInstance().store(monster4);
+
+
+
+        Hp hp5 = new Hp(180,180);
+        PersistenceInterface.getInstance().store(hp5);
+        DamageAction action16  = new DamageAction(25);
+        PersistenceInterface.getInstance().store(action16);
+        ProtectionAction action17 = new ProtectionAction(15);
+        action17.setNextAction(action16);
+        PersistenceInterface.getInstance().store(action17);
+
+        DamageAction action18  = new DamageAction(35);
+        PersistenceInterface.getInstance().store(action18);
+        ProtectionAction action19 = new ProtectionAction(25);
+        action19.setNextAction(action18);
+        PersistenceInterface.getInstance().store(action19);
+
+        DamageAction action20  = new DamageAction(50);
+        PersistenceInterface.getInstance().store(action20);
+
+        ArrayList<Action> actions5 = new ArrayList<>();
+        actions5.add(action17);
+        actions5.add(action19);
+        actions5.add(action20);
+        Monster monster5 = new Monster(hp5,"Giant Skeleton","normal",3.0,0,actions5,250,null);
+        PersistenceInterface.getInstance().store(monster5);
+
+
+
+
+        Hp hp6 = new Hp(200,200);
+        PersistenceInterface.getInstance().store(hp6);
+        DamageAction action21  = new DamageAction(25);
+        PersistenceInterface.getInstance().store(action21);
+        ProtectionAction action22 = new ProtectionAction(20);
+        PersistenceInterface.getInstance().store(action22);
+        DamageAction action23 = new DamageAction(50);
+        action23.setNextAction(action22);
+        PersistenceInterface.getInstance().store(action23);
+        DamageAction action24 = new DamageAction(40);
+        PersistenceInterface.getInstance().store(action24);
+
+
+
+        ArrayList<Action> actions6 = new ArrayList<>();
+        actions6.add(action21);
+        actions6.add(action23);
+        actions6.add(action24);
+        Monster monster6 = new Monster(hp6,"Undead Warrior","normal",3.0,0,actions6,250,null);
+        PersistenceInterface.getInstance().store(monster6);
 
 
 
 
 
+        Hp hp7 = new Hp(500,500);
+        PersistenceInterface.getInstance().store(hp7);
+        DamageAction action25  = new DamageAction(35);
+        PersistenceInterface.getInstance().store(action25);
+        DamageAction action27 = new DamageAction(20);
+        PersistenceInterface.getInstance().store(action27);
+       ProtectionAction action26 = new ProtectionAction(100);
+        PersistenceInterface.getInstance().store(action26);
+
+        DamageAction action28 = new DamageAction(60);
+        PersistenceInterface.getInstance().store(action28);
 
 
+
+        ArrayList<Action> actions7 = new ArrayList<>();
+        actions7.add(action25);
+        actions7.add(action26);
+        actions7.add(action27);
+        actions7.add(action28);
+        Monster monster7 = new Monster(hp7,"Ancient Dragon","boss",3.0,0,actions7,500,null);
+        PersistenceInterface.getInstance().store(monster7);
 
 
 

@@ -284,6 +284,7 @@ public class BattleRoom implements Serializable,Room {
 		}
 		if( bossMonster ) Adventurer.getInstance().addMaxHp(10);
 		else Adventurer.getInstance().addMaxHp(3);
+		Adventurer.getInstance().catchBattleReward();
 	}
 
 	public void addMonster(Monster monster){

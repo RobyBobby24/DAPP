@@ -7,6 +7,7 @@ public class BonfireController {
 	private static BonfireController instance;
 
 	private BonfireController() {
+
 	}
 
 	public static BonfireController getInstance() {

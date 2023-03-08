@@ -35,6 +35,10 @@ class ChooseTreasureView {
         //this.inputValue = prompt.next();
         System.out.println("...\n...\n...\n");
     }
+    public void outputChoosenTreasure(String description){
+
+
+    }
 
     public Treasure input(){
         return this.inputValue;

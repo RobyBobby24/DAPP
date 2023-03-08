@@ -81,4 +81,11 @@ public class ConfigurationReader {
     public Class getAdventurerClass() {
         return adventurerClass;
     }
+    public int getBonfirePercentage() throws IOException{
+        String data = new String(Files.readAllBytes(Paths.get(this.configurationFileUrl)));
+        JSONObject jsonObject = new JSONObject(data);
+        return jsonObject.getInt("percentageBonfire");
+
+
+    }
 }

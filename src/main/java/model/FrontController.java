@@ -76,12 +76,16 @@ public class FrontController {
 		MerchantController.getInstance().chooseCardToBuy(purchasableCards);
 	}
 
-	public void skipRest() {
-		BonfireController.getInstance().skipRest();
+	public void skipRest(int percentage) {
+		BonfireController.getInstance().skipRest(percentage);
 	}
 
-	public void chooseTreasure() {
-		TreasureController.getInstance().chooseTreasure();
+	public void chooseTreasure(List<Treasure> treasures) {
+		try {
+			TreasureController.getInstance().chooseTreasure(treasures);
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 	public int takeTarget() {

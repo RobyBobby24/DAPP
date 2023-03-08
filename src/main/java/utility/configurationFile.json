@@ -1,4 +1,5 @@
 {
+  "percentageBonfire" : 30,
   "roomFactoryClass" : "StandardRoomFactory",
   "difficulty" : {
     "easy" : {

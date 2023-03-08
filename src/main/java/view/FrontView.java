@@ -110,6 +110,10 @@ public class FrontView {
         ChooseTreasureView.getInstance().output(this.nickname,treasures);
     }
 
+    public void outputChoosenTreasure(String description){
+        ChooseTreasureView.getInstance().outputChoosenTreasure(description);
+    }
+
     public Treasure inputChooseTreasure(){
         return ChooseTreasureView.getInstance().input();
     }

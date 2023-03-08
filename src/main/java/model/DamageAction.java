@@ -34,6 +34,9 @@ public class DamageAction extends Action implements Serializable {
 	@Column(name="Damage", nullable=false, length=10)	
 	private int damage;
 
+	public DamageAction(int damage) {
+		this.damage = damage;
+	}
 
 	/**
 	 * set new ID (identifier of the instance also in DB)

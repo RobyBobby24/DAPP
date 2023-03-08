@@ -35,7 +35,12 @@ public class Hp implements Serializable {
 	@Column(name="CurrentHp", nullable=false, length=10)
 
 	private int currentHp;
-	
+
+	public Hp(int currentHp, int maxHp) {
+		this.currentHp = currentHp;
+		this.maxHp = maxHp;
+	}
+
 	@Column(name="MaxHp", nullable=false, length=10)
 
 	private int maxHp;

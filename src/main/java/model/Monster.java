@@ -64,6 +64,17 @@ public class Monster implements Serializable {
 	@Transient
 	private Action nextAction;
 
+	public Monster( Hp hp, String name, String type, Double challengeRating, int protection, List<Action> availableActions, int rewardCoins, Action nextAction) {
+		this.hp = hp;
+		this.name = name;
+		this.type = type;
+		this.challengeRating = challengeRating;
+		this.protection = protection;
+		this.availableActions = availableActions;
+		this.rewardCoins = rewardCoins;
+		this.nextAction = nextAction;
+	}
+
 	/**
 	 * set new ID (identifier of the instance also in DB)
 	 * @param value new ID

@@ -73,7 +73,10 @@ public class ProtectionAction extends Action implements Serializable {
 		monster.addProtection(this.protection);
 	}
 
-	
+	public ProtectionAction( int protection) {
+		this.protection = protection;
+	}
+
 	public String toString() {
 		if(this.nextAction!=null)return "protection:"+this.protection+", "+this.nextAction;
 		else return "protection:"+this.protection;

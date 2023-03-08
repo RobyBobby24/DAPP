@@ -2,6 +2,7 @@ package model;
 
 import services.PersistenceInterface;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -15,7 +16,7 @@ public class EasyDifficultyStrategy implements BuildMapDifficultyStrategy {
 	}
 
 	@Override
-	public void buildMap(DungeonMap dungeonMap) {
+	public void buildMap(DungeonMap dungeonMap) throws IOException {
 		ArrayList<TreeMap<String,String>> clause= new ArrayList<>();
 		ArrayList<String> operation= new ArrayList<>();
 		TreeMap<String,String> key_value_equal = new TreeMap<>();

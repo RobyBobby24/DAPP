@@ -2,6 +2,7 @@ package model;
 
 import services.PersistenceInterface;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.TreeMap;
 
@@ -21,7 +22,7 @@ public class StandardRoomFactory implements RoomFactory {
 		return room;
 	}
 
-	public BonfireRoom createBonfireRoom() {
+	public BonfireRoom createBonfireRoom() throws IOException {
 		BonfireRoom room = new BonfireRoom();
 		return room;
 	}

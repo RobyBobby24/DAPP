@@ -8,12 +8,8 @@ public class BonfireRoom implements Room {
 
 
 	private int percentageRestore;
-	public BonfireRoom() {
-		try {
-			this.percentageRestore = ConfigurationReader.getInstance().getBonfirePercentage();
-		} catch (IOException e) {
-			throw new RuntimeException(e);
-		}
+	public BonfireRoom() throws IOException {
+		this.percentageRestore = ConfigurationReader.getInstance().getBonfirePercentage();
 	}
 
 

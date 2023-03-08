@@ -74,5 +74,18 @@ public class Main {
         Logger logger = Logger.getLogger("org.hibernate");
         logger.setLevel(Level.SEVERE);
         PlayTheGame.getInstance().chooseOperation();
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }

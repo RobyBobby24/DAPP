@@ -6,6 +6,7 @@ import view.FrontView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import java.util.TreeMap;
 
 public class PlayTheGame {
@@ -48,11 +49,12 @@ public class PlayTheGame {
 					this.setNickname();
 				else if(operation.equals("make-new-game"))
 					this.makeNewGame();
+				else if(operation.equals("exit")==false) throw new Exception("operazione non valida");
 			}
 		}
 		catch(Exception e){
-			System.out.println(e.getMessage());
-
+			FrontView.getInstance().outputError("l'operazione inserita non è valida");
+			if(FrontView.getInstance().inputError()) this.chooseOperation();
 		}
 
 	}
@@ -86,8 +88,8 @@ public class PlayTheGame {
 			this.chooseOperation();
 		}
 		catch (Exception e){
-			System.out.println(e.getMessage());
-
+			FrontView.getInstance().outputError("l'operazione non è andata a buon fine");
+			if(FrontView.getInstance().inputError()) this.setNickname();
 		}
 	}
 
@@ -96,14 +98,29 @@ public class PlayTheGame {
 	 */
 	public void makeNewGame() {
 		try{
-			List<Adventurer> adventurerList = (List<Adventurer>) PersistenceInterface.getInstance().search(new TreeMap<>(),Adventurer.class);
-			FrontView.getInstance().outputMakeNewGame(adventurerList);
-			chooseAdventurer();
+			this.chooseDifficulty();
+			this.chooseAdventurer();
+			this.playGame();
+			this.restartGame();
 		}
 		catch(Exception e){
-			FrontView.getInstance().outputError("l'avventuriero inserito non è valido!!!");
-			this.makeNewGame();
+			FrontView.getInstance().outputError("l'operazione non è andata a buon fine!!!");
+			if(FrontView.getInstance().inputError()) this.makeNewGame();
 
+		}
+	}
+
+	public void chooseDifficulty() {
+		try{
+			Set<String> difficultyStrategyNameSet = ConfigurationReader.getInstance().getDifficultyStrategyNameSet();
+			FrontView.getInstance().outputChooseDifficulty(difficultyStrategyNameSet);
+			String difficultyStrategyName = FrontView.getInstance().inputChooseDifficulty();
+			DungeonMap.getInstance().setDifficulty( ServicesFactory.getInstance().getDifficultyStrategyInstance( difficultyStrategyName ));
+			DungeonMap.getInstance().buildMap();
+		}
+		catch (Exception e){
+			FrontView.getInstance().outputError("l'operazione non è andata a buon fine!!!");
+			if(FrontView.getInstance().inputError()) this.chooseDifficulty();
 		}
 	}
 
@@ -112,16 +129,26 @@ public class PlayTheGame {
 	 */
 	public void chooseAdventurer() {
 		try{
-			ConfigurationReader.getInstance().setAdventurerClass(FrontView.getInstance().inputMakeNewGame());
-			DungeonMap.getInstance().buildMap();
-			ArrayList<Room> availableRooms = DungeonMap.getInstance().giveMeAvailableRooms();
-			FrontView.getInstance().outputChooseRoom(availableRooms);
-			chooseRoom();
+			List<AdventurerDescription> adventurerList = (List<AdventurerDescription>) PersistenceInterface.getInstance().search(new TreeMap<>(), AdventurerDescription.class);
+			FrontView.getInstance().outputChooseAdventurer(adventurerList);
+			ConfigurationReader.getInstance().setAdventurerClass(FrontView.getInstance().inputChooseAdventurer());
 		}
 		catch(Exception e){
-			//FrontView.getInstance().outputError("la stanza scelta non è valida!!!");
-			FrontView.getInstance().outputError(e.getMessage());
-			this.chooseAdventurer();
+			FrontView.getInstance().outputError("l'operazione non è andata a buon fine!!!");
+			if(FrontView.getInstance().inputError()) this.chooseAdventurer();
+		}
+	}
+
+	public void playGame() {
+		try{
+			this.endGame=false;
+			while( !this.endGame){
+				this.chooseRoom();
+			}
+		}
+		catch(Exception e){
+			FrontView.getInstance().outputError("l'operazione non è andata a buon fine!!!");
+			if(FrontView.getInstance().inputError()) this.playGame();
 		}
 	}
 
@@ -130,14 +157,22 @@ public class PlayTheGame {
 	 */
 	public void chooseRoom() {
 		try{
+			List<Room> availableRoom = DungeonMap.getInstance().giveMeAvailableRooms();
+			FrontView.getInstance().outputChooseRoom(availableRoom);
 			Room room = FrontView.getInstance().inputChooseRoom();
 			DungeonMap.getInstance().setCurrentRoom(room);
 			room.enterRoom();
 		}
 		catch(Exception e){
 			FrontView.getInstance().outputError("l'avvio della battaglia non è andato a buon fine!!!");
-			this.chooseRoom();
+			if(FrontView.getInstance().inputError()) this.chooseRoom();
 		}
 	}
+
+	public void restartGame() {
+		this.chooseOperation();
+	}
+
+
 
 }

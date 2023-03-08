@@ -48,4 +48,9 @@ public class AdventurerDescription {
     public int getCoins() {
         return coins;
     }
+
+    @Override
+    public String toString(){
+        return this.type+" ( hp attuali : "+hp.getCurrentHp()+", hp massimi : "+hp.getMaxHp()+", monete : "+this.coins+", numero di carte nel deck : "+this.deck.getNumberOfCards()+" )";
+    }
 }

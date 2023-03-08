@@ -122,6 +122,7 @@ public class BattleRoom implements Serializable,Room {
 		Adventurer.getInstance().setBattleState();
 		this.currentTurn = new AdventurerTurn();
 		this.ended=this.monsters.size();
+		this.calculateBattleReward();
 	}
 
 	/**
@@ -275,8 +276,14 @@ public class BattleRoom implements Serializable,Room {
 		return this.monsters.get(0);
 	}
 
-	public void rewardAdventurer(){
-		//TODO implement
+	public void rewardAdventurer() throws Exception {
+		Adventurer.getInstance().addCoins(this.coinReward);
+		boolean bossMonster = false;
+		for(Monster monster : this.monsters){
+			if( monster.equals("boss")) bossMonster = true;
+		}
+		if( bossMonster ) Adventurer.getInstance().addMaxHp(10);
+		else Adventurer.getInstance().addMaxHp(3);
 	}
 
 	public void addMonster(Monster monster){
@@ -290,6 +297,13 @@ public class BattleRoom implements Serializable,Room {
 
 	public String var_dump(){
 		return "ID:"+this.ID+" ended:"+this.ended+" monsters"+this.monsters+" currentTurn"+this.currentTurn;
+	}
+
+	public void calculateBattleReward(){
+		this.coinReward = 0;
+		for (Monster monster : this.monsters) {
+			this.coinReward = this.coinReward + monster.getRewardCoins();
+		}
 	}
 	
 }

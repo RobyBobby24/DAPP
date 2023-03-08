@@ -22,7 +22,7 @@ class ChooseOperationView {
 
     public void output(String nickname){
         Scanner prompt = new Scanner(System.in);
-        System.out.println(nickname +" quale operazione vuoi eseguire ? \u001B[32m (set-nickname,make-new-game) \u001B[0m");
+        System.out.println(nickname +" quale operazione vuoi eseguire ? \u001B[32m (set-nickname,make-new-game,exit) \u001B[0m");
         System.out.print("DAPP\\chooseOperation>");
         this.inputValue = prompt.next();
         System.out.println("...\n...\n...\n");

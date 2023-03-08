@@ -59,18 +59,6 @@ public class PlayTheGame {
 
 	}
 
-	public void chooseDifficulty() {
-		// TODO Roberto implementalo!!!!
-	}
-
-	public void playGame() {
-		// TODO Roberto implementalo!!!!
-	}
-
-	public void restartGame() {
-		// TODO Roberto implementalo!!!!
-	}
-
 	/**
 	 * set new nickname
 	 */
@@ -172,7 +160,5 @@ public class PlayTheGame {
 	public void restartGame() {
 		this.chooseOperation();
 	}
-
-
 
 }

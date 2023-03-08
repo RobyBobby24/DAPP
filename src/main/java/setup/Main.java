@@ -74,15 +74,24 @@ public class Main {
         Logger logger = Logger.getLogger("org.hibernate");
         logger.setLevel(Level.SEVERE);
         //PlayTheGame.getInstance().chooseOperation();
+        ;
+        Matteo();
 
-        //cvhsdvb
-        //kdscnsdcf
 
-        //xkjehckehc
 
+
+
+
+        Roberto();
 
 //delimitatore
-        Hp hp = new Hp(60,60);
+
+
+
+    }
+    public static void Matteo(){
+
+       /* Hp hp = new Hp(60,60);
         PersistenceInterface.getInstance().store(hp);
         DamageAction action = new DamageAction(10);
         PersistenceInterface.getInstance().store(action);
@@ -145,6 +154,145 @@ public class Main {
         actions4.add(action10);
         Monster monster3 = new Monster(hp5,"Dark Sorcerer","boss",1.0,0,actions4,250,null);
         PersistenceInterface.getInstance().store(monster3);
+        */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    }
+
+    public static void Roberto(){
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     }

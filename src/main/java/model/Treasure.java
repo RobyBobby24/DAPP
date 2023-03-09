@@ -12,12 +12,12 @@ public class Treasure {
 	@GeneratedValue(generator="MODEL_CARD_ID_GENERATOR")
 	@org.hibernate.annotations.GenericGenerator(name="MODEL_CARD_ID_GENERATOR", strategy="native")
 	private int ID;
-	@Column(name="rewardCoins", nullable=false, length=10)
+	@Column(name="rewardsCoins", nullable=false, length=10)
 	private int rewardCoins;
 
 	@OneToOne(targetEntity= Card.class, fetch=FetchType.EAGER)
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})
-	@JoinColumns(value = { @JoinColumn(name="CardID",referencedColumnName="ID", nullable=false) }, foreignKey=@ForeignKey(name="FKCard"))
+	@JoinColumns(value = { @JoinColumn(name="CardID",referencedColumnName="ID", nullable=true) }, foreignKey=@ForeignKey(name="FKCard"))
 	private Card card;
 
 	public int getRewardCoins() {
@@ -40,6 +40,14 @@ public class Treasure {
 
 		Adventurer.getInstance().addCoins(this.getRewardCoins());
 		Adventurer.getInstance().addCard(this.getCard());
+	}
+
+	public Treasure( int rewardCoins, Card card) {
+		this.rewardCoins = rewardCoins;
+		this.card = card;
+	}
+
+	public Treasure() {
 	}
 
 	/**

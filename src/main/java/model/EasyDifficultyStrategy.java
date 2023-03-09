@@ -11,8 +11,7 @@ import java.util.TreeMap;
 public class EasyDifficultyStrategy implements BuildMapDifficultyStrategy {
 
 	public EasyDifficultyStrategy() {
-		// TODO - implement EasyDifficultyStrategy.EasyDifficultyStrategy
-		throw new UnsupportedOperationException();
+
 	}
 
 	@Override
@@ -70,6 +69,7 @@ public class EasyDifficultyStrategy implements BuildMapDifficultyStrategy {
 		dungeonMap.addRoom(treasureRoom,endRoom);
 
 		dungeonMap.addRoom(endRoom,null);
+		System.out.println("qui si");
 	}
 
 	private BattleRoom createBattleRoomRandomMonster(List<Monster> monsters){

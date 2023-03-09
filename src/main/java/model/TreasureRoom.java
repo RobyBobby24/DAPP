@@ -5,7 +5,7 @@ import java.util.*;
 public class TreasureRoom implements Room {
 
 	protected int ID;
-	ArrayList<Treasure> treasures;
+	ArrayList<Treasure> treasures = new ArrayList<>();
 
 	public ArrayList<Treasure> getTreasures() {
 		return this.treasures;

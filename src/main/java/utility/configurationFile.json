@@ -1,12 +1,12 @@
 {
   "percentageBonfire" : 30,
-  "roomFactoryClass" : "StandardRoomFactory",
+  "roomFactoryClass" : "model.StandardRoomFactory",
   "difficulty" : {
     "easy" : {
-      "ClassName" : "EasyDifficultyStrategy"
+      "ClassName" : "model.EasyDifficultyStrategy"
     },
     "medium" : {
-      "ClassName" : "MediumDifficultyStrategy",
+      "ClassName" : "model.MediumDifficultyStrategy",
       "numberOfLevel" : 6,
       "numberOfBattleRoom" : 8,
       "numberOfMerchantRoom" : 3,
@@ -14,7 +14,7 @@
       "numberOfBonfireRoom" : 3
     },
     "hard" : {
-      "ClassName" : "MediumDifficultyStrategy",
+      "ClassName" : "model.MediumDifficultyStrategy",
       "numberOfLevel" : 9,
       "numberOfBattleRoom" : 14,
       "numberOfMerchantRoom" : 5,

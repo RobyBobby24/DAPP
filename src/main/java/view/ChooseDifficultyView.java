@@ -25,13 +25,12 @@ class ChooseDifficultyView {
         Scanner prompt = new Scanner(System.in);
         //Todo choose questions and answers
         System.out.println(nickname +" domanda... :");
-        String[] difficultyArray = (String[]) difficultys.toArray();
-        for (int i = 0; i < difficultyArray.length; i++) {
-            System.out.println(difficultyArray[i] + "\u001B[32m ("+i+") \u001B[0m");
+        Object[] difficultyArray = difficultys.toArray();
+        for (int i = 1; i < difficultyArray.length+1; i++) {
+            System.out.println( "\u001B[32m ("+i+") \u001B[0m"+ difficultyArray[i-1]);
         }
         System.out.print("DAPP\\chooseDifficulty>");
-        //Todo set inputValue
-        //this.inputValue = prompt.next();
+        this.inputValue = difficultyArray[Integer.parseInt(prompt.next())-1].toString();
         System.out.println("...\n...\n...\n");
     }
 

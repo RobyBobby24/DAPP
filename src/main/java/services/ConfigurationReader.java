@@ -37,29 +37,25 @@ public class ConfigurationReader {
     public Class getDifficultyStrategyClass(String difficultyStrategyName) throws IOException, ClassNotFoundException {
         String data = new String(Files.readAllBytes(Paths.get(this.configurationFileUrl)));
         JSONObject jsonObject = new JSONObject(data);
-        data = jsonObject.getString("difficulty");
-        jsonObject = new JSONObject(data);
-        data = jsonObject.getString(difficultyStrategyName);
-        jsonObject = new JSONObject(data);
+        jsonObject = jsonObject.getJSONObject("difficulty");
+        jsonObject = jsonObject.getJSONObject(difficultyStrategyName);
         String className = jsonObject.getString("ClassName");
+        System.out.println(className);
         return Class.forName( className );
     }
 
     public Set<String> getDifficultyStrategyNameSet() throws IOException {
         java.lang.String data = new java.lang.String(Files.readAllBytes(Paths.get(this.configurationFileUrl)));
         JSONObject jsonObject = new JSONObject(data);
-        data = jsonObject.getString("difficulty");
-        jsonObject = new JSONObject(data);
+        jsonObject = jsonObject.getJSONObject("difficulty");
         return jsonObject.keySet();
     }
 
     public Integer getDifficultyStrategyParameter(String difficultyStrategyName, String parameterName) throws IOException, ClassNotFoundException {
         String data = new String(Files.readAllBytes(Paths.get(this.configurationFileUrl)));
         JSONObject jsonObject = new JSONObject(data);
-        data = jsonObject.getString("difficulty");
-        jsonObject = new JSONObject(data);
-        data = jsonObject.getString(difficultyStrategyName);
-        jsonObject = new JSONObject(data);
+        jsonObject = jsonObject.getJSONObject("difficulty");
+        jsonObject = jsonObject.getJSONObject(difficultyStrategyName);
         return jsonObject.getInt(parameterName);
     }
 

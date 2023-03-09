@@ -23,7 +23,7 @@ import java.io.Serializable;
 @Inheritance(strategy=InheritanceType.JOINED)
 @DiscriminatorValue("Room")
  */
-public interface Room {
+public abstract class Room implements Comparable<BattleRoom> {
 
 	/*
 	@Column(name="ID", nullable=false, length=10)	
@@ -33,12 +33,14 @@ public interface Room {
 	 */
 
 	
-	void setID(int value);
+	abstract void setID(int value);
 	
-	int getID();
+	abstract int getID();
 	
 	public abstract void enterRoom();
-	
-	String toString();
+
+	public int compareTo(BattleRoom other) {
+		return 0;
+	}
 	
 }

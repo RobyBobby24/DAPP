@@ -44,8 +44,6 @@ public class EasyDifficultyStrategy implements BuildMapDifficultyStrategy {
 		//query treasures
 		List<Treasure>  treasures = (List<Treasure>) PersistenceInterface.getInstance().search(new TreeMap<>(),Treasure.class);
 
-
-
 		BattleRoom startingRoom = this.createBattleRoomRandomMonster(normalMonsters);
 
 		MerchantRoom merchantRoom=this.createMerchantRoomRandomCards(cards);
@@ -57,7 +55,6 @@ public class EasyDifficultyStrategy implements BuildMapDifficultyStrategy {
 		BonfireRoom bonfireRoom=roomFactory.createBonfireRoom();
 
 		BattleRoom endRoom = this.createBattleRoomRandomMonster( bossMonsters );
-
 		dungeonMap.setCurrentRoom(startingRoom);
 
 		dungeonMap.addRoom(startingRoom,bonfireRoom);
@@ -69,7 +66,6 @@ public class EasyDifficultyStrategy implements BuildMapDifficultyStrategy {
 		dungeonMap.addRoom(treasureRoom,endRoom);
 
 		dungeonMap.addRoom(endRoom,null);
-		System.out.println("qui si");
 	}
 
 	private BattleRoom createBattleRoomRandomMonster(List<Monster> monsters){

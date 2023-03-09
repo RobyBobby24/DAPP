@@ -40,7 +40,6 @@ public class ConfigurationReader {
         jsonObject = jsonObject.getJSONObject("difficulty");
         jsonObject = jsonObject.getJSONObject(difficultyStrategyName);
         String className = jsonObject.getString("ClassName");
-        System.out.println(className);
         return Class.forName( className );
     }
 

@@ -28,9 +28,9 @@ class ChooseAdventurer {
         Scanner prompt = new Scanner(System.in);
         System.out.println(nickname + " scegli un avventuriero tra i seguenti : \n");
         for(AdventurerDescription adv: adventurers){
-            System.out.println(adv+" \u001B[32m("+adv.getType()+")\u001B[0m \n");
+            System.out.println(adv+" \u001B[32m("+adv.getType()+")\u001B[0m ");
         }
-        System.out.print("DAPP\\chooseAdventurer>");
+        System.out.print("\nDAPP\\chooseAdventurer>");
         this.inputValue = Class.forName(Adventurer.class.getPackageName() + "."+prompt.next());
         System.out.println("...\n...\n...\n");
     }

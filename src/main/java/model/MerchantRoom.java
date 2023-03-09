@@ -2,7 +2,7 @@ package model;
 
 import java.util.*;
 
-public class MerchantRoom implements Room {
+public class MerchantRoom extends Room {
 
 	protected int ID;
 	private List<Card> purchasableCards = new ArrayList<>();

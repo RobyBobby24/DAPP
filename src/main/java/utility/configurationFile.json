@@ -14,7 +14,7 @@
       "numberOfBonfireRoom" : 3
     },
     "hard" : {
-      "ClassName" : "model.MediumDifficultyStrategy",
+      "ClassName" : "model.HardDifficultyStrategy",
       "numberOfLevel" : 9,
       "numberOfBattleRoom" : 14,
       "numberOfMerchantRoom" : 5,

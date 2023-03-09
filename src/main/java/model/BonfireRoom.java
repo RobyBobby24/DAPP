@@ -4,7 +4,7 @@ import services.ConfigurationReader;
 
 import java.io.IOException;
 
-public class BonfireRoom implements Room {
+public class BonfireRoom extends Room {
 
 
 	private int percentageRestore;

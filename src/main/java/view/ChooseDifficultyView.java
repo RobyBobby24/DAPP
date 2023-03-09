@@ -23,8 +23,7 @@ class ChooseDifficultyView {
 
     public void output(String nickname, Set<String> difficultys){
         Scanner prompt = new Scanner(System.in);
-        //Todo choose questions and answers
-        System.out.println(nickname +" domanda... :");
+        System.out.println(nickname +" scegli la difficoltà della partita :");
         Object[] difficultyArray = difficultys.toArray();
         for (int i = 1; i < difficultyArray.length+1; i++) {
             System.out.println( "\u001B[32m ("+i+") \u001B[0m"+ difficultyArray[i-1]);

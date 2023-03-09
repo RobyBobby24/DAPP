@@ -126,6 +126,10 @@ public class DungeonMap implements Serializable {
 		this.difficulty = difficultyStrategy;
 	}
 
+	public BuildMapDifficultyStrategy getDifficulty() {
+		return difficulty;
+	}
+
 	public boolean areThereAvailableRooms() {
 		if (rooms.get(currentRoom) == null){
 			return true;

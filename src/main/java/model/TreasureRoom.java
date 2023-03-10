@@ -3,8 +3,6 @@ package model;
 import java.util.*;
 
 public class TreasureRoom extends Room {
-
-	protected int ID;
 	ArrayList<Treasure> treasures = new ArrayList<>();
 
 	public ArrayList<Treasure> getTreasures() {
@@ -16,16 +14,7 @@ public class TreasureRoom extends Room {
 	}
 
 	public TreasureRoom() {
-	}
-
-	@Override
-	public void setID(int value) {
-
-	}
-
-	@Override
-	public int getID() {
-		return 0;
+		super();
 	}
 
 	@Override

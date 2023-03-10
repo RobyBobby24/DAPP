@@ -15,7 +15,7 @@ public class HardDifficultyStrategy implements BuildMapDifficultyStrategy {
 	int numberOfBonfireRoom=3;
 
 	public HardDifficultyStrategy() throws IOException, ClassNotFoundException {
-		String difficultyStrategyName = "Hard";
+		String difficultyStrategyName = "hard";
 		this.numberOfLevel = ConfigurationReader.getInstance().getDifficultyStrategyParameter(difficultyStrategyName,"numberOfLevel");
 		this.numberOfBattleRoom = ConfigurationReader.getInstance().getDifficultyStrategyParameter(difficultyStrategyName,"numberOfBattleRoom");
 		this.numberOfMerchantRoom = ConfigurationReader.getInstance().getDifficultyStrategyParameter(difficultyStrategyName,"numberOfMerchantRoom");
@@ -83,8 +83,8 @@ public class HardDifficultyStrategy implements BuildMapDifficultyStrategy {
 		for( Room room : secondLevel){
 			List<Room> level = new ArrayList<>();
 			level.add(room);
-			int choose = random.nextInt( this.numberOfLevel-2 );
-			for (int i = 0; i < this.numberOfLevel-2; i++) {
+			int choose = random.nextInt( this.numberOfLevel-3 );
+			for (int i = 0; i < this.numberOfLevel-3; i++) {
 				List<Room> actualLevel = new ArrayList<>();
 				actualLevel.add( rooms.remove( random.nextInt( rooms.size() ) ) );
 				if( choose==i ) actualLevel.add( rooms.remove( random.nextInt( rooms.size() ) ) );
@@ -99,6 +99,7 @@ public class HardDifficultyStrategy implements BuildMapDifficultyStrategy {
 				dungeonMap.addRoom(secondLastRoom,endRoom);
 			}
 		}
+		dungeonMap.addRoom(endRoom,null);
 	}
 
 

@@ -3,8 +3,6 @@ package model;
 import java.util.*;
 
 public class MerchantRoom extends Room {
-
-	protected int ID;
 	private List<Card> purchasableCards = new ArrayList<>();
 
 	public List<Card> getPurchasableCards() {
@@ -16,17 +14,7 @@ public class MerchantRoom extends Room {
 	}
 
 	public MerchantRoom() {
-
-	}
-
-	@Override
-	public void setID(int value) {
-
-	}
-
-	@Override
-	public int getID() {
-		return 0;
+		super();
 	}
 
 	@Override

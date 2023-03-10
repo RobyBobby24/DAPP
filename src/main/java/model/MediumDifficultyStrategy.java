@@ -14,7 +14,7 @@ public class MediumDifficultyStrategy implements BuildMapDifficultyStrategy {
 	private int numberOfTreasureRoom;
 	private int numberOfBonfireRoom;
 
-	public void MediumDifficultySrategy() throws IOException, ClassNotFoundException {
+	public MediumDifficultyStrategy() throws IOException, ClassNotFoundException {
 		String difficultyStrategyName = "medium";
 		this.numberOfLevel = ConfigurationReader.getInstance().getDifficultyStrategyParameter(difficultyStrategyName,"numberOfLevel");
 		this.numberOfBattleRoom = ConfigurationReader.getInstance().getDifficultyStrategyParameter(difficultyStrategyName,"numberOfBattleRoom");
@@ -22,6 +22,7 @@ public class MediumDifficultyStrategy implements BuildMapDifficultyStrategy {
 		this.numberOfTreasureRoom = ConfigurationReader.getInstance().getDifficultyStrategyParameter(difficultyStrategyName,"numberOfTreasureRoom");
 		this.numberOfBonfireRoom = ConfigurationReader.getInstance().getDifficultyStrategyParameter(difficultyStrategyName,"numberOfBonfireRoom");
 	}
+
 	public void buildMap(DungeonMap dungeonMap) throws IOException {
 		ArrayList<TreeMap<String,String>> clause= new ArrayList<>();
 		ArrayList<String> operation= new ArrayList<>();
@@ -75,22 +76,24 @@ public class MediumDifficultyStrategy implements BuildMapDifficultyStrategy {
 		for( Room room : secondLevel){
 			List<Room> level = new ArrayList<>();
 			level.add(room);
-			int choose = random.nextInt( this.numberOfLevel-2 );
-			for (int i = 0; i < this.numberOfLevel-2; i++) {
+			int choose = random.nextInt( this.numberOfLevel-3 );
+			for (int i = 0; i < this.numberOfLevel-3; i++) {
 				List<Room> actualLevel = new ArrayList<>();
 				actualLevel.add( rooms.remove( random.nextInt( rooms.size() ) ) );
-				if( choose==i ) actualLevel.add( rooms.remove( random.nextInt( rooms.size() ) ) );
+				if( choose==i ) actualLevel.add( rooms.remove( random.nextInt( level.size() ) ) );
 				for (Room rKey : level){
 					for (Room rValue : actualLevel){
 						dungeonMap.addRoom(rKey, rValue);
 					}
 				}
-				level = new ArrayList<>(actualLevel);
+				level = new ArrayList<>();
+				for( Room roomActual : actualLevel) level.add(roomActual);
 			}
-			for( Room secondLastRoom : secondLevel){
+			for( Room secondLastRoom : level){
 				dungeonMap.addRoom(secondLastRoom,endRoom);
 			}
 		}
+		dungeonMap.addRoom(endRoom,null);
 
 		
 	}
@@ -161,6 +164,6 @@ public class MediumDifficultyStrategy implements BuildMapDifficultyStrategy {
 	}
 
 	public String toString() {
-		return String.valueOf(numberOfBattleRoom);
+		return String.valueOf(numberOfBattleRoom)+" "+String.valueOf(this.numberOfLevel)+" "+String.valueOf(this.numberOfBonfireRoom)+" "+String.valueOf(this.numberOfTreasureRoom)+" "+String.valueOf(this.numberOfMerchantRoom);
 	}
 }

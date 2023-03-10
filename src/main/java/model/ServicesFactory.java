@@ -3,6 +3,7 @@ package model;
 import services.ConfigurationReader;
 import services.PersistenceInterface;
 
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 
 public class ServicesFactory {
@@ -37,7 +38,7 @@ public class ServicesFactory {
     public BuildMapDifficultyStrategy getDifficultyStrategyInstance(String difficultyStrategyName){
         try{
             Class difficultyStrategyClass= ConfigurationReader.getInstance().getDifficultyStrategyClass(difficultyStrategyName);
-            return (BuildMapDifficultyStrategy)  difficultyStrategyClass.getConstructor().newInstance();
+            return (BuildMapDifficultyStrategy)  difficultyStrategyClass.getConstructors()[0].newInstance();
         }
         catch(Exception e){
             return null;

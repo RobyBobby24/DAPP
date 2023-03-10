@@ -9,6 +9,7 @@ public class BonfireRoom extends Room {
 
 	private int percentageRestore;
 	public BonfireRoom() throws IOException {
+		super();
 		this.percentageRestore = ConfigurationReader.getInstance().getBonfirePercentage();
 	}
 
@@ -19,16 +20,6 @@ public class BonfireRoom extends Room {
 
 	public void setPercentageRestore(int percentageRestore) {
 		this.percentageRestore = percentageRestore;
-	}
-
-	@Override
-	public void setID(int value) {
-
-	}
-
-	@Override
-	public int getID() {
-		return 0;
 	}
 
 	@Override

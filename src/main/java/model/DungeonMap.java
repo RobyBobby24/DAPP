@@ -140,20 +140,22 @@ public class DungeonMap implements Serializable {
 	 * add a room to the map
 	 */
 	public void addRoom(Room keyRoom, Room roomToAdd){
-		if(this.rooms.get(keyRoom) != null){
-
+		if(this.rooms.containsKey(keyRoom)){
 			this.rooms.get(keyRoom).add(roomToAdd);
 		}
 		else {
-
 			ArrayList<Room> arrayRoom = new ArrayList<>();
 			arrayRoom.add(roomToAdd);
 			this.rooms.put(keyRoom, arrayRoom);
 		}
 	}
 
+	public TreeMap<Room, List<Room>> getRooms() {
+		return rooms;
+	}
+
 	public String toString() {
-		return String.valueOf(getID());
+		return String.valueOf(this.rooms.size());
 	}
 
 	public String var_dump(){

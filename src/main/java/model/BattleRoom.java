@@ -19,7 +19,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BattleRoom extends Room implements Serializable {
+public class BattleRoom extends Room {
 
 	//	Attribute!!!
 	private List<Monster> monsters = new ArrayList<Monster>();
@@ -35,13 +35,11 @@ public class BattleRoom extends Room implements Serializable {
 	private TurnState currentTurn;
 
 
-	protected int ID;
-
-
 
 //	Methods
 
 	public BattleRoom() {
+		super();
 	}
 
 	/**
@@ -65,17 +63,6 @@ public class BattleRoom extends Room implements Serializable {
 			return (ArrayList<Monster>) this.monsters;
 		}
 	}
-
-	@Override
-	public void setID(int value) {
-		this.ID=value;
-	}
-
-	@Override
-	public int getID() {
-		return 0;
-	}
-
 	public int getCoinRewardReward() {
 		return coinReward;
 	}

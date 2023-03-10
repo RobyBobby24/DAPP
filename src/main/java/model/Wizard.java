@@ -1,7 +1,16 @@
 package model;
 
+import jakarta.persistence.DiscriminatorValue;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
+
 import java.io.Serializable;
 
+@Entity
+@org.hibernate.annotations.Proxy(lazy=false)
+@Inheritance(strategy= InheritanceType.SINGLE_TABLE)
+@DiscriminatorValue("Wizard")
 public class Wizard extends Adventurer implements Serializable {
 
     public Wizard() {

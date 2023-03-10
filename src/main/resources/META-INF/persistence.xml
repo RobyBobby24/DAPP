@@ -18,6 +18,7 @@
         <class>model.ProtectionAction</class>
         <class>model.ProtectionEffect</class>
         <class>model.Warrior</class>
+        <class>model.Wizard</class>
         <class>model.AdventurerDescription</class>
         <class>model.Treasure</class>
         <properties>

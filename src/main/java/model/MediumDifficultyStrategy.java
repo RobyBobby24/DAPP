@@ -15,12 +15,12 @@ public class MediumDifficultyStrategy implements BuildMapDifficultyStrategy {
 	private int numberOfBonfireRoom;
 
 	public void MediumDifficultySrategy() throws IOException, ClassNotFoundException {
-		String difficultyStrategyName = "Medium";
+		String difficultyStrategyName = "medium";
 		this.numberOfLevel = ConfigurationReader.getInstance().getDifficultyStrategyParameter(difficultyStrategyName,"numberOfLevel");
 		this.numberOfBattleRoom = ConfigurationReader.getInstance().getDifficultyStrategyParameter(difficultyStrategyName,"numberOfBattleRoom");
 		this.numberOfMerchantRoom = ConfigurationReader.getInstance().getDifficultyStrategyParameter(difficultyStrategyName,"numberOfMerchantRoom");
 		this.numberOfTreasureRoom = ConfigurationReader.getInstance().getDifficultyStrategyParameter(difficultyStrategyName,"numberOfTreasureRoom");
-		this.numberOfBonfireRoom = ConfigurationReader.getInstance().getDifficultyStrategyParameter(difficultyStrategyName,"numberOfTreasureRoom");
+		this.numberOfBonfireRoom = ConfigurationReader.getInstance().getDifficultyStrategyParameter(difficultyStrategyName,"numberOfBonfireRoom");
 	}
 	public void buildMap(DungeonMap dungeonMap) throws IOException {
 		ArrayList<TreeMap<String,String>> clause= new ArrayList<>();
@@ -160,4 +160,7 @@ public class MediumDifficultyStrategy implements BuildMapDifficultyStrategy {
 		return treasureRoom;
 	}
 
+	public String toString() {
+		return String.valueOf(numberOfBattleRoom);
+	}
 }

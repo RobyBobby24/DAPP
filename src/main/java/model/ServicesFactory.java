@@ -37,7 +37,7 @@ public class ServicesFactory {
     public BuildMapDifficultyStrategy getDifficultyStrategyInstance(String difficultyStrategyName){
         try{
             Class difficultyStrategyClass= ConfigurationReader.getInstance().getDifficultyStrategyClass(difficultyStrategyName);
-            return (BuildMapDifficultyStrategy) difficultyStrategyClass.newInstance();
+            return (BuildMapDifficultyStrategy)  difficultyStrategyClass.getConstructor().newInstance();
         }
         catch(Exception e){
             return null;

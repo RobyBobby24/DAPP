@@ -2,10 +2,10 @@ package model;
 
 import java.util.*;
 
-public class TreasureRoom implements Room {
+public class TreasureRoom extends Room {
 
 	protected int ID;
-	ArrayList<Treasure> treasures;
+	ArrayList<Treasure> treasures = new ArrayList<>();
 
 	public ArrayList<Treasure> getTreasures() {
 		return this.treasures;

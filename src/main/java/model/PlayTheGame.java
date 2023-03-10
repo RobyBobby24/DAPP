@@ -107,6 +107,7 @@ public class PlayTheGame {
 			DungeonMap.getInstance().buildMap();
 		}
 		catch (Exception e){
+			System.out.println(e.getMessage());
 			FrontView.getInstance().outputError("l'operazione non è andata a buon fine!!!");
 			if(FrontView.getInstance().inputError()) this.chooseDifficulty();
 		}

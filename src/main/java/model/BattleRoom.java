@@ -19,7 +19,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BattleRoom implements Serializable,Room {
+public class BattleRoom extends Room implements Serializable {
 
 	//	Attribute!!!
 	private List<Monster> monsters = new ArrayList<Monster>();
@@ -306,5 +306,4 @@ public class BattleRoom implements Serializable,Room {
 			this.coinReward = this.coinReward + monster.getRewardCoins();
 		}
 	}
-	
 }

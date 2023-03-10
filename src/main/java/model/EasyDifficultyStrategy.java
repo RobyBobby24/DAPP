@@ -11,8 +11,7 @@ import java.util.TreeMap;
 public class EasyDifficultyStrategy implements BuildMapDifficultyStrategy {
 
 	public EasyDifficultyStrategy() {
-		// TODO - implement EasyDifficultyStrategy.EasyDifficultyStrategy
-		throw new UnsupportedOperationException();
+
 	}
 
 	@Override
@@ -45,8 +44,6 @@ public class EasyDifficultyStrategy implements BuildMapDifficultyStrategy {
 		//query treasures
 		List<Treasure>  treasures = (List<Treasure>) PersistenceInterface.getInstance().search(new TreeMap<>(),Treasure.class);
 
-
-
 		BattleRoom startingRoom = this.createBattleRoomRandomMonster(normalMonsters);
 
 		MerchantRoom merchantRoom=this.createMerchantRoomRandomCards(cards);
@@ -58,7 +55,6 @@ public class EasyDifficultyStrategy implements BuildMapDifficultyStrategy {
 		BonfireRoom bonfireRoom=roomFactory.createBonfireRoom();
 
 		BattleRoom endRoom = this.createBattleRoomRandomMonster( bossMonsters );
-
 		dungeonMap.setCurrentRoom(startingRoom);
 
 		dungeonMap.addRoom(startingRoom,bonfireRoom);

@@ -58,6 +58,13 @@ public class Card implements Serializable {
 	public Card() {
 	}
 
+	public Card( int energyCost, String description, String name, int coinCost, Effect effect) {
+		this.energyCost = energyCost;
+		this.description = description;
+		this.name = name;
+		CoinCost = coinCost;
+		this.effect = effect;
+	}
 
 	/**
 	 * set new ID (identifier of object used also in DB)

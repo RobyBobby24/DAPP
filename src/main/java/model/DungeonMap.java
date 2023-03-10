@@ -51,6 +51,8 @@ public class DungeonMap implements Serializable {
 	 */
 	private TreeMap< Room, List<Room>> rooms = new TreeMap();
 
+	private List<Room> startingRooms = new ArrayList<>();
+
 	//@Transient
 	private BuildMapDifficultyStrategy difficulty;
 
@@ -91,7 +93,8 @@ public class DungeonMap implements Serializable {
 	 * @return the list of the room reachable where the Adventurer is
 	 */
 	public ArrayList<Room> giveMeAvailableRooms() {
-		return new ArrayList<Room>(this.rooms.get(this.currentRoom));
+		if( this.currentRoom==null ) return new ArrayList<Room>(this.startingRooms);
+		else return new ArrayList<Room>(this.rooms.get(this.currentRoom));
 	}
 
 	/**
@@ -119,6 +122,7 @@ public class DungeonMap implements Serializable {
 	 */
 	public void setCurrentRoom(Room currentRoom) {
 		this.currentRoom=currentRoom;
+		if( !this.areThereAvailableRooms() ) FrontController.getInstance().setEndBattle(true);
 	}
 
 
@@ -131,7 +135,10 @@ public class DungeonMap implements Serializable {
 	}
 
 	public boolean areThereAvailableRooms() {
-		if (rooms.get(currentRoom) == null){
+		if(this.currentRoom == null && this.startingRooms.size()>0){
+			return true;
+		}
+		else if (rooms.get(currentRoom) != null){
 			return true;
 		}
 		return false;
@@ -140,7 +147,9 @@ public class DungeonMap implements Serializable {
 	 * add a room to the map
 	 */
 	public void addRoom(Room keyRoom, Room roomToAdd){
-		if(this.rooms.containsKey(keyRoom)){
+		if(keyRoom==null) this.startingRooms.add(roomToAdd);
+		else if( roomToAdd==null ) this.rooms.put(keyRoom,null);
+		else if(this.rooms.containsKey(keyRoom)){
 			this.rooms.get(keyRoom).add(roomToAdd);
 		}
 		else {

@@ -55,7 +55,7 @@ public class EasyDifficultyStrategy implements BuildMapDifficultyStrategy {
 		BonfireRoom bonfireRoom=roomFactory.createBonfireRoom();
 
 		BattleRoom endRoom = this.createBattleRoomRandomMonster( bossMonsters );
-		dungeonMap.setCurrentRoom(startingRoom);
+		dungeonMap.addRoom( null,startingRoom );
 
 		dungeonMap.addRoom(startingRoom,bonfireRoom);
 		dungeonMap.addRoom(startingRoom,merchantRoom);

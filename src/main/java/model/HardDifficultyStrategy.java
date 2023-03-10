@@ -72,7 +72,7 @@ public class HardDifficultyStrategy implements BuildMapDifficultyStrategy {
 
 		Random random = new Random();
 
-		dungeonMap.setCurrentRoom(startingRoom);
+		dungeonMap.addRoom( null , startingRoom );
 
 		List<Room> secondLevel = new ArrayList<>();
 		for (int i = 0; i < 3; i++) {

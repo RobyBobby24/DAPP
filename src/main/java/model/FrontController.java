@@ -19,6 +19,10 @@ public class FrontController {
 		return FrontController.instance;
 	}
 
+	public void setEndBattle(boolean endBattle){
+		PlayTheGame.getInstance().setEndGame(endBattle);
+	}
+
 	public void makeNewGame() {
 		PlayTheGame.getInstance().makeNewGame();
 	}

@@ -87,6 +87,7 @@ public class Deck implements Serializable {
 		int i = 0;
 		while( i < numberOfCards && this.cards.size() > 0){
 			result.add(this.cards.remove(0));
+			i = i + 1;
 		}
 		return result;
 	}

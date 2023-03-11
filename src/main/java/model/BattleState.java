@@ -66,18 +66,18 @@ public class BattleState implements AdventurerState {
 	 * @param numberOfCards number of cards to draw
 	 */
 	public void drawCards(int numberOfCards) {
-		int nCards = this.deck.getNumberOfCards();
-		if(nCards > numberOfCards) {
+		int numberCardsOfDeck = this.deck.getNumberOfCards();
+		if(numberCardsOfDeck > numberOfCards) {
 			ArrayList<Card> cards = this.deck.getAndRemoveCards(numberOfCards);
 			this.hand.addCard(cards);
 		}
 		else{
-			ArrayList<Card> cards = this.deck.getAndRemoveCards(nCards);
+			ArrayList<Card> cards = this.deck.getAndRemoveCards(numberCardsOfDeck);
 			this.hand.addCard(cards);
 			ArrayList<Card> discardPileCards = this.discardPile.getAndRemoveCards();
 			this.deck.addCard(discardPileCards);
 			this.deck.shuffle();
-			ArrayList<Card> otherCards = this.deck.getAndRemoveCards(numberOfCards-nCards);
+			ArrayList<Card> otherCards = this.deck.getAndRemoveCards(numberOfCards- numberCardsOfDeck);
 			this.hand.addCard(otherCards);
 		}
 	}

@@ -16,6 +16,7 @@ public class AdventurerTurn implements TurnState {
 	 */
 	public void startTurn(BattleRoom battleRoom) {
 		this.endAdventurerTurn = false;
+		Adventurer.getInstance().startTurn();
 		battleRoom.setNextMonstersAction();
 	}
 

@@ -35,15 +35,12 @@ public class Hand {
 	}
 
 	/**
-	 * @param cardId id of card to get from the hand
+	 * @param cardIndex id of card to get from the hand
 	 * @return the card allocated in the "cardIndex" position of Hand's attribute cards
 	 */
-	public Card getCard(int cardId) {
-		for(Card card:this.cards){
-			if(card.getID() == cardId)
-				return card;
-		}
-		return null;
+	public Card getCard(int cardIndex) {
+		if( cardIndex >= this.cards.size()) return null;
+		else return this.cards.get(cardIndex);
 	}
 
 	/**

@@ -64,7 +64,10 @@ public class DrawEffect extends Effect implements Serializable {
 	}
 	
 	public String toString() {
-		return super.toString();
+		if(this.nextEffect != null)
+			return "draw:"+this.numberCards+","+this.nextEffect;
+		else
+			return "draw:"+this.numberCards;
 	}
 
 	public String var_dump(){

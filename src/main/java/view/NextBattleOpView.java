@@ -33,14 +33,13 @@ class NextBattleOpView {
         return this.inputValue;
     }
 
-    public void outputChooseCardToPlay(String nickname){
-        Scanner prompt = new Scanner(System.in);
-        System.out.println(nickname+" quale operazione di battaglia vuoi eseguire ? (play-card,pass-turn)\n");
-        System.out.print("DAPP\\chooseBattleOp>");
-        this.inputCardId = Integer.parseInt(prompt.next());
+    public void outputYouWon(String nickname, int coinsReward){
+        System.out.println("Complimenti "+nickname+", hai vinto!!! Hai guadagnato "+coinsReward+" monete.");
+        System.out.println("...\n...\n...\n");
     }
 
-    public int inputChooseCardToPlay(){
-        return this.inputCardId;
+    public void outputYouLost(String nickname){
+        System.out.println(nickname+" hai perso.");
+        System.out.println("...\n...\n...\n");
     }
 }

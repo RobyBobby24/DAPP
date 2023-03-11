@@ -1,5 +1,7 @@
 package model;
 
+import view.FrontView;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,6 +43,10 @@ public class FrontController {
 
 	public void chooseTarget() {
 		BattleController.getInstance().chooseTarget();
+	}
+
+	public void showBattleResult(boolean haveYouWon , int rewardCoins){
+		BattleController.getInstance().showBattleResult( haveYouWon , rewardCoins );
 	}
 
 	public void passTurn() {

@@ -188,13 +188,11 @@ public class Card implements Serializable {
 	}
 	
 	public String toString() {
-		//TODO aggiungi il nome
-		return "Effect="+this.effect+", Description="+this.description;
+		return "Name = "+this.name+", Effect = "+this.effect;
 	}
 
 	public String var_dump() {
-		//TODO aggiungi il nome
-		return "id:"+this.ID+" energyCost:"+this.energyCost+" effect:"+this.effect+" description"+this.description;
+		return "id:"+this.ID+" energyCost:"+this.energyCost+" effect:"+this.effect+" description"+this.description+" name:"+this.name;
 	}
 
 

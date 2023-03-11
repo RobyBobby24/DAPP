@@ -126,6 +126,10 @@ public class BattleRoom extends Room {
 	private void endBattle() throws Exception {
 		if( this.ended==0 ){
 			this.rewardAdventurer();
+			FrontController.getInstance().showBattleResult( true , this.coinReward );
+		}
+		else {
+			FrontController.getInstance().showBattleResult( false , 0 );
 		}
 	}
 
@@ -284,10 +288,6 @@ public class BattleRoom extends Room {
 	public void addMonster(Monster monster){
 		if(this.monsters==null) this.monsters=new ArrayList<Monster>();
 		this.monsters.add(monster);
-	}
-
-	public String toString(){
-		return this.getClass().getSimpleName();
 	}
 
 	public String var_dump(){

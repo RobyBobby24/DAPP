@@ -119,6 +119,13 @@ public class FrontView {
     }
 
 
+    public void outputYouWon( int coinsReward){
+        NextBattleOpView.getInstance().outputYouWon( this.nickname , coinsReward );
+    }
+
+    public void outputYouLost(){
+        NextBattleOpView.getInstance().outputYouLost( this.nickname );
+    }
 
 
 

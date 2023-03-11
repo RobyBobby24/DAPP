@@ -27,10 +27,10 @@ public class ChooseRoomView {
         Scanner prompt = new Scanner(System.in);
         System.out.println(nickname+" scegli una stanza dove entrare :\n");
         for (int i = 0; i < rooms.size(); i++) {
-            System.out.println(rooms.get(i) + "\u001B[32m ("+i+") \u001B[0m");
+            System.out.println(rooms.get(i) + "\u001B[32m ("+String.valueOf(i+1)+") \u001B[0m");
         }
         System.out.print("DAPP\\chooseRoom>");
-        this.inputValue = rooms.get(Integer.parseInt(prompt.next()));
+        this.inputValue = rooms.get(Integer.parseInt(prompt.next())-1);
         System.out.println("...\n...\n...\n");
     }
 

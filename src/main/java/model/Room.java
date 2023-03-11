@@ -55,5 +55,9 @@ public abstract class Room implements Comparable<Room> {
 		else if (this.ID == other.ID) return 0;
 		else return -1;
 	}
+
+	public String toString(){
+		return this.getClass().getSimpleName();
+	}
 	
 }

@@ -86,6 +86,11 @@ public class BattleController {
 		return FrontView.getInstance().inputChooseTarget();
 	}
 
+	public void showBattleResult(boolean haveYouWon , int rewardCoins){
+		if( haveYouWon ) FrontView.getInstance().outputYouWon(rewardCoins);
+		else FrontView.getInstance().outputYouLost();
+	}
+
 
 
 }

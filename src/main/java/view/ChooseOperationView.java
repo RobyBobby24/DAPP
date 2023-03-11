@@ -23,7 +23,7 @@ class ChooseOperationView {
 
     public void output(String nickname){
         Scanner prompt = new Scanner(System.in);
-        System.out.println(nickname +" Quale operazione vuoi eseguire ? \n");
+        System.out.println(nickname +" quale operazione vuoi eseguire ? \n");
         for (int i = 1; i < this.inputMapping.length+1; i++) {
             System.out.println(" \u001B[32m ("+i+") \u001B[0m "+this.inputMapping[i-1]);
         }

@@ -224,7 +224,7 @@ public abstract class Adventurer implements Serializable {
 	 * @param damage number of point to decrease
 	 */
 	public void takeDamage(int damage) {
-		this.currentState.takeDamage(damage,this);
+		this.currentState.takeDamage(damage);
 	}
 
 	public void removeCardFromHand(Card card){

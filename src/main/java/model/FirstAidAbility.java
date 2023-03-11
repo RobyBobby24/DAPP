@@ -6,10 +6,8 @@ public class FirstAidAbility extends DecoratorState {
         Adventurer.getInstance().addCurrentHp(6);
     }
 
-    public void catchReward (){
-
+    public void catchBattleReward(){
         super.catchBattleReward();
         restoreHp();
-
     }
 }

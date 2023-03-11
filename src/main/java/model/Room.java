@@ -48,7 +48,7 @@ public abstract class Room implements Comparable<Room> {
 		return this.ID;
 	}
 	
-	public abstract void enterRoom();
+	public abstract void enterRoom() throws Exception;
 
 	public int compareTo(Room other) {
 		if(this.ID > other.ID) return 1;

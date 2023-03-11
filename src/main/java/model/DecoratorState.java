@@ -79,10 +79,9 @@ public class DecoratorState implements AdventurerState {
 	/**
 	 * 
 	 * @param damage
-	 * @param adventurer
 	 */
-	public void takeDamage(int damage, Adventurer adventurer) {
-		this.component.takeDamage( damage , adventurer);
+	public void takeDamage(int damage) {
+		this.component.takeDamage( damage );
 	}
 
 	@Override
@@ -115,6 +114,10 @@ public class DecoratorState implements AdventurerState {
 	@Override
 	public void catchBattleReward() {
     	this.component.catchBattleReward();
+	}
+
+	public String toString(){
+		return this.component.toString();
 	}
 
 }

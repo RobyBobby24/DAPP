@@ -41,11 +41,11 @@ public class FrontView {
     }
 
     public void outputChooseAdventurer(List<AdventurerDescription> adventurers) throws ClassNotFoundException {
-        ChooseAdventurer.getInstance().output(this.nickname, adventurers);
+        ChooseAdventurerView.getInstance().output(this.nickname, adventurers);
     }
 
     public  Class inputChooseAdventurer(){
-        return ChooseAdventurer.getInstance().input();
+        return ChooseAdventurerView.getInstance().input();
     }
 
     public void outputChooseRoom(List<Room> rooms){
@@ -58,11 +58,11 @@ public class FrontView {
 
     public void outputChooseBattleOp(Adventurer adventurer,BattleRoom room){
         this.outputBattle(adventurer, room);
-        NextBattleOp.getInstance().outputChooseBattleOp(this.nickname);
+        NextBattleOpView.getInstance().outputChooseBattleOp(this.nickname);
     }
 
     public String inputChooseBattleOp(){
-        return NextBattleOp.getInstance().inputChooseBattleOp();
+        return NextBattleOpView.getInstance().inputChooseBattleOp();
     }
 
     public void outputPlayCard(List<Card> cards,Adventurer adventurer,BattleRoom room){

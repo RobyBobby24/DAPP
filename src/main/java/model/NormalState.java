@@ -93,12 +93,12 @@ public class NormalState implements AdventurerState {
 	}
 
 	/**
-	 * decrease currentHp
-	 * @param damage number of point to decrease
-	 * @param adventurer adventurer who take damage
-	 */
+     * decrease currentHp
+     *
+     * @param damage number of point to decrease
+     */
 	@Override
-	public void takeDamage(int damage, Adventurer adventurer) {
+	public void takeDamage(int damage) {
 	}
 
 	public String toString(){

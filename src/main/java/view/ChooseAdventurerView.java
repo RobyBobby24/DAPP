@@ -6,22 +6,22 @@ import model.AdventurerDescription;
 import java.util.List;
 import java.util.Scanner;
 
-class ChooseAdventurer {
+class ChooseAdventurerView {
 
     private Class inputValue;
 
-    private static ChooseAdventurer instance;
+    private static ChooseAdventurerView instance;
 
-    private ChooseAdventurer(){
+    private ChooseAdventurerView(){
 
 
     }
 
-    public static ChooseAdventurer getInstance(){
-        if(ChooseAdventurer.instance == null){
-            ChooseAdventurer.instance = new ChooseAdventurer();
+    public static ChooseAdventurerView getInstance(){
+        if(ChooseAdventurerView.instance == null){
+            ChooseAdventurerView.instance = new ChooseAdventurerView();
         }
-        return ChooseAdventurer.instance;
+        return ChooseAdventurerView.instance;
     }
 
     public void output(String nickname, List<AdventurerDescription> adventurers) throws ClassNotFoundException {

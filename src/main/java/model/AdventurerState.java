@@ -67,10 +67,10 @@ public interface AdventurerState {
 
 	/**
 	 * decrease currentHp
+	 *
 	 * @param damage number of point to decrease
-	 * @param adventurer adventurer who take damage
 	 */
-	void takeDamage(int damage,Adventurer adventurer);
+	void takeDamage(int damage);
 
 	@Override
 	public String toString();

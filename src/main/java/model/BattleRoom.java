@@ -74,9 +74,10 @@ public class BattleRoom extends Room {
 	/**
 	 * start the operation that will be in the room
 	 */
-	public void enterRoom() {
+	public void enterRoom() throws Exception {
 		this.startBattle();
 		this.playBattle();
+		this.endBattle();
 	}
 
 
@@ -119,6 +120,12 @@ public class BattleRoom extends Room {
 		while (this.ended>0){
 			this.startTurn();
 			this.playTurn();
+		}
+	}
+
+	private void endBattle() throws Exception {
+		if( this.ended==0 ){
+			this.rewardAdventurer();
 		}
 	}
 

@@ -121,18 +121,21 @@ public class BattleState implements AdventurerState {
 
 	/**
 	 * decrease currentHp and/or protection in case there is
+	 *
 	 * @param damage number of point to decrease
-	 * @param adventurer adventurer who take damage
 	 */
 	@Override
-	public void takeDamage(int damage, Adventurer adventurer) {
-		if (this.protection-damage < 0)
-			adventurer.getHp().addCurrentHp(this.protection-damage);
-		else
+	public void takeDamage(int damage) {
+		if ( this.protection < damage ){
+			Adventurer.getInstance().getHp().addCurrentHp(this.protection-damage);
+			this.protection = 0;
+		}
+		else{
 			this.protection=this.protection-damage;
-		if(adventurer.getHp().getCurrentHp() == 0){
+		}
+		if(Adventurer.getInstance().getHp().getCurrentHp() == 0){
 			BattleRoom battleRoom = (BattleRoom)DungeonMap.getInstance().getCurrentRoom();
-			battleRoom.notifyDeath(adventurer.getID());
+			battleRoom.notifyDeath(Adventurer.getInstance().getID());
 			FrontController.getInstance().setEndBattle(true);
 		}
 	}

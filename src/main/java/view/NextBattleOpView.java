@@ -1,25 +1,24 @@
 package view;
 
-import java.io.Console;
 import java.util.Scanner;
 
-class NextBattleOp {
+class NextBattleOpView {
 
     private String inputValue;
 
     private int inputCardId;
 
-    private static NextBattleOp instance;
+    private static NextBattleOpView instance;
 
-    private NextBattleOp(){
+    private NextBattleOpView(){
 
     }
 
-    public static NextBattleOp getInstance(){
-        if(NextBattleOp.instance == null){
-            NextBattleOp.instance = new NextBattleOp();
+    public static NextBattleOpView getInstance(){
+        if(NextBattleOpView.instance == null){
+            NextBattleOpView.instance = new NextBattleOpView();
         }
-        return NextBattleOp.instance;
+        return NextBattleOpView.instance;
     }
 
     public void outputChooseBattleOp(String nickname){

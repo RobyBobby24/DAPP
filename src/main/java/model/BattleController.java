@@ -31,6 +31,7 @@ public class BattleController {
 			battleRoom.performEffect(FrontView.getInstance().inputPlayCard());
 		}
 		catch (Exception e){
+			System.out.println(e.getMessage()+" "+e.getStackTrace()[0]+" ");
 			FrontView.getInstance().outputError("la carta selezionata non è disponibile!!!");
 			this.playCard();
 		}

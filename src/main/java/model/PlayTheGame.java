@@ -153,7 +153,7 @@ public class PlayTheGame {
 			room.enterRoom();
 		}
 		catch(Exception e){
-			FrontView.getInstance().outputError("l'avvio della battaglia non è andato a buon fine!!!");
+			FrontView.getInstance().outputError("l'avvio della stanza non è andato a buon fine!!!");
 			if(FrontView.getInstance().inputError()) this.chooseRoom();
 		}
 	}

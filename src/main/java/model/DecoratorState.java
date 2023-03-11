@@ -19,28 +19,20 @@ public class DecoratorState implements AdventurerState {
 	 * @param numberOfCards
 	 */
 	public void drawCards(int numberOfCards) {
-		// TODO - implement DecoratorState.drawCards
-		throw new UnsupportedOperationException();
+		this.component.drawCards(numberOfCards);
 	}
 
 	public int getProtection() {
-		// TODO - implement DecoratorState.getProtection
-		throw new UnsupportedOperationException();
+		return this.component.getProtection();
 	}
 
 	@Override
 	public void setProtection(int protection) {
-
-	}
-
-	public void setProtection() {
-		// TODO - implement DecoratorState.setProtection
-		throw new UnsupportedOperationException();
+		this.component.setEnergyPoint(protection);
 	}
 
 	public int getEnergyPoint() {
-		// TODO - implement DecoratorState.getEnergyPoint
-		throw new UnsupportedOperationException();
+		return this.component.getEnergyPoint();
 	}
 
 	/**
@@ -48,8 +40,7 @@ public class DecoratorState implements AdventurerState {
 	 * @param energyPoint
 	 */
 	public void setEnergyPoint(int energyPoint) {
-		// TODO - implement DecoratorState.setEnergyPoint
-		throw new UnsupportedOperationException();
+		this.setEnergyPoint( energyPoint );
 	}
 
 	/**
@@ -57,8 +48,7 @@ public class DecoratorState implements AdventurerState {
 	 * @param copiedDeck
 	 */
 	public void setDeck(Deck copiedDeck) {
-		// TODO - implement DecoratorState.setDeck
-		throw new UnsupportedOperationException();
+		this.setDeck( copiedDeck );
 	}
 
 	/**
@@ -66,18 +56,16 @@ public class DecoratorState implements AdventurerState {
 	 * @param cardIndex
 	 */
 	public Card getCardFromHand(int cardIndex) {
-		// TODO - implement DecoratorState.getCardFromHand
-		throw new UnsupportedOperationException();
+		return this.component.getCardFromHand( cardIndex );
 	}
 
 	public void passTurn() {
-		// TODO - implement DecoratorState.passTurn
-		throw new UnsupportedOperationException();
+		this.component.passTurn();
 	}
 
 	@Override
 	public void startTurn() {
-      component.startTurn();
+      this.component.startTurn();
 	}
 
 	/**
@@ -85,8 +73,7 @@ public class DecoratorState implements AdventurerState {
 	 * @param protection
 	 */
 	public void addProtection(int protection) {
-		// TODO - implement DecoratorState.addProtection
-		throw new UnsupportedOperationException();
+		this.addProtection( protection );
 	}
 
 	/**
@@ -95,38 +82,26 @@ public class DecoratorState implements AdventurerState {
 	 * @param adventurer
 	 */
 	public void takeDamage(int damage, Adventurer adventurer) {
-		// TODO - implement DecoratorState.takeDamage
-		throw new UnsupportedOperationException();
+		this.component.takeDamage( damage , adventurer);
 	}
 
 	@Override
 	public void removeCardFromHand(Card card) {
-
+		this.component.removeCardFromHand( card );
 	}
 
 	@Override
 	public void buyAcard(Card card) {
-
+		this.component.buyAcard( card );
 	}
 
 	@Override
 	public void addCoins(int coins) {
-
+		this.component.addCoins( coins );
 	}
 
 	public List<Card> getCardsFromHand() {
-		// TODO - implement DecoratorState.getCardsFromHand
-		throw new UnsupportedOperationException();
-	}
-
-	public void buyACard() {
-		// TODO - implement DecoratorState.buyACard
-		throw new UnsupportedOperationException();
-	}
-
-	public void addCoins() {
-		// TODO - implement DecoratorState.addCoins
-		throw new UnsupportedOperationException();
+		return this.component.getCardsFromHand();
 	}
 
 	/**
@@ -134,17 +109,12 @@ public class DecoratorState implements AdventurerState {
 	 * @param card
 	 */
 	public void addCard(Card card) {
-		// TODO - implement DecoratorState.addCard
-		throw new UnsupportedOperationException();
-	}
-
-	public void drawCardsStartTurn() {
-
+		this.addCard( card );
 	}
 
 	@Override
 	public void catchBattleReward() {
-    component.catchBattleReward();
+    	this.component.catchBattleReward();
 	}
 
 }

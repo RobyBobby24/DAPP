@@ -32,7 +32,7 @@ class ChooseAdventurer {
         }
         System.out.print("\nDAPP\\chooseAdventurer>");
         int input = Integer.parseInt(prompt.next());
-        this.inputValue = Class.forName(Adventurer.class.getPackageName() + "."+adventurers.get(input).getType());
+        this.inputValue = Class.forName(Adventurer.class.getPackageName() + "."+adventurers.get(input-1).getType());
         System.out.println("...\n...\n...\n");
     }
 

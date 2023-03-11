@@ -17,10 +17,11 @@ public interface TurnState {
 
 	/**
 	 * play a card or an action
+	 *
 	 * @param battleRoom battleRoom in input
-	 * @param effectId identifier of the card to play
+	 * @param cardToPlay identifier of the card to play
 	 */
-	abstract void performEffect(BattleRoom battleRoom, int effectId);
+	abstract void performEffect(BattleRoom battleRoom, Card cardToPlay);
 
 	/**
 	 * notify the death of a monster or the adventurer to the battleRoom

@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 public class PlayCardView {
 
-    private int inputValue;
+    private Card inputValue;
 
     private static PlayCardView instance;
 
@@ -31,15 +31,15 @@ public class PlayCardView {
     public void outputPlayCard(String nickname, List<Card> handCards){
         Scanner prompt = new Scanner(System.in);
         System.out.println(nickname+" quale carta vuoi giocare :");
-        for(Card card: handCards){
-            System.out.println("Card: ("+card+") \u001B[32m ("+card.getID()+")\u001B[0m");
+        for (int i = 0; i < handCards.size() ; i++) {
+            System.out.println("Card: ("+handCards.get(i)+") \u001B[32m ("+String.valueOf(i+1)+")\u001B[0m");
         }
         System.out.print("DAPP\\PlayCard>");
-        this.inputValue = Integer.parseInt(prompt.next());
+        this.inputValue = handCards.get( Integer.parseInt(prompt.next())-1 );
         System.out.println("...\n...\n...\n");
     }
 
-    public int inputPlayCard(){
+    public Card inputPlayCard(){
         return this.inputValue;
     }
 }

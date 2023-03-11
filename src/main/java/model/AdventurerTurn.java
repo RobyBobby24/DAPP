@@ -34,10 +34,9 @@ public class AdventurerTurn implements TurnState {
 	/**
 	 * play a card of the adventurer
 	 * @param battleRoom
-	 * @param effectId identifier of the card to play
+	 * @param cardToPlay identifier of the card to play
 	 */
-	public void performEffect(BattleRoom battleRoom, int effectId) {
-		Card cardToPlay = Adventurer.getInstance().getCardFromHand(effectId);
+	public void performEffect(BattleRoom battleRoom, Card cardToPlay) {
 		if(cardToPlay.canBePlayed())
 		{
 			int numberOfTarget = cardToPlay.getNumberOfTarget();
@@ -46,7 +45,7 @@ public class AdventurerTurn implements TurnState {
 				FrontController.getInstance().chooseTarget();
 				target.add(FrontController.getInstance().takeTarget());
 			}
-			cardToPlay.activeEffect(battleRoom,target);
+			cardToPlay.activateEffect(battleRoom,target);
 			Adventurer.getInstance().removeCardFromHand(cardToPlay);
 		}
 	}

@@ -145,10 +145,10 @@ public class BattleRoom extends Room {
 
 	/**
 	 * play a card or no op
-	 * @param effectID id of the card
+	 * @param cardToPlay id of the card
 	 */
-	public void performEffect(int effectID) {
-		this.currentTurn.performEffect(this,effectID);
+	public void performEffect(Card cardToPlay) {
+		this.currentTurn.performEffect(this,cardToPlay);
 	}
 
 

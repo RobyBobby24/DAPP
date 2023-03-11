@@ -40,7 +40,7 @@ public class DecoratorState implements AdventurerState {
 	 * @param energyPoint
 	 */
 	public void setEnergyPoint(int energyPoint) {
-		this.setEnergyPoint( energyPoint );
+		this.component.setEnergyPoint( energyPoint );
 	}
 
 	/**
@@ -73,7 +73,7 @@ public class DecoratorState implements AdventurerState {
 	 * @param protection
 	 */
 	public void addProtection(int protection) {
-		this.addProtection( protection );
+		this.component.addProtection( protection );
 	}
 
 	/**

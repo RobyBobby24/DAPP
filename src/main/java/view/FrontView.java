@@ -70,7 +70,7 @@ public class FrontView {
         PlayCardView.getInstance().outputPlayCard(this.nickname,cards);
     }
 
-    public int inputPlayCard(){
+    public Card inputPlayCard(){
         return PlayCardView.getInstance().inputPlayCard();
     }
 

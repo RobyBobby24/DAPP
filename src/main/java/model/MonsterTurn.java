@@ -11,10 +11,11 @@ public class MonsterTurn implements TurnState {
 
 	/**
 	 * no op
+	 *
 	 * @param battleRoom
-	 * @param effectId
+	 * @param cardToPlay
 	 */
-	public void performEffect(BattleRoom battleRoom, int effectId) {
+	public void performEffect(BattleRoom battleRoom, Card cardToPlay) {
 
 	}
 

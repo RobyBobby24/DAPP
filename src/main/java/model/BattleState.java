@@ -133,6 +133,7 @@ public class BattleState implements AdventurerState {
 		if(adventurer.getHp().getCurrentHp() == 0){
 			BattleRoom battleRoom = (BattleRoom)DungeonMap.getInstance().getCurrentRoom();
 			battleRoom.notifyDeath(adventurer.getID());
+			FrontController.getInstance().setEndBattle(true);
 		}
 	}
 

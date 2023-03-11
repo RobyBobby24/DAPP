@@ -13,7 +13,7 @@ import java.util.TreeMap;
 public class PlayTheGame {
 
 	private static PlayTheGame instance;
-	private boolean endGame;
+	private int endGame;
 
 	private PlayTheGame() {
 
@@ -27,11 +27,22 @@ public class PlayTheGame {
 	}
 
 	public boolean getEndGame() {
-		return endGame;
+		if( endGame == 1)return true;
+		return false;
 	}
 
 	public void setEndGame(boolean endGame) {
-		this.endGame = endGame;
+		if( endGame ) this.endGame = 1;
+		else this.endGame = 0;
+	}
+
+	public void setLost() {
+		this.endGame = -1;
+	}
+
+	public boolean getLost() {
+		if( this.endGame == -1) return true;
+		return false;
 	}
 
 	/**
@@ -130,8 +141,8 @@ public class PlayTheGame {
 
 	public void playGame() {
 		try{
-			this.endGame=false;
-			while( !this.endGame){
+			this.setEndGame(false);
+			while( !this.getEndGame()){
 				this.chooseRoom();
 			}
 		}
@@ -160,14 +171,16 @@ public class PlayTheGame {
 
 	public void restartGame() {
 		try{
-			PersistenceInterface.getInstance().update( Adventurer.getInstance() );
+			if( ! this.getLost() ) {
+				PersistenceInterface.getInstance().update( Adventurer.getInstance() );
+			}
 			Adventurer.resetAdventurer();
 			DungeonMap.resetDungeonMap();
 			this.chooseOperation();
 		}
 		catch ( Exception e){
 			FrontView.getInstance().outputError("l'avvio della stanza non è andato a buon fine!!!");
-			if(FrontView.getInstance().inputError()) this.chooseRoom();
+			if(FrontView.getInstance().inputError()) this.restartGame();
 		}
 	}
 

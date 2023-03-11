@@ -32,12 +32,12 @@ public abstract class Adventurer implements Serializable {
 	@org.hibernate.annotations.GenericGenerator(name="MODEL_ADVENTURER_ID_GENERATOR", strategy="native")
 	protected int ID;
 
-	@OneToOne(targetEntity= Hp.class, fetch=FetchType.EAGER)
+	@OneToOne(targetEntity= Hp.class, fetch=FetchType.EAGER, cascade = CascadeType.ALL)
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK, org.hibernate.annotations.CascadeType.DELETE})
 	@JoinColumns(value={ @JoinColumn(name="HpID", referencedColumnName="ID", nullable=false) }, foreignKey=@ForeignKey(name="FKAdventurer647017"))
 	protected Hp hp;
 
-	@OneToOne(targetEntity= Deck.class, fetch=FetchType.EAGER)
+	@OneToOne(targetEntity= Deck.class, fetch=FetchType.EAGER, cascade = CascadeType.ALL)
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})
 	@JoinColumns(value={ @JoinColumn(name="DeckID", referencedColumnName="ID", nullable=false) }, foreignKey=@ForeignKey(name="FKAdventurer341408"))
 	protected Deck deck;

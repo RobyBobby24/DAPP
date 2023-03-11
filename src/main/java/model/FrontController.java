@@ -25,6 +25,10 @@ public class FrontController {
 		PlayTheGame.getInstance().setEndGame(endBattle);
 	}
 
+	public void setLost() {
+		PlayTheGame.getInstance().setLost();
+	}
+
 	public void makeNewGame() {
 		PlayTheGame.getInstance().makeNewGame();
 	}

@@ -59,4 +59,8 @@ public class Treasure {
 			card = " e la carta " + this.card.getName();
 		return "Complimenti! Hai trovato " + this.rewardCoins + " monete" + card + "!";
 	}
+
+	public String toString(){
+		return " coins:"+this.rewardCoins+", "+" card:"+this.card;
+	}
 }

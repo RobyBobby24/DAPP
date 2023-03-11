@@ -18,9 +18,16 @@ public class BonfireController {
 	}
 
 	public void skipRest(int percentage) {
-		FrontView.getInstance().outputSkipRest(percentage);
-		if (!FrontView.getInstance().inputSkipRest()){
-			Adventurer.getInstance().restorePercentageHp(percentage);
+		try{
+			FrontView.getInstance().outputAdventurerState();
+			FrontView.getInstance().outputSkipRest(percentage);
+			if ( FrontView.getInstance().inputSkipRest() ){
+				Adventurer.getInstance().restorePercentageHp(percentage);
+			}
+		}
+		catch(Exception e){
+			FrontView.getInstance().outputError("il recupero degli hp non è andato a buon fine!!!");
+			if(FrontView.getInstance().inputError()) this.skipRest( percentage );
 		}
 	}
 

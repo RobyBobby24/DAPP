@@ -90,8 +90,8 @@ public class DecoratorState implements AdventurerState {
 	}
 
 	@Override
-	public void buyAcard(Card card) {
-		this.component.buyAcard( card );
+	public boolean buyAcard(Card card) throws Exception {
+		return this.component.buyAcard( card );
 	}
 
 	@Override

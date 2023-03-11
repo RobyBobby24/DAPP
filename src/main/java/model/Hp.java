@@ -107,7 +107,7 @@ public class Hp implements Serializable {
 	/**
 	 * @return maxHp (max value of currentHp)
 	 */
-	public int getMaxHp() {return maxHp;}
+	public int getMaxHp() {return this.maxHp;}
 
 	/**
 	 * increase or decrease of "hp" the maxHp
@@ -119,12 +119,12 @@ public class Hp implements Serializable {
 	}
 
 	public void restorePercentageHp(int percentage){
-
-		int restoredHp = maxHp*(percentage/100) + this.currentHp;
-		if (restoredHp < maxHp)
-			this.currentHp = restoredHp;
+		double restoredHp = this.getMaxHp()*(((double)percentage)/100.0) + this.currentHp;
+		if (restoredHp < this.maxHp) {
+			this.currentHp = (int)Math.round(restoredHp);
+		}
 		else{
-			this.currentHp = maxHp;
+			this.currentHp = this.maxHp;
 		}
 	}
 	

@@ -151,8 +151,8 @@ public class BattleState implements AdventurerState {
 	}
 
 	@Override
-	public void buyAcard(Card card) {
-
+	public boolean buyAcard(Card card) {
+		throw new UnsupportedOperationException();
 	}
 
 	@Override

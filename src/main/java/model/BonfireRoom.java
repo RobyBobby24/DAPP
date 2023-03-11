@@ -24,6 +24,6 @@ public class BonfireRoom extends Room {
 
 	@Override
 	public void enterRoom() {
-        FrontController.getInstance().skipRest(this.percentageRestore);
+        FrontController.getInstance().skipRest( this.percentageRestore );
 	}
 }

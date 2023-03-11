@@ -188,7 +188,7 @@ public class Card implements Serializable {
 	}
 	
 	public String toString() {
-		return "Name = "+this.name+", Effect = "+this.effect;
+		return "Name = "+this.name+", Effect = "+this.effect+", Energy Cost = "+this.energyCost+", Coins Cost = "+this.CoinCost;
 	}
 
 	public String var_dump() {

@@ -82,6 +82,10 @@ public class DungeonMap implements Serializable {
 		return DungeonMap.instance;
 	}
 
+	public static void resetDungeonMap(){
+		DungeonMap.instance = null;
+	}
+
 	/**
 	 * build the map with all its room
 	 */

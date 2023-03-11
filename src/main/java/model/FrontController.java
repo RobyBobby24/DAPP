@@ -58,6 +58,10 @@ public class FrontController {
 		BattleController.getInstance().nextBattleOp();
 	}
 
+	public void notifyLastBattle(){
+		BattleController.getInstance().notifyLastBattle();
+	}
+
 	public void setNickname() {
 		PlayTheGame.getInstance().setNickname();
 	}
@@ -82,7 +86,7 @@ public class FrontController {
 	 * 
 	 * @param purchasableCards
 	 */
-	public void chooseCardToBuy(List<Card> purchasableCards) {
+	public void chooseCardToBuy(List<Card> purchasableCards) throws Exception {
 		MerchantController.getInstance().chooseCardToBuy(purchasableCards);
 	}
 

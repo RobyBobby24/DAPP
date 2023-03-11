@@ -57,7 +57,7 @@ public class FrontView {
     }
 
     public void outputChooseBattleOp(Adventurer adventurer,BattleRoom room){
-        this.outputBattle(adventurer, room);
+        this.outputBattle(room);
         NextBattleOpView.getInstance().outputChooseBattleOp(this.nickname);
     }
 
@@ -66,7 +66,7 @@ public class FrontView {
     }
 
     public void outputPlayCard(List<Card> cards,Adventurer adventurer,BattleRoom room){
-        this.outputBattle(adventurer, room);
+        this.outputBattle(room);
         PlayCardView.getInstance().outputPlayCard(this.nickname,cards);
     }
 
@@ -98,12 +98,16 @@ public class FrontView {
         return ChooseCardToBuyView.getInstance().input();
     }
 
-    public void outputSkipRest(int restPercentage){
+    public void outputSkipRest(int restPercentage) throws Exception {
         SkipRestView.getInstance().output(this.nickname,restPercentage);
     }
 
     public boolean inputSkipRest(){
         return SkipRestView.getInstance().input();
+    }
+
+    public void outputDidNotBuy(){
+        ChooseCardToBuyView.getInstance().outputDidNotBuy( this.nickname );
     }
 
     public void outputChooseTreasure(List<Treasure> treasures){
@@ -127,6 +131,10 @@ public class FrontView {
         NextBattleOpView.getInstance().outputYouLost( this.nickname );
     }
 
+    public void outputLastBattle(){
+        NextBattleOpView.getInstance().outputLastBattle( this.nickname );
+    }
+
 
 
 
@@ -136,12 +144,18 @@ public class FrontView {
         return ErrorView.getInstance().input();
     }
 
-    public void outputBattle(Adventurer adventurer,BattleRoom room){
+    public void outputBattle(BattleRoom room){
         System.out.println("\n \u001B[34m");
-        System.out.println(adventurer);
+        System.out.println(Adventurer.getInstance());
         for(Monster monster: room.getMonsters()){
             System.out.println(monster);
         }
+        System.out.println("\u001B[0m \n");
+    }
+
+    public void outputAdventurerState(){
+        System.out.println("\n \u001B[34m");
+        System.out.println( Adventurer.getInstance().toStringWithCoins() );
         System.out.println("\u001B[0m \n");
     }
 }

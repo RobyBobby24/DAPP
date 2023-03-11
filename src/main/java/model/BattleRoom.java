@@ -107,7 +107,15 @@ public class BattleRoom extends Room {
 	 * start the operation that will be in the battle
 	 */
 	public void startBattle() {
+		boolean boss = false;
+		for (Monster monster: this.monsters) {
+			if( monster.getType().equals("boss")) boss = true;
+		}
+		if( boss ){
+			FrontController.getInstance().notifyLastBattle();
+		}
 		Adventurer.getInstance().setBattleState();
+		Adventurer.getInstance().getDeck().shuffle();
 		this.currentTurn = new AdventurerTurn();
 		this.ended=this.monsters.size();
 		this.calculateBattleReward();
@@ -131,6 +139,7 @@ public class BattleRoom extends Room {
 		else {
 			FrontController.getInstance().showBattleResult( false , 0 );
 		}
+		Adventurer.getInstance().setNormalState();
 	}
 
 	/**

@@ -21,11 +21,19 @@ public class TreasureController {
 	}
 
 	public void chooseTreasure(List<Treasure> treasures) throws Exception {
-		 FrontView.getInstance().outputChooseTreasure(treasures);
-		 Treasure choosenTreasure = FrontView.getInstance().inputChooseTreasure();
-		 choosenTreasure.provideReward();
-		 String description = choosenTreasure.giveTreasureDescription();
-		 FrontView.getInstance().outputChoosenTreasure(description);
+		try {
+			FrontView.getInstance().outputChooseTreasure(treasures);
+			Treasure choosenTreasure = FrontView.getInstance().inputChooseTreasure();
+			choosenTreasure.provideReward();
+			String description = choosenTreasure.giveTreasureDescription();
+			FrontView.getInstance().outputChoosenTreasure(description);
+		}
+		catch (Exception e){
+			e.printStackTrace();
+			FrontView.getInstance().outputError("l'operazione inserita non è valida");
+			if(FrontView.getInstance().inputError()) this.chooseTreasure(treasures);
+		}
+
 	}
 
 }

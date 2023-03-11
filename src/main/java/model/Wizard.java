@@ -38,6 +38,10 @@ public class Wizard extends Adventurer implements Serializable {
     public void setNormalState() {this.currentState = new NormalState();}
 
     public String toString(){
-        return this.getClass().getSimpleName()+" ( HP="+this.hp+", "+this.currentState+")";
+        return this.getClass().getSimpleName()+" ( HP="+this.hp+", "+this.currentState+" )";
+    }
+
+    public String toStringWithCoins(){
+        return this.getClass().getSimpleName()+" ( hp = "+this.hp+", coins = "+this.getCoins()+" )";
     }
 }

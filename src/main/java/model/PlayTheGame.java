@@ -159,7 +159,16 @@ public class PlayTheGame {
 	}
 
 	public void restartGame() {
-		this.chooseOperation();
+		try{
+			PersistenceInterface.getInstance().update( Adventurer.getInstance() );
+			Adventurer.resetAdventurer();
+			DungeonMap.resetDungeonMap();
+			this.chooseOperation();
+		}
+		catch ( Exception e){
+			FrontView.getInstance().outputError("l'avvio della stanza non è andato a buon fine!!!");
+			if(FrontView.getInstance().inputError()) this.chooseRoom();
+		}
 	}
 
 }

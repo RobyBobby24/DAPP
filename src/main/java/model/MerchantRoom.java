@@ -18,8 +18,8 @@ public class MerchantRoom extends Room {
 	}
 
 	@Override
-	public void enterRoom() { FrontController.getInstance().chooseCardToBuy(purchasableCards);
-
+	public void enterRoom() throws Exception {
+		FrontController.getInstance().chooseCardToBuy( this.purchasableCards );
 	}
 
 	public void addCard(Card card) {

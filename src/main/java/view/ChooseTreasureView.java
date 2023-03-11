@@ -25,19 +25,16 @@ class ChooseTreasureView {
 
     public void output(String nickname, List<Treasure> treasures){
         Scanner prompt = new Scanner(System.in);
-        //Todo choose questions and answers
-        System.out.println(nickname +" domanda... :");
+        System.out.println(nickname +" scegli un baule tra quelli a disposizione");
         for (int i = 0; i < treasures.size(); i++) {
-            System.out.println(treasures.get(i) + "\u001B[32m ("+i+") \u001B[0m");
+            System.out.println("Treasure :("+treasures.get(i) + ") \u001B[32m ("+String.valueOf(i+1)+") \u001B[0m");
         }
         System.out.print("DAPP\\chooseTreasure>");
-        //Todo set inputValue
-        //this.inputValue = prompt.next();
+        this.inputValue = treasures.get( Integer.parseInt(prompt.next()) -1);
         System.out.println("...\n...\n...\n");
     }
     public void outputChoosenTreasure(String description){
-
-
+        System.out.println(" Il baule contiene : ");
     }
 
     public Treasure input(){

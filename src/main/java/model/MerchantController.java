@@ -25,13 +25,24 @@ public class MerchantController {
 	 * @param purchasableCards
 	 */
 	public void chooseCardToBuy(List<Card> purchasableCards) {
-		FrontView.getInstance().outputChooseCardToBuy(purchasableCards);
-		Card choosencard = null;
-		do {
-			Card choosenCard = FrontView.getInstance().inputChooseCardToBuy();
-			int availableCoins = Adventurer.getInstance().getCoins();
-			if (availableCoins > choosencard.getCoinCost() && !(choosencard==null))
-				Adventurer.getInstance().buyACard(choosenCard);
-		} while (!(choosencard == null));
+		try{
+			Card choosenCard;
+			do {
+				FrontView.getInstance().outputAdventurerState();
+				FrontView.getInstance().outputChooseCardToBuy(purchasableCards);
+				choosenCard = FrontView.getInstance().inputChooseCardToBuy();
+				if( choosenCard != null ){
+					boolean bought = Adventurer.getInstance().buyACard(choosenCard);
+					if( !bought ) FrontView.getInstance().outputDidNotBuy();
+					else FrontView.getInstance().outputAdventurerState();
+				}
+			} while (choosenCard != null);
+		}
+		catch( Exception e ){
+			e.printStackTrace();
+			FrontView.getInstance().outputError("l'acquisto della carta non è andato a buon fine");
+			if(FrontView.getInstance().inputError()) this.chooseCardToBuy(purchasableCards);
+		}
+
 	}
 }

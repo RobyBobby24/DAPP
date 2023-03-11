@@ -146,6 +146,10 @@ public abstract class Adventurer implements Serializable {
 		return Adventurer.instance;
 	}
 
+	public static void resetAdventurer(){
+		Adventurer.instance = null;
+	}
+
 	/**
 	 * @return the currentState based on witch depend on the effect of the Adventurer operation
 	 */
@@ -261,12 +265,8 @@ public abstract class Adventurer implements Serializable {
 	 * @param cardToBuy card to buy
 	 * @throws Exception if the adventurer don't have enough money
 	 */
-	public void buyACard(Card cardToBuy)  {
-		this.currentState.buyAcard(cardToBuy);
-		/*if( cardToBuy.getCoinCost() > this.getCoins() ) throw new Exception("the Adventurer don't has enough coins to buy the card");
-		this.setCoins( this.getCoins() - cardToBuy.getCoinCost() );
-		this.getDeck().addCard( cardToBuy );
-		this.getDeck().shuffle();*/
+	public boolean buyACard(Card cardToBuy) throws Exception {
+		return this.currentState.buyAcard(cardToBuy);
 	}
 
 	/**
@@ -315,11 +315,14 @@ public abstract class Adventurer implements Serializable {
 		return String.valueOf(getID());
 	}
 
+	public String toStringWithCoins(){
+		return this.getClass().getSimpleName()+" ( hp = "+this.hp+", coins = "+this.getCoins()+" )";
+	}
+
 	public String var_dump(){
 		return "ID:"+this.ID+" hp:"+this.hp+" deck"+this.deck+" currentState:"+this.currentState+" instance:"+Adventurer.instance;
 	}
 	public void restorePercentageHp(int percentage){
-
 		this.hp.restorePercentageHp(percentage);
 	}
 }

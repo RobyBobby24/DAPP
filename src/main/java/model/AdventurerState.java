@@ -78,7 +78,7 @@ public interface AdventurerState {
 
     void removeCardFromHand(Card card);
 
-	void buyAcard(Card card);
+	boolean buyAcard(Card card) throws Exception;
 
 	void addCoins(int coins);
 

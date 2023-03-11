@@ -54,5 +54,8 @@ public class Warrior extends Adventurer implements Serializable {
 		return this.getClass().getSimpleName()+" ( HP="+this.hp+", "+this.currentState+")";
 	}
 
+	public String toStringWithCoins(){
+		return this.getClass().getSimpleName()+" ( hp = "+this.hp+", coins = "+this.getCoins()+" )";
+	}
 
 }

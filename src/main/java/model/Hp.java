@@ -22,8 +22,7 @@ import java.io.Serializable;
 @Table(name="hp")
 public class Hp implements Serializable {
 
-	public Hp() {
-	}
+
 	
 	@Column(name="ID", nullable=false, length=10)	
 	@Id	
@@ -36,6 +35,9 @@ public class Hp implements Serializable {
 
 	private int currentHp;
 
+
+	public Hp() {
+	}
 	public Hp(int currentHp, int maxHp) {
 		this.currentHp = currentHp;
 		this.maxHp = maxHp;
@@ -126,6 +128,10 @@ public class Hp implements Serializable {
 		else{
 			this.currentHp = this.maxHp;
 		}
+	}
+
+	public Hp clone(){
+		return new Hp(this.getCurrentHp(),this.getMaxHp());
 	}
 	
 	public String toString() {return this.currentHp+"/"+this.maxHp;}

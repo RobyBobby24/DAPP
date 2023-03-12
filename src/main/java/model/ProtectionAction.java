@@ -20,8 +20,7 @@ import java.io.Serializable;
 @org.hibernate.annotations.Proxy(lazy=false)
 @Table(name="protectionaction")
 public class ProtectionAction extends Action implements Serializable {
-	public ProtectionAction() {
-	}
+
 	
 	@Column(name="ID", nullable=false, length=10)	
 	@Id	
@@ -34,6 +33,12 @@ public class ProtectionAction extends Action implements Serializable {
 
 	private int protection;
 
+
+	public ProtectionAction() {
+	}
+	public ProtectionAction( int protection) {
+		this.protection = protection;
+	}
 	/**
 	 * set new ID (identifier of the instance also in DB)
 	 * @param value new ID
@@ -73,9 +78,11 @@ public class ProtectionAction extends Action implements Serializable {
 		monster.addProtection(this.protection);
 	}
 
-	public ProtectionAction( int protection) {
-		this.protection = protection;
+	public ProtectionAction clone(){
+		return new ProtectionAction(this.getProtection());
 	}
+
+
 
 	public String toString() {
 		if(this.nextAction!=null)return "protection:"+this.protection+", "+this.nextAction;

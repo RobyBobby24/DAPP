@@ -27,8 +27,8 @@ public class PlayTheGame {
 	}
 
 	public boolean getEndGame() {
-		if( endGame == 1)return true;
-		return false;
+		if( this.endGame == 0)return false;
+		else return true;
 	}
 
 	public void setEndGame(boolean endGame) {

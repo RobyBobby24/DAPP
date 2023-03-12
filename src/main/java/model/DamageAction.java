@@ -78,6 +78,10 @@ public class DamageAction extends Action implements Serializable {
 		if(this.nextAction != null)
 			this.nextAction.activateAction(monster);
 	}
+
+	public DamageAction clone(){
+		return new DamageAction(this.getDamage());
+	}
 	
 	public String toString() {
 		if(this.nextAction != null)

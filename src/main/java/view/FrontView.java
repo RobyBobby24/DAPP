@@ -114,8 +114,8 @@ public class FrontView {
         ChooseTreasureView.getInstance().output(this.nickname,treasures);
     }
 
-    public void outputChoosenTreasure(String description){
-        ChooseTreasureView.getInstance().outputChoosenTreasure(description);
+    public void outputChoosenTreasure(Treasure treasure){
+        ChooseTreasureView.getInstance().outputChoosenTreasure(treasure);
     }
 
     public Treasure inputChooseTreasure(){

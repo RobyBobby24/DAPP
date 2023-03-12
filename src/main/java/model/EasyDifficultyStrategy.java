@@ -73,7 +73,7 @@ public class EasyDifficultyStrategy implements BuildMapDifficultyStrategy {
 		RoomFactory roomFactory = ServicesFactory.getInstance().getRoomFactoryInstance();
 		BattleRoom battleRoom = roomFactory.createBattleRoom();
 		int number = random.nextInt(monsters.size());
-		battleRoom.addMonster(monsters.get(number));
+		battleRoom.addMonster( monsters.get(number).clone() );
 		return battleRoom;
 	}
 

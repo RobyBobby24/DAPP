@@ -71,17 +71,8 @@ public class Main {
             throw new UnsupportedOperationException(e);
         }
         */
-        try{
-            Logger logger = Logger.getLogger("org.hibernate");
-            logger.setLevel(Level.SEVERE);
-            Adventurer adv = PersistenceInterface.getInstance().loadAdventurerByClass(Warrior.class);
-            adv.addMaxHp(10);
-            PersistenceInterface.getInstance().update(adv);
-        }
-        catch (Exception e){
-
-        }
-
-        //PlayTheGame.getInstance().chooseOperation();
+        Logger logger = Logger.getLogger("org.hibernate");
+        logger.setLevel(Level.SEVERE);
+        PlayTheGame.getInstance().chooseOperation();
     }
 }

@@ -53,7 +53,8 @@ public abstract class Action implements Serializable {
 	}
 	
 	public abstract void activateAction(Monster monster);
-	
+
+	public abstract Action clone();
 	public String toString() {
 		return String.valueOf(getID());
 	}

@@ -246,6 +246,10 @@ public class Monster implements Serializable {
 		this.protection=this.protection+protection;
 	}
 
+
+	public Monster clone(){
+		return new Monster( this.getHp().clone() , this.getName() , this.getType() , this.getChallengeRating() , this.getProtection() , (List<Action>) this.getAvailableActions().clone() , this.getRewardCoins() , this.getNextAction() );
+	}
 	/**
 	 * add an action to the available
 	 * @param action action to add

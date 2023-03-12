@@ -123,13 +123,13 @@ public class MediumDifficultyStrategy implements BuildMapDifficultyStrategy {
 		RoomFactory roomFactory = ServicesFactory.getInstance().getRoomFactoryInstance();
 		BattleRoom battleRoom = roomFactory.createBattleRoom();
 		int number = random.nextInt( monsters.size() );
-		Monster monster = monsters.get( number );
+		Monster monster = monsters.get( number ).clone();
 		battleRoom.addMonster( monster );
 		double monsterRating=monster.getChallengeRating();
 		while( monsterRating <= 1 ){
 			number = random.nextInt(  monstersRatingOne.size() );
 			monsterRating = monsterRating + monstersRatingOne.get(number).getChallengeRating();
-			battleRoom.addMonster(  monstersRatingOne.get(number) );
+			battleRoom.addMonster(  monstersRatingOne.get(number).clone() );
 		}
 		return battleRoom;
 	}
@@ -139,7 +139,7 @@ public class MediumDifficultyStrategy implements BuildMapDifficultyStrategy {
 		RoomFactory roomFactory = ServicesFactory.getInstance().getRoomFactoryInstance();
 		BattleRoom battleRoom = roomFactory.createBattleRoom();
 		int number = random.nextInt(monsters.size());
-		battleRoom.addMonster(monsters.get(number));
+		battleRoom.addMonster(monsters.get(number).clone() );
 		return battleRoom;
 	}
 

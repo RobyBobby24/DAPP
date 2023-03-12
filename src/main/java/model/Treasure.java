@@ -60,7 +60,13 @@ public class Treasure {
 		return "Complimenti! Hai trovato " + this.rewardCoins + " monete" + card + "!";
 	}
 
+	public String toStringContainHide(){
+		return this.getClass().getSimpleName();
+	}
+
 	public String toString(){
-		return " coins:"+this.rewardCoins+", "+" card:"+this.card;
+		String result = " coins:"+this.rewardCoins;
+		if( this.card != null ) result = result+", "+" card:"+this.card;
+		return result;
 	}
 }

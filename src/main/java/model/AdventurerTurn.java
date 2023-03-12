@@ -22,11 +22,12 @@ public class AdventurerTurn implements TurnState {
 
 	/**
 	 * notify the death of a monster to the battleRoom
+	 *
 	 * @param battle
-	 * @param monsterID id of monster who has died
+	 * @param monster id of monster who has died
 	 */
-	public void notifyDeath(BattleRoom battle, int monsterID) {
-		battle.removeMonster(monsterID);
+	public void notifyDeath(BattleRoom battle, Monster monster) {
+		battle.removeMonster(monster);
 		if(battle.getEnded() == 0)
 			this.setEndAdventurerTurn(true);
 	}
@@ -40,7 +41,7 @@ public class AdventurerTurn implements TurnState {
 		if(cardToPlay.canBePlayed())
 		{
 			int numberOfTarget = cardToPlay.getNumberOfTarget();
-			ArrayList<Integer> target = new ArrayList<Integer>();
+			ArrayList<Monster> target = new ArrayList<Monster>();
 			for (int i = 0; i < numberOfTarget; i++) {
 				FrontController.getInstance().chooseTarget();
 				target.add(FrontController.getInstance().takeTarget());

@@ -25,10 +25,11 @@ public interface TurnState {
 
 	/**
 	 * notify the death of a monster or the adventurer to the battleRoom
+	 *
 	 * @param battleRoom battleRoom in input
-	 * @param monsterID id of monster who has died or no use
+	 * @param monster    id of monster who has died or no use
 	 */
-	abstract void notifyDeath(BattleRoom battleRoom, int monsterID);
+	abstract void notifyDeath(BattleRoom battleRoom, Monster monster);
 
 	/**
 	 * pass turn to the other actor of the battle

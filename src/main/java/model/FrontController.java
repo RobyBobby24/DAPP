@@ -106,7 +106,7 @@ public class FrontController {
 		}
 	}
 
-	public int takeTarget() {
+	public Monster takeTarget() {
 		return BattleController.getInstance().takeTarget();
 	}
 

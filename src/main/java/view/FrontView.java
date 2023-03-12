@@ -78,7 +78,7 @@ public class FrontView {
         ChooseTargetView.getInstance().output(this.nickname,monsters);
     }
 
-    public int inputChooseTarget(){
+    public Monster inputChooseTarget(){
         return ChooseTargetView.getInstance().input();
     }
 

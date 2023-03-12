@@ -83,7 +83,7 @@ public class BattleController {
 		}
 	}
 
-	public int takeTarget() {
+	public Monster takeTarget() {
 		return FrontView.getInstance().inputChooseTarget();
 	}
 

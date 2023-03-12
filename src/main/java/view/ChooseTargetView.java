@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class ChooseTargetView {
 
-    private int inputValue;
+    private Monster inputValue;
 
     private static ChooseTargetView instance;
 
@@ -30,11 +30,11 @@ public class ChooseTargetView {
             System.out.println(monsters.get(i) + "\u001B[32m("+String.valueOf(i+1) + ")\u001B[0m");
         }
         System.out.print("DAPP\\chooseTarget>");
-        this.inputValue = monsters.get(Integer.parseInt(prompt.next())-1).getID();
+        this.inputValue = monsters.get(Integer.parseInt(prompt.next())-1);
         System.out.println("...\n...\n...\n");
     }
 
-    public int input(){
+    public Monster input(){
         return this.inputValue;
     }
 }

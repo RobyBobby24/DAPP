@@ -21,10 +21,11 @@ public class MonsterTurn implements TurnState {
 
 	/**
 	 * notify the death of the adventurer to the battleRoom
+	 *
 	 * @param battle
-	 * @param monsterID no use
+	 * @param monster no use
 	 */
-	public void notifyDeath(BattleRoom battle, int monsterID) {
+	public void notifyDeath(BattleRoom battle, Monster monster) {
 		battle.setEnded(-1);
 	}
 

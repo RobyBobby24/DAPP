@@ -234,7 +234,7 @@ public class Monster implements Serializable {
 			this.protection = this.protection - damage;
 		if(this.hp.getCurrentHp() == 0){
 			BattleRoom battleRoom = (BattleRoom) DungeonMap.getInstance().getCurrentRoom();
-			battleRoom.notifyDeath(this.ID);
+			battleRoom.notifyDeath(this);
 		}
 	}
 

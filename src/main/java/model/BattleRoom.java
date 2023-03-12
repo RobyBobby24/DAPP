@@ -190,10 +190,10 @@ public class BattleRoom extends Room {
 
 	/**
 	 * notify the death of a monster or the Adventurer
-	 * @param monsterId monsterId or not use
+	 * @param monster monsterId or not use
 	 */
-	public void notifyDeath(int monsterId) {
-		this.currentTurn.notifyDeath(this,monsterId);
+	public void notifyDeath(Monster monster) {
+		this.currentTurn.notifyDeath(this,monster);
 	}
 
 	/**
@@ -244,19 +244,11 @@ public class BattleRoom extends Room {
 
 	/**
 	 * remove a monster and update ended
-	 * @param monsterId ID of monster to remove
+	 * @param monster ID of monster to remove
 	 */
-	public void removeMonster(int monsterId) {
-		boolean removed=false;
-		int i=0;
-		while(i<this.monsters.size() && !removed){
-			if(this.monsters.get(i).getID()==monsterId){
-				this.monsters.remove(i);
-				this.ended=this.ended-1;
-				removed=true;
-			}
-			i=i+1;
-		}
+	public void removeMonster(Monster monster) {
+		boolean removed = this.monsters.remove(monster);
+		if( removed ) this.ended=this.ended-1;
 	}
 
 

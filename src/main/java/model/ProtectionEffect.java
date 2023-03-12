@@ -58,7 +58,7 @@ public class ProtectionEffect extends Effect implements Serializable {
 	 * @param battleField field that contain all the variable that an effect could change
 	 * @param target id of the target who will be changed in this effect or in the next
 	 */
-	public void activateEffect(BattleRoom battleField, ArrayList<Integer> target) {
+	public void activateEffect(BattleRoom battleField, ArrayList<Monster> target) {
 		Adventurer.getInstance().addProtection(this.protection);
 		if(this.nextEffect != null)
 			this.nextEffect.activateEffect(battleField,target);

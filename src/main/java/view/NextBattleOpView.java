@@ -26,7 +26,7 @@ class NextBattleOpView {
         Scanner prompt = new Scanner(System.in);
         System.out.println(nickname+" quale operazione di battaglia vuoi eseguire ? \n");
         for (int i = 0; i < this.results.length ; i++) {
-            System.out.println(this.results[i] +" \u001B[32m("+String.valueOf(i+1)+")\u001B[0m ");
+            System.out.println(" \u001B[32m("+String.valueOf(i+1)+")\u001B[0m "+this.results[i] );
         }
         System.out.print("DAPP\\chooseBattleOp>");
         int input = Integer.parseInt( prompt.next() );

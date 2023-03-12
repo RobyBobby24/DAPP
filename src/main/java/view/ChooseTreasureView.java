@@ -26,7 +26,7 @@ class ChooseTreasureView {
         Scanner prompt = new Scanner(System.in);
         System.out.println(nickname +" scegli un baule tra quelli a disposizione");
         for (int i = 0; i < treasures.size(); i++) {
-            System.out.println(treasures.get(i).toStringContainHide() + " \u001B[32m ("+String.valueOf(i+1)+") \u001B[0m");
+            System.out.println(" \u001B[32m ("+String.valueOf(i+1)+") \u001B[0m " + treasures.get(i).toStringContainHide());
         }
         System.out.print("DAPP\\chooseTreasure>");
         this.inputValue = treasures.get( Integer.parseInt(prompt.next()) -1);

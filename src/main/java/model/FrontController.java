@@ -21,12 +21,8 @@ public class FrontController {
 		return FrontController.instance;
 	}
 
-	public void setEndBattle(boolean endBattle){
+	public void setEndBattle(int endBattle){
 		PlayTheGame.getInstance().setEndGame(endBattle);
-	}
-
-	public void setLost() {
-		PlayTheGame.getInstance().setLost();
 	}
 
 	public void makeNewGame() {

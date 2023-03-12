@@ -26,10 +26,20 @@ public class PlayTheGame {
 		return PlayTheGame.instance;
 	}
 
+	public int getEndGame() {
+		return this.endGame;
+	}
+
+
+	public void setEndGame(int endGame) {
+		this.endGame = endGame;
+	}
+	/*
 	public boolean getEndGame() {
 		if( this.endGame == 0)return false;
 		else return true;
 	}
+
 
 	public void setEndGame(boolean endGame) {
 		if( endGame ) this.endGame = 1;
@@ -44,7 +54,7 @@ public class PlayTheGame {
 		if( this.endGame == -1) return true;
 		return false;
 	}
-
+	 */
 	/**
 	 * choose an operation between set-nickname e make-new-game
 	 */
@@ -121,6 +131,7 @@ public class PlayTheGame {
 		catch (Exception e){
 			FrontView.getInstance().outputError("l'operazione non è andata a buon fine!!!");
 			if(FrontView.getInstance().inputError()) this.chooseDifficulty();
+			else this.restartGame();
 		}
 	}
 
@@ -136,19 +147,21 @@ public class PlayTheGame {
 		catch(Exception e){
 			FrontView.getInstance().outputError("l'operazione non è andata a buon fine!!!");
 			if(FrontView.getInstance().inputError()) this.chooseAdventurer();
+			else this.restartGame();
 		}
 	}
 
 	public void playGame() {
 		try{
-			this.setEndGame(false);
-			while( !this.getEndGame()){
+			this.setEndGame(0);
+			while( this.getEndGame() == 0){
 				this.chooseRoom();
 			}
 		}
 		catch(Exception e){
 			FrontView.getInstance().outputError("l'operazione non è andata a buon fine!!!");
 			if(FrontView.getInstance().inputError()) this.playGame();
+			else this.restartGame();
 		}
 	}
 
@@ -166,12 +179,13 @@ public class PlayTheGame {
 		catch(Exception e){
 			FrontView.getInstance().outputError("l'avvio della stanza non è andato a buon fine!!!");
 			if(FrontView.getInstance().inputError()) this.chooseRoom();
+			else this.restartGame();
 		}
 	}
 
 	public void restartGame() {
 		try{
-			if( ! this.getLost() ) {
+			if( this.getEndGame() == 1 ) {
 				PersistenceInterface.getInstance().update( Adventurer.getInstance() );
 			}
 			Adventurer.resetAdventurer();

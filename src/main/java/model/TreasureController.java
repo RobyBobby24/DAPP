@@ -31,6 +31,7 @@ public class TreasureController {
 			e.printStackTrace();
 			FrontView.getInstance().outputError("l'operazione inserita non è valida");
 			if(FrontView.getInstance().inputError()) this.chooseTreasure(treasures);
+			else FrontController.getInstance().restartGame();
 		}
 
 	}

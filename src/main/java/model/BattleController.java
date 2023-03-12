@@ -31,10 +31,9 @@ public class BattleController {
 			battleRoom.performEffect(FrontView.getInstance().inputPlayCard());
 		}
 		catch (Exception e){
-			e.printStackTrace();
-			System.out.println(e.getMessage()+" "+e.getStackTrace()[0]+" ");
 			FrontView.getInstance().outputError("la carta selezionata non è disponibile!!!");
 			if(FrontView.getInstance().inputError())this.playCard();
+			else FrontController.getInstance().restartGame();
 		}
 	}
 
@@ -46,6 +45,7 @@ public class BattleController {
 		catch(Exception e){
 			FrontView.getInstance().outputError("non siamo riusciti a passare il turno!!!");
 			if(FrontView.getInstance().inputError())this.passTurn();
+			else FrontController.getInstance().restartGame();
 		}
 	}
 
@@ -67,6 +67,7 @@ public class BattleController {
 		catch (Exception e){
 			FrontView.getInstance().outputError("l'operazione selezionata non è supportata!!!");
 			if(FrontView.getInstance().inputError())this.nextBattleOp();
+			else FrontController.getInstance().restartGame();
 		}
 
 	}
@@ -80,6 +81,7 @@ public class BattleController {
 		catch (Exception e){
 			FrontView.getInstance().outputError("il target selezionato non è valido!!!");
 			if(FrontView.getInstance().inputError()) this.chooseTarget();
+			else FrontController.getInstance().restartGame();
 		}
 	}
 
@@ -95,17 +97,12 @@ public class BattleController {
 		catch( Exception e){
 			FrontView.getInstance().outputError("l'operazione non è andata a buon fine");
 			if(FrontView.getInstance().inputError()) this.showBattleResult(haveYouWon, rewardCoins);
+			else FrontController.getInstance().restartGame();
 		}
 	}
 
 	public void notifyLastBattle(){
-		try{
-			FrontView.getInstance().outputLastBattle();
-		}
-		catch (Exception e){
-			FrontView.getInstance().outputError("l'operazione non è andata a buon fine");
-			if(FrontView.getInstance().inputError()) this.notifyLastBattle();
-		}
+		FrontView.getInstance().outputLastBattle();
 	}
 
 

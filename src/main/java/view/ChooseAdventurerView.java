@@ -28,7 +28,7 @@ class ChooseAdventurerView {
         Scanner prompt = new Scanner(System.in);
         System.out.println(nickname + " scegli un avventuriero tra i seguenti : \n");
         for (int i = 0; i < adventurers.size() ; i++) {
-            System.out.println(adventurers.get(i)+" \u001B[32m("+String.valueOf(i+1)+")\u001B[0m ");
+            System.out.println(" \u001B[32m("+String.valueOf(i+1)+")\u001B[0m "+adventurers.get(i));
         }
         System.out.print("\nDAPP\\chooseAdventurer>");
         int input = Integer.parseInt(prompt.next());

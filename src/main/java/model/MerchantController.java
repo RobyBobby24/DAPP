@@ -42,6 +42,7 @@ public class MerchantController {
 			e.printStackTrace();
 			FrontView.getInstance().outputError("l'acquisto della carta non è andato a buon fine");
 			if(FrontView.getInstance().inputError()) this.chooseCardToBuy(purchasableCards);
+			else FrontController.getInstance().restartGame();
 		}
 
 	}

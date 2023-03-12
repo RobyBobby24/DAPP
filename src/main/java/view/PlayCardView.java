@@ -32,7 +32,7 @@ public class PlayCardView {
         Scanner prompt = new Scanner(System.in);
         System.out.println(nickname+" quale carta vuoi giocare :");
         for (int i = 0; i < handCards.size() ; i++) {
-            System.out.println("Card: ("+handCards.get(i)+") \u001B[32m ("+String.valueOf(i+1)+")\u001B[0m");
+            System.out.println("\u001B[32m (" + String.valueOf(i + 1) + ")\u001B[0m "+"Card: ("+handCards.get(i)+")");
         }
         System.out.print("DAPP\\PlayCard>");
         this.inputValue = handCards.get( Integer.parseInt(prompt.next())-1 );

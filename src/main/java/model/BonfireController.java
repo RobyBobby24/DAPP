@@ -28,6 +28,7 @@ public class BonfireController {
 		catch(Exception e){
 			FrontView.getInstance().outputError("il recupero degli hp non è andato a buon fine!!!");
 			if(FrontView.getInstance().inputError()) this.skipRest( percentage );
+			else FrontController.getInstance().restartGame();
 		}
 	}
 

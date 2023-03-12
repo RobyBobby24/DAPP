@@ -126,7 +126,7 @@ public class DungeonMap implements Serializable {
 	 */
 	public void setCurrentRoom(Room currentRoom) {
 		this.currentRoom=currentRoom;
-		if( !this.areThereAvailableRooms() ) FrontController.getInstance().setEndBattle(true);
+		if( !this.areThereAvailableRooms() ) FrontController.getInstance().setEndBattle( 1 );
 	}
 
 

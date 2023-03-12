@@ -27,7 +27,7 @@ class SkipRestView {
         Scanner prompt = new Scanner(System.in);
         System.out.println(nickname +" sei nella bonfireRoom, vuoi riposare ? Recupererai il "+restPercentage+"% dei tuoi Hp massimi");
         for (int i = 0; i < this.result.length ; i++) {
-            System.out.println(this.result[i] +" \u001B[32m("+String.valueOf(i+1)+")\u001B[0m ");
+            System.out.println(" \u001B[32m("+String.valueOf(i+1)+")\u001B[0m "+this.result[i]);
         }
         System.out.print("DAPP\\restHp>");
         int input = Integer.parseInt( prompt.next() );

@@ -26,9 +26,9 @@ class ChooseCardToBuyView {
         this.inputValue = null;
         Scanner prompt = new Scanner(System.in);
         System.out.println(nickname +" scegli una carta da comprare, puoi anche non comprare nulla");
-        System.out.println("exit" + "\u001B[32m ("+1+") \u001B[0m");
+        System.out.println("\u001B[32m ("+1+") \u001B[0m "+"exit");
         for (int i = 0; i < cards.size(); i++) {
-            System.out.println("Card : (" + cards.get(i) + " )" + "\u001B[32m ("+String.valueOf(i+2)+") \u001B[0m");
+            System.out.println("\u001B[32m ("+String.valueOf(i+2)+") \u001B[0m" + " Card : (" + cards.get(i) + " )" );
         }
         System.out.print("DAPP\\chooseCardToBuy>");
         int input = Integer.parseInt( prompt.next() );

@@ -204,7 +204,7 @@ public class Monster implements Serializable {
 	/**
 	 * @return random action from available
 	 */
-	public Action getRandomAction() {	// TODO verificare se è possibile stabilire una % per ogni azione
+	public Action getRandomAction() {
 		Random random =new Random();
 		return this.availableActions.get(random.nextInt(this.availableActions.size()));
 	}

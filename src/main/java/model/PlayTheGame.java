@@ -188,6 +188,7 @@ public class PlayTheGame {
 	public void restartGame() {
 		try{
 			if( this.getEndGame() == 1 ) {
+				Adventurer.getInstance().getHp().resetCurrentHp();
 				PersistenceInterface.getInstance().update( Adventurer.getInstance() );
 			}
 			Adventurer.resetAdventurer();

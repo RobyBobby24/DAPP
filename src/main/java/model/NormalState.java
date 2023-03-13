@@ -102,7 +102,7 @@ public class NormalState implements AdventurerState {
 	}
 
 	public String toString(){
-		return this.getClass().getSimpleName();
+		return "";
 	}
 
 	@Override
@@ -142,6 +142,11 @@ public class NormalState implements AdventurerState {
 
 	@Override
 	public void catchBattleReward () {
+	}
+
+	@Override
+	public void restorePercentageHp(int percentage){
+		Adventurer.getInstance().getHp().restorePercentageHp(percentage);
 	}
 
 }

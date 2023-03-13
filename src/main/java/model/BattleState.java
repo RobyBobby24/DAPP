@@ -141,7 +141,7 @@ public class BattleState implements AdventurerState {
 	}
 
 	public String toString(){
-		return "Protection="+this.protection+", EnergyPoint="+this.energyPoint;
+		return "Protection : "+this.protection+", EnergyPoint : "+this.energyPoint;
 	}
 
 	@Override
@@ -169,6 +169,11 @@ public class BattleState implements AdventurerState {
 
 	@Override
 	public void catchBattleReward() {
+
+	}
+
+	@Override
+	public void restorePercentageHp(int percentage){
 
 	}
 

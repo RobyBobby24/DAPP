@@ -323,6 +323,6 @@ public abstract class Adventurer implements Serializable {
 		return "ID:"+this.ID+" hp:"+this.hp+" deck"+this.deck+" currentState:"+this.currentState+" instance:"+Adventurer.instance;
 	}
 	public void restorePercentageHp(int percentage){
-		this.hp.restorePercentageHp(percentage);
+		this.currentState.restorePercentageHp(percentage);
 	}
 }

@@ -85,4 +85,8 @@ public interface AdventurerState {
 	void addCard(Card card);
 
 	void catchBattleReward();
+
+	 void restorePercentageHp(int percentage);
+
+
 }

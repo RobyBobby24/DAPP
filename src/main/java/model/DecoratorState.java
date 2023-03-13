@@ -116,6 +116,11 @@ public class DecoratorState implements AdventurerState {
     	this.component.catchBattleReward();
 	}
 
+	@Override
+	public void restorePercentageHp(int percentage) {
+
+	}
+
 	public String toString(){
 		return this.component.toString();
 	}

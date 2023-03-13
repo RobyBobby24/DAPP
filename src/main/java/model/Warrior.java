@@ -47,11 +47,12 @@ public class Warrior extends Adventurer implements Serializable {
 
 	@Override
 	public void setNormalState() {
-		this.currentState = new NormalState();
+		AdventurerState normalState = new NormalState();
+		this.currentState = normalState;
 	}
 
 	public String toString(){
-		return this.getClass().getSimpleName()+" ( HP="+this.hp+", "+this.currentState+")";
+		return this.getClass().getSimpleName()+" ( HP="+this.hp+", coins = "+this.getCoins()+", "+this.currentState+")";
 	}
 
 	public String toStringWithCoins(){

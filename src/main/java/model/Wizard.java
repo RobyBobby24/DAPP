@@ -14,7 +14,7 @@ import java.io.Serializable;
 public class Wizard extends Adventurer implements Serializable {
 
     public Wizard() {
-        this.currentState = new NormalState();
+        this.setNormalState();
     }
 
 
@@ -35,7 +35,10 @@ public class Wizard extends Adventurer implements Serializable {
     }
 
     @Override
-    public void setNormalState() {this.currentState = new NormalState();}
+    public void setNormalState() {
+        AdventurerState normalState = new NormalState();
+        this.currentState = normalState;
+    }
 
     public String toString(){
         return this.getClass().getSimpleName()+" ( HP="+this.hp+", "+this.currentState+" )";

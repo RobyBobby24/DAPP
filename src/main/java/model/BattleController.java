@@ -4,6 +4,8 @@ import view.FrontView;
 
 import java.util.List;
 
+import static java.lang.System.exit;
+
 public class BattleController {
 
 	private static BattleController instance;
@@ -34,6 +36,7 @@ public class BattleController {
 			FrontView.getInstance().outputError("la carta selezionata non è disponibile!!!");
 			if(FrontView.getInstance().inputError())this.playCard();
 			else FrontController.getInstance().restartGame();
+			exit(0);
 		}
 	}
 
@@ -46,6 +49,7 @@ public class BattleController {
 			FrontView.getInstance().outputError("non siamo riusciti a passare il turno!!!");
 			if(FrontView.getInstance().inputError())this.passTurn();
 			else FrontController.getInstance().restartGame();
+			exit(0);
 		}
 	}
 
@@ -68,6 +72,7 @@ public class BattleController {
 			FrontView.getInstance().outputError("l'operazione selezionata non è supportata!!!");
 			if(FrontView.getInstance().inputError())this.nextBattleOp();
 			else FrontController.getInstance().restartGame();
+			exit(0);
 		}
 
 	}
@@ -82,6 +87,7 @@ public class BattleController {
 			FrontView.getInstance().outputError("il target selezionato non è valido!!!");
 			if(FrontView.getInstance().inputError()) this.chooseTarget();
 			else FrontController.getInstance().restartGame();
+			exit(0);
 		}
 	}
 
@@ -98,6 +104,7 @@ public class BattleController {
 			FrontView.getInstance().outputError("l'operazione non è andata a buon fine");
 			if(FrontView.getInstance().inputError()) this.showBattleResult(haveYouWon, rewardCoins);
 			else FrontController.getInstance().restartGame();
+			exit(0);
 		}
 	}
 

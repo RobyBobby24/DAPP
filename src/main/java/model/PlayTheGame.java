@@ -10,6 +10,8 @@ import java.util.List;
 import java.util.Set;
 import java.util.TreeMap;
 
+import static java.lang.System.exit;
+
 public class PlayTheGame {
 
 	private static PlayTheGame instance;
@@ -77,6 +79,7 @@ public class PlayTheGame {
 		catch(Exception e){
 			FrontView.getInstance().outputError("l'operazione inserita non è valida");
 			if(FrontView.getInstance().inputError()) this.chooseOperation();
+			exit(0);
 		}
 
 	}
@@ -101,6 +104,7 @@ public class PlayTheGame {
 			FrontView.getInstance().outputError("l'operazione non è andata a buon fine");
 			if(FrontView.getInstance().inputError()) this.setNickname();
 			else this.restartGame();
+			exit(0);
 		}
 	}
 
@@ -118,7 +122,7 @@ public class PlayTheGame {
 			FrontView.getInstance().outputError("l'operazione non è andata a buon fine!!!");
 			if(FrontView.getInstance().inputError()) this.makeNewGame();
 			else this.restartGame();
-
+			exit(0);
 		}
 	}
 
@@ -134,6 +138,7 @@ public class PlayTheGame {
 			FrontView.getInstance().outputError("l'operazione non è andata a buon fine!!!");
 			if(FrontView.getInstance().inputError()) this.chooseDifficulty();
 			else this.restartGame();
+			exit(0);
 		}
 	}
 
@@ -150,6 +155,7 @@ public class PlayTheGame {
 			FrontView.getInstance().outputError("l'operazione non è andata a buon fine!!!");
 			if(FrontView.getInstance().inputError()) this.chooseAdventurer();
 			else this.restartGame();
+			exit(0);
 		}
 	}
 
@@ -164,6 +170,7 @@ public class PlayTheGame {
 			FrontView.getInstance().outputError("l'operazione non è andata a buon fine!!!");
 			if(FrontView.getInstance().inputError()) this.playGame();
 			else this.restartGame();
+			exit(0);
 		}
 	}
 
@@ -182,6 +189,7 @@ public class PlayTheGame {
 			FrontView.getInstance().outputError("l'avvio della stanza non è andato a buon fine!!!");
 			if(FrontView.getInstance().inputError()) this.chooseRoom();
 			else this.restartGame();
+			exit(0);
 		}
 	}
 
@@ -198,6 +206,7 @@ public class PlayTheGame {
 		catch ( Exception e){
 			FrontView.getInstance().outputError("l'avvio della stanza non è andato a buon fine!!!");
 			if(FrontView.getInstance().inputError()) this.restartGame();
+			exit(0);
 		}
 	}
 

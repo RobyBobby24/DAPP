@@ -4,6 +4,8 @@ import view.FrontView;
 
 import java.util.List;
 
+import static java.lang.System.exit;
+
 public class TreasureController {
 
 	private static TreasureController instance;
@@ -32,6 +34,7 @@ public class TreasureController {
 			FrontView.getInstance().outputError("l'operazione inserita non è valida");
 			if(FrontView.getInstance().inputError()) this.chooseTreasure(treasures);
 			else FrontController.getInstance().restartGame();
+			exit(0);
 		}
 
 	}

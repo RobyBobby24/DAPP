@@ -2,6 +2,8 @@ package model;
 
 import view.FrontView;
 
+import static java.lang.System.exit;
+
 public class BonfireController {
 
 	private static BonfireController instance;
@@ -29,6 +31,7 @@ public class BonfireController {
 			FrontView.getInstance().outputError("il recupero degli hp non è andato a buon fine!!!");
 			if(FrontView.getInstance().inputError()) this.skipRest( percentage );
 			else FrontController.getInstance().restartGame();
+			exit(0);
 		}
 	}
 

@@ -4,6 +4,8 @@ import view.FrontView;
 
 import java.util.List;
 
+import static java.lang.System.exit;
+
 public class MerchantController {
 
 	private static MerchantController instance;
@@ -43,6 +45,7 @@ public class MerchantController {
 			FrontView.getInstance().outputError("l'acquisto della carta non è andato a buon fine");
 			if(FrontView.getInstance().inputError()) this.chooseCardToBuy(purchasableCards);
 			else FrontController.getInstance().restartGame();
+			exit(0);
 		}
 
 	}

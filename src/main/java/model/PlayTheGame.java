@@ -100,6 +100,7 @@ public class PlayTheGame {
 		catch (Exception e){
 			FrontView.getInstance().outputError("l'operazione non è andata a buon fine");
 			if(FrontView.getInstance().inputError()) this.setNickname();
+			else this.restartGame();
 		}
 	}
 
@@ -116,6 +117,7 @@ public class PlayTheGame {
 		catch(Exception e){
 			FrontView.getInstance().outputError("l'operazione non è andata a buon fine!!!");
 			if(FrontView.getInstance().inputError()) this.makeNewGame();
+			else this.restartGame();
 
 		}
 	}

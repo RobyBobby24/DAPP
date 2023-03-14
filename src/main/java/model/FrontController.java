@@ -1,8 +1,8 @@
 package model;
 
-import view.FrontView;
+import controller.BattleController;
+import controller.BonfireController;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class FrontController {

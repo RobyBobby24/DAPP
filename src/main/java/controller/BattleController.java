@@ -1,5 +1,6 @@
-package model;
+package controller;
 
+import model.*;
 import view.FrontView;
 
 import java.util.List;

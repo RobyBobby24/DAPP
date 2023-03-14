@@ -1,5 +1,7 @@
 package model;
 
+import controller.FrontController;
+
 import java.util.ArrayList;
 
 public class BattleState implements AdventurerState {
@@ -141,7 +143,7 @@ public class BattleState implements AdventurerState {
 	}
 
 	public String toString(){
-		return "Protection : "+this.protection+", EnergyPoint : "+this.energyPoint;
+		return ", Protection : "+this.protection+", EnergyPoint : "+this.energyPoint;
 	}
 
 	@Override

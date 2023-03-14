@@ -1,11 +1,10 @@
-package model;
+package controller;
 
+import model.*;
 import services.ConfigurationReader;
 import services.PersistenceInterface;
 import view.FrontView;
-import view.NavigateDungeonMap;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeMap;

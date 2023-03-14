@@ -13,9 +13,8 @@
  */
 package model;
 
-import jakarta.persistence.*;
+import controller.FrontController;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 

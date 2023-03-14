@@ -1,12 +1,8 @@
 package setup;
 
-import model.*;
-import services.ConfigurationReader;
-import services.PersistenceInterface;
+import controller.PlayTheGame;
 
 import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
-import java.util.TreeMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 

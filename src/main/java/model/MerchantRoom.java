@@ -1,5 +1,7 @@
 package model;
 
+import controller.FrontController;
+
 import java.util.*;
 
 public class MerchantRoom extends Room {

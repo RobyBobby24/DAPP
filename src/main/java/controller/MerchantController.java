@@ -1,5 +1,7 @@
-package model;
+package controller;
 
+import model.Adventurer;
+import model.Card;
 import view.FrontView;
 
 import java.util.List;

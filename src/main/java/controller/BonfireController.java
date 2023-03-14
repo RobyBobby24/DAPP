@@ -1,7 +1,6 @@
 package controller;
 
 import model.Adventurer;
-import model.FrontController;
 import view.FrontView;
 
 import static java.lang.System.exit;

@@ -1,5 +1,6 @@
-package model;
+package controller;
 
+import model.Treasure;
 import view.FrontView;
 
 import java.util.List;

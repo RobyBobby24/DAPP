@@ -1,5 +1,6 @@
 package model;
 
+import controller.FrontController;
 import services.ConfigurationReader;
 
 import java.io.IOException;

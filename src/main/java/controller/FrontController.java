@@ -1,7 +1,6 @@
-package model;
+package controller;
 
-import controller.BattleController;
-import controller.BonfireController;
+import model.*;
 
 import java.util.List;
 

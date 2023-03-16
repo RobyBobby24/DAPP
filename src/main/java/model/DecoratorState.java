@@ -95,7 +95,7 @@ public class DecoratorState implements AdventurerState {
 	}
 
 	@Override
-	public void addCoins(int coins) {
+	public void addCoins(int coins) throws Exception {
 		this.component.addCoins( coins );
 	}
 

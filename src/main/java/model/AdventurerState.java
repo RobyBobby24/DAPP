@@ -80,7 +80,7 @@ public interface AdventurerState {
 
 	boolean buyAcard(Card card) throws Exception;
 
-	void addCoins(int coins);
+	void addCoins(int coins) throws Exception;
 
 	void addCard(Card card);
 

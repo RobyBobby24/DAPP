@@ -158,8 +158,8 @@ public class BattleState implements AdventurerState {
 	}
 
 	@Override
-	public void addCoins(int coins) {
-
+	public void addCoins(int coins) throws Exception {
+		Adventurer.getInstance().setCoins( Adventurer.getInstance().getCoins()+coins);
 	}
 
 	@Override

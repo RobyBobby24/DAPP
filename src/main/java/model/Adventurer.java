@@ -291,7 +291,7 @@ public abstract class Adventurer implements Serializable {
 	 * increase the adventurer coins of the parameter value
 	 * @param coins number of coins to add
 	 */
-	public void addCoins(int coins) {
+	public void addCoins(int coins) throws Exception {
 		this.currentState.addCoins(coins);
 	}
 

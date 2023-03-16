@@ -126,12 +126,8 @@ public class NormalState implements AdventurerState {
 	}
 
 	@Override
-	public void addCoins(int coinsToAdd) {
-		try {
-			Adventurer.getInstance().setCoins( Adventurer.getInstance().getCoins()+coinsToAdd);
-		} catch (Exception e) {
-			throw new RuntimeException(e);
-		}
+	public void addCoins(int coinsToAdd) throws Exception {
+		Adventurer.getInstance().setCoins( Adventurer.getInstance().getCoins()+coinsToAdd);
 	}
 
 	@Override

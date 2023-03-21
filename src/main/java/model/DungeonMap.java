@@ -92,7 +92,7 @@ public class DungeonMap implements Serializable {
 	 * build the map with all its room
 	 */
 	public void buildMap() throws IOException {
-		this.difficulty.buildMap(this);
+		this.difficulty.buildMap();
 	}
 
 	/**

@@ -23,7 +23,7 @@ public class HardDifficultyStrategy implements BuildMapDifficultyStrategy {
 		this.numberOfBonfireRoom = ConfigurationReader.getInstance().getDifficultyStrategyParameter(difficultyStrategyName,"numberOfBonfireRoom");
 	}
 
-	public void buildMap(DungeonMap dungeonMap) throws IOException {
+	public void buildMap() throws IOException {
 		ArrayList<TreeMap<String,String>> clause= new ArrayList<>();
 		ArrayList<String> operation= new ArrayList<>();
 		TreeMap<String,String> key_value_equal = new TreeMap<>();
@@ -72,12 +72,12 @@ public class HardDifficultyStrategy implements BuildMapDifficultyStrategy {
 
 		Random random = new Random();
 
-		dungeonMap.addRoom( null , startingRoom );
+		DungeonMap.getInstance().addRoom( null , startingRoom );
 
 		List<Room> secondLevel = new ArrayList<>();
 		for (int i = 0; i < 3; i++) {
 			secondLevel.add( rooms.remove( random.nextInt( rooms.size() ) ) );
-			dungeonMap.addRoom( startingRoom, secondLevel.get(i) );
+			DungeonMap.getInstance().addRoom( startingRoom, secondLevel.get(i) );
 		}
 		BattleRoom endRoom = this.createBattleRoomRandomBossMonster(bossMonsters);
 		for( Room room : secondLevel){
@@ -90,16 +90,16 @@ public class HardDifficultyStrategy implements BuildMapDifficultyStrategy {
 				if( choose==i ) actualLevel.add( rooms.remove( random.nextInt( rooms.size() ) ) );
 				for (Room rKey : level){
 					for (Room rValue : actualLevel){
-						dungeonMap.addRoom(rKey, rValue);
+						DungeonMap.getInstance().addRoom(rKey, rValue);
 					}
 				}
 				level = new ArrayList<>(actualLevel);
 			}
 			for( Room secondLastRoom : secondLevel){
-				dungeonMap.addRoom(secondLastRoom,endRoom);
+				DungeonMap.getInstance().addRoom(secondLastRoom,endRoom);
 			}
 		}
-		dungeonMap.addRoom(endRoom,null);
+		DungeonMap.getInstance().addRoom(endRoom,null);
 	}
 
 

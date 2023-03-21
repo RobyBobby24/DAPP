@@ -4,6 +4,6 @@ import java.io.IOException;
 
 public interface BuildMapDifficultyStrategy {
 
-	 void buildMap(DungeonMap dungeonMap) throws IOException;
+	 void buildMap() throws IOException;
 
 }

@@ -15,7 +15,7 @@ public class EasyDifficultyStrategy implements BuildMapDifficultyStrategy {
 	}
 
 	@Override
-	public void buildMap(DungeonMap dungeonMap) throws IOException {
+	public void buildMap() throws IOException {
 		ArrayList<TreeMap<String,String>> clause= new ArrayList<>();
 		ArrayList<String> operation= new ArrayList<>();
 		TreeMap<String,String> key_value_equal = new TreeMap<>();
@@ -55,17 +55,17 @@ public class EasyDifficultyStrategy implements BuildMapDifficultyStrategy {
 		BonfireRoom bonfireRoom=roomFactory.createBonfireRoom();
 
 		BattleRoom endRoom = this.createBattleRoomRandomMonster( bossMonsters );
-		dungeonMap.addRoom( null,startingRoom );
+		DungeonMap.getInstance().addRoom( null,startingRoom );
 
-		dungeonMap.addRoom(startingRoom,bonfireRoom);
-		dungeonMap.addRoom(startingRoom,merchantRoom);
-		dungeonMap.addRoom(startingRoom,treasureRoom);
+		DungeonMap.getInstance().addRoom(startingRoom,bonfireRoom);
+		DungeonMap.getInstance().addRoom(startingRoom,merchantRoom);
+		DungeonMap.getInstance().addRoom(startingRoom,treasureRoom);
 
-		dungeonMap.addRoom(bonfireRoom,endRoom);
-		dungeonMap.addRoom(merchantRoom,endRoom);
-		dungeonMap.addRoom(treasureRoom,endRoom);
+		DungeonMap.getInstance().addRoom(bonfireRoom,endRoom);
+		DungeonMap.getInstance().addRoom(merchantRoom,endRoom);
+		DungeonMap.getInstance().addRoom(treasureRoom,endRoom);
 
-		dungeonMap.addRoom(endRoom,null);
+		DungeonMap.getInstance().addRoom(endRoom,null);
 	}
 
 	private BattleRoom createBattleRoomRandomMonster(List<Monster> monsters){
